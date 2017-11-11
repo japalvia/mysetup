@@ -1,0 +1,37 @@
+User-specific keyboard modification is done by compiling an xkb program and
+loading it.
+
+Mapping
+-------
+symbols/prog
+
+
+Identifying key to symbol
+-------------------------
+replace key <KEY> { [ <sym1>, <sym2>, <sym3>, <sym4> ] }
+
+KEY:
+run xev and click the key that you want to override. Observe the event in xev
+console:
+    keycode 35 (keysym 0xfe57, dead_diaeresis)
+
+Find the symbol in the system-wide default definition:
+$ grep dead_diaeresis /usr/share/X11/xkb/symbols/fi
+    key <AD12> { [ dead_diaeresis, dead_circumflex, dead_tilde, dead_macron ] };
+
+In this keyboard, pressing AD12 twice is '¨' and shitf-AD12-AD12 is '^'
+We want to change single press AD12 to ^ and shitf-AD12 to Insert to paste X11
+clipboard to terminal.
+
+Next, finding the correct symbol for '^':
+xev:
+    state 0x0, keycode 35 (keysym 0x5e, asciicircum), same_screen YES,
+
+asciicircum is the symbol name. Add the line in 'prog':
+replace key <AD12> { [ asciicircum, Insert, NoSymbol, NoSymbol ] };
+
+
+Compile and load the keyboard
+-----------------------------
+./apply_xkb.sh
+
