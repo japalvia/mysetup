@@ -1,0 +1,13 @@
+A collection of neat vim tips and tricks that I keep forgetting.
+================================================================
+
+Rename word under cursor, all instances. Alternative to :%s/foo/bar/g when foo
+is lenghtly or needs escaping:
+- put cursor on word
+- press * to search for the next occurrence
+- type 'ciw' (change inner word)
+- type new word
+- press esc
+- press n for next occurrence and press . (repeat)
+- keep pressing n + .
+
