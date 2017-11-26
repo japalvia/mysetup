@@ -1,0 +1,8 @@
+i3wm
+====
+
+Configuration files and exit script are in .config/ directory.
+
+Install to your system:
+cp -v -r .config/* ~/.config/
+
