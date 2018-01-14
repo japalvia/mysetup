@@ -1,0 +1,75 @@
+Updating slimrom image after the initial unlocking and flashing
+===============================================================
+
+Assume root directory 'slimrom' for all content from here on.
+
+Go to https://slimroms.org/#/
+    - Check weekly news if there are any updates available
+    - Make note of build fingerprint if the factory android image has been bumped
+      to a newer version
+
+Go to https://slimroms.org/#/download
+    - Select HTC - flounder_lte
+    - Download the zip archive
+
+Go to https://developers.google.com/android/images#volantisg
+    - Download the factory image matching the fingerprint
+
+Go to http://opengapps.org/
+    - Check for a newer gapps package
+    - Select platform: ARM64, Android: 7.1 (or whatever slimrom is) and
+      variant: nano
+
+Go to https://twrp.me/htc/htcnexus9.html
+    - If the fingerprint has changed, you'll probably need to check for latest
+      recovery image as well
+    - Download latest image from https://eu.dl.twrp.me/flounder
+    - move the image under slimrom directory
+
+Make a directory named according to the (weekly) release
+    - mkdir slimrom/weekly-1.17
+    - move the slimrom zip to the directory
+    - move the android factory image to the directory
+
+Extract the following images from factory image to the release directory
+    - bootloader-flounder-* (in zip root directory)
+    - vendor.img (inside another embedded zip)
+
+Upload the slimrom image to the device while it's running normally
+    - sudo adb push  /sdcard/Download
+    - sudo adb push
+
+Enter fastboot mode
+    - Manually:
+      - turn off
+      - press power button + volume down until menu appears
+      - select fastboot using volume keys and enter with power button
+    - or from using Android Debug Bridge:
+      - sudo adb reboot bootloader
+
+Prepare device for flashing
+    - check fastboot is working and shows your device:
+      sudo fastboot devices
+
+Flash recovery image if a new version was available
+    - sudo fastboot flash recovery twrp-*-flounder.img
+
+Flash vendor and bootloader images
+    - sudo fastboot flash vendor vendor.img
+    - sudo fastboot flash bootloader booatloader-flounder-*.img
+
+Enter the recovery progam twrp
+    - While still being in 'FASTBOOT USB' mode,
+    - Select 'HBOOT' and press power button
+    - Select 'RECOVERY' and press power button
+
+In case of clean installation
+    - If the fingerprint changed it's best to do factory reset
+    - select Wipe and factory reset by swiping the bottom slider
+    - select advanced and check 'System' partition, wipe it
+
+Flash the slimrom image
+    - Select Install, browse to Download and slimrom image
+    - Optionally include also gapps package
+    - Wipe Dalvik and cache
+    - twrp asks to install the app: say 'no' it's useful only for rooted device
