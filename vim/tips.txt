@@ -11,3 +11,5 @@ is lenghtly or needs escaping:
 - press n for next occurrence and press . (repeat)
 - keep pressing n + .
 
+Search for byte values, e.g. null byte:
+/[\x0]
