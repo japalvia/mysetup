@@ -1,0 +1,11 @@
+Arch Linux howtos
+=================
+
+Pacman
+------
+
+Multilib:
+Find 32-bit packages:
+pacman -Sl multilib |grep libstdc++
+pacman -S lib32-libstdc++5
+
