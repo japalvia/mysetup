@@ -36,7 +36,10 @@ Extract the following images from factory image to the release directory
     - vendor.img (inside another embedded zip)
 
 Upload the slimrom image to the device while it's running normally
-    - sudo adb push Slim-flounder_lte-7.1.2.build.1.17*.zip /sdcard/Download
+    - sudo adb push Slim-flounder_lte-7.1.2.build.*.zip /sdcard/Download
+
+Upload GApps:
+    - sudo adb push open_gapps-arm64-7.1-nano-*.zip /sdcard/Download
 
 Enter fastboot mode
     - Manually:
