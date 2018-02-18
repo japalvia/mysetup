@@ -9,3 +9,10 @@ Find 32-bit packages:
 pacman -Sl multilib |grep libstdc++
 pacman -S lib32-libstdc++5
 
+Systemd services
+----------------
+
+journalctl becomes slow; vacuum and restrict size of stored logs:
+# journalctl --vacuum-size=128M
+$ grep SystemMaxUse /etc/systemd/journald.conf
+SystemMaxUse=128M
