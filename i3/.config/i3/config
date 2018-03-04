@@ -194,6 +194,9 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Output switch
 bindsym XF86Display exec --no-startup-id ~/bin/toggle-display.sh
 
+# Clipmenu invocation
+bindsym $mod+section exec --no-startup-id clipmenu
+
 # Put all key bindins before the exec calls, otherwise will not work.
 exec --no-startup-id "devmon --no-gui"
 exec --no-startup-id "pulseaudio --start"
