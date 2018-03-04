@@ -22,3 +22,6 @@ journalctl becomes slow; vacuum and restrict size of stored logs:
 # journalctl --vacuum-size=128M
 $ grep SystemMaxUse /etc/systemd/journald.conf
 SystemMaxUse=128M
+
+Add your own services to location: /etc/systemd/system/
+Reload systemd to read the new service: systemctl daemon-reload
