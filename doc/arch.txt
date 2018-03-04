@@ -15,6 +15,8 @@ pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "b
 Remove orphaned packages (dependencies not required anymore):
 pacman -Rns $(pacman -Qtdq)
 
+Sync signing keys: pacman-key --refresh-keys
+
 Systemd services
 ----------------
 
@@ -25,3 +27,10 @@ SystemMaxUse=128M
 
 Add your own services to location: /etc/systemd/system/
 Reload systemd to read the new service: systemctl daemon-reload
+
+Managing network
+----------------
+
+netctl --help
+
+Restart wifi: systemctl restart netctl@your_network
