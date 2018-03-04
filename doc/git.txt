@@ -1,0 +1,5 @@
+Git less commonly needed tricks
+===============================
+
+Search for a file in all branches:
+git log --all -- '**/some_file'
