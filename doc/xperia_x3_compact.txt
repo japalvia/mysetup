@@ -1,0 +1,28 @@
+Sony Xperia Z3 Compact
+======================
+
+Z3C Qualcomm SoC supports only Linux 3.10 kernel
+
+Building AOSP
+-------------
+
+Machines with less than 16 MB RAM require increasing available memory for Jack
+build server:
+echo "# http://www.2net.co.uk/blog/jack-server.html" >> ~/.jack-settings
+echo JACK_SERVER_VM_ARGUMENTS=\
+"-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m" >> ~/.jack-settings
+
+Rebuild configuration, keep existing objects:
+make installclean
+
+Developer usage
+---------------
+
+Enter bootloader: hold power button + volume down
+
+Remount /system with write permissions:
+adb shell
+su
+mount -o rw,remount /system
+
+Files must be copied first to /sdcard then using adb shell moved to /system
