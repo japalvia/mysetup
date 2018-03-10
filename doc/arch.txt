@@ -15,6 +15,12 @@ pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "b
 Remove orphaned packages (dependencies not required anymore):
 pacman -Rns $(pacman -Qtdq)
 
+Remove package and dependencies that are not needed after the removal:
+pacman -Rs
+
+Remove package and cascade removal down the dependers:
+pacman -Rsc
+
 Sync signing keys: pacman-key --refresh-keys
 
 Systemd services
