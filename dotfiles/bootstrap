@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Symlink all configs to their appropriate location in according to
+# XDG Base Directory Specification.
+# Symlinks will not be created if the link name already exists.
+
+[ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME=$HOME
+
+root=$(dirname $(readlink -f $0))
+
+find "$root"/.config/* -type d -exec ln -v -s {} "$XDG_CONFIG_HOME"/.config/ \;
+

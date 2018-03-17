@@ -1,0 +1,7 @@
+dotfiles
+========
+
+Bootstrap your new installation with dotfiles:
+./bootstrap
+
+TODO: bootstrap handles only .config, add other dotfiles.
