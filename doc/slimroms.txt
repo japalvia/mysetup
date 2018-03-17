@@ -1,12 +1,19 @@
 Updating slimrom image after the initial unlocking and flashing
 ===============================================================
 
+Install Android debug bridge (adb) and fastboot
+    - yaourt android-sdk-platform-tools
+    - echo 'export PATH=$PATH:/opt/android-sdk/platform-tools' >> \
+      /etc/bash.bashrc
+
 Assume root directory 'slimrom' for all content from here on.
 
 Go to https://slimroms.org/#/
     - Check weekly news if there are any updates available
     - Make note of build fingerprint if the factory android image has been bumped
       to a newer version
+    - Fingerprint can be also read from the extracted image content:
+      grep fingerprint.*release-keys system/build.prop
 
 Go to https://slimroms.org/#/download
     - Select HTC - flounder_lte

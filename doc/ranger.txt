@@ -1,0 +1,6 @@
+Ranger file manager
+===================
+
+Toggle hidden files: zh
+
+Quick search: type 'f' and search string
