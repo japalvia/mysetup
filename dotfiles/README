@@ -4,4 +4,5 @@ dotfiles
 Bootstrap your new installation with dotfiles:
 ./bootstrap
 
-TODO: bootstrap handles only .config, add other dotfiles.
+Complete the setup by installing dependencies, see:
+- doc/vim.txt
