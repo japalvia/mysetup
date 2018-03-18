@@ -1,5 +1,9 @@
-A collection of neat vim tips and tricks that I keep forgetting.
-================================================================
+Vim setup and commands
+======================
+
+Plugins from AUR:
+aurman -S vim-pathogen vim-colors-zenburn-git vim-rust-git
+
 
 Rename word under cursor, all instances. Alternative to :%s/foo/bar/g when foo
 is lenghtly or needs escaping:
