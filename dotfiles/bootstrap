@@ -7,6 +7,14 @@
 [ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME=$HOME
 
 root=$(dirname $(readlink -f $0))
+config_in="$root"/.config
+config_out="$XDG_CONFIG_HOME"/.config
 
-find "$root"/.config/* -type d -exec ln -v -s {} "$XDG_CONFIG_HOME"/.config/ \;
+# RC files in user $HOME
+
+
+# RC files in .config/ root
+find "$config_in" -maxdepth 1 -type f -exec ln -v -s {} "$config_out"/ \;
+# Application-specific sub-directories, excluding .config itself
+find "$config_in" -mindepth 1 -type d -exec ln -v -s {} "$config_out"/ \;
 
