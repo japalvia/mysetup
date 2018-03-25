@@ -156,33 +156,35 @@ nmap <C-_>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 " split horizontally, with search result displayed in
 " the new window.
 
-" FIXME: why these are not working?
-nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space>a :scs find a <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-h>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-h>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-h>a :scs find a <C-R>=expand("<cword>")<CR><CR>
 
 " Hitting CTRL-space *twice* before the search type does a vertical
 " split instead of a horizontal one
-
-nmap <C-Space><C-Space>s
+" FIXME: why these are not working?
+nmap <C-h><C-h>s
 		\:vert scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space><C-Space>g
+nmap <C-h><C-h>g
 		\:vert scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space><C-Space>c
+nmap <C-h><C-h>c
 		\:vert scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space><C-Space>t
+nmap <C-h><C-h>t
 		\:vert scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space><C-Space>e
+nmap <C-h><C-h>e
 		\:vert scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space><C-Space>i
+nmap <C-h><C-h>i
 		\:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-Space><C-Space>d
+nmap <C-h><C-h>d
 		\:vert scs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <C-Space><C-Space>a
+nmap <C-h><C-h>a
 		\:vert scs find a <C-R>=expand("<cword>")<CR><CR>
+
+" h bar selects word under cursor and enter visual mode
+map <space> viw
