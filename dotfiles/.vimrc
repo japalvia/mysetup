@@ -10,6 +10,9 @@ set smarttab        " When on, a <Tab> in front of a line inserts blanks
                     " according to 'shiftwidth'. 'tabstop' is used in other
                     " places. A <BS> will delete a 'shiftwidth' worth of space
                     " at the start of the line.
+set autoindent
+set smartindent
+set cindent
 
 " set number          " Show line numbers.
 
@@ -92,6 +95,7 @@ set cino+=(0
 " disable attention message about existing swap file
 set shortmess+=A
 
+" Show current C function in status line
 fun! ShowFuncName()
   let lnum = line(".")
   let col = col(".")
@@ -101,3 +105,84 @@ fun! ShowFuncName()
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
 map f :call ShowFuncName() <CR>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+if has("cscope")
+		set csprg=/usr/bin/cscope
+		set csto=0
+		set cst
+		set nocsverb
+		" add any database in current directory
+		if filereadable("cscope.out")
+			cs add cscope.out
+		" else add database pointed to by environment
+		elseif $CSCOPE_DB != ""
+			cs add $CSCOPE_DB
+		endif
+		set csverb
+endif
+
+" scope bindings
+"USAGE   :cs find {querytype} {name}
+"
+"	{querytype} corresponds to the actual cscope line
+"	interface numbers as well as default nvi commands:
+"
+"		0 or s: Find this C symbol
+"		1 or g: Find this definition
+"		2 or d: Find functions called by this function
+"		3 or c: Find functions calling this function
+"		4 or t: Find this text string
+"		6 or e: Find this egrep pattern
+"		7 or f: Find this file
+"		8 or i: Find files #including this file
+"		9 or a: Find places where this symbol is assigned a value
+
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>a :cs find a <C-R>=expand("<cword>")<CR><CR>
+
+" Using 'CTRL-spacebar' then a search type makes the vim window
+" split horizontally, with search result displayed in
+" the new window.
+
+" FIXME: why these are not working?
+nmap <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>a :scs find a <C-R>=expand("<cword>")<CR><CR>
+
+" Hitting CTRL-space *twice* before the search type does a vertical
+" split instead of a horizontal one
+
+nmap <C-Space><C-Space>s
+		\:vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>g
+		\:vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>c
+		\:vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>t
+		\:vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>e
+		\:vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>i
+		\:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space><C-Space>d
+		\:vert scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space><C-Space>a
+		\:vert scs find a <C-R>=expand("<cword>")<CR><CR>

@@ -17,3 +17,32 @@ is lenghtly or needs escaping:
 
 Search for byte values, e.g. null byte:
 /[\x0]
+
+Using tags
+----------
+
+index recursively the current directory outside vim:
+ctags -R .
+
+index using easytags plugin in vim (tags stored ~/.vimtags):
+:UpdateTags -R .
+
+jump to tag definition:
+Ctrl-]
+
+pop tag (return to previous location):
+Ctrl-T
+
+taglist plugin, show tag window:
+:TlistToggle
+
+navigate between windows in vim:
+Ctrl-[hjkl]
+
+cscope:
+install cscope package
+
+run in source root directory:
+cscope -R -b
+
+
