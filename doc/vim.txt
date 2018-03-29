@@ -1,6 +1,12 @@
 Vim setup and commands
 ======================
 
+Reload config without editor restart:
+:so $MYVIMRC
+
+List loaded plugins/addons:
+:scriptnames
+
 Plugins from AUR:
 aurman -S vim-pathogen vim-colors-zenburn-git vim-rust-git
 

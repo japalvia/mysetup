@@ -1,4 +1,11 @@
-execute pathogen#infect()
+" Declare nocompatible before loading any plugins
+set nocompatible
+
+" Debian 9 plugins/addons installed from repo
+set runtimepath+=/usr/share/vim-scripts,/usr/share/vim/addons
+
+" Use pathogen only if the plugin isn't provided by distribution
+" execute pathogen#infect()
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 
