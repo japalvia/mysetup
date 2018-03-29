@@ -51,4 +51,10 @@ install cscope package
 run in source root directory:
 cscope -R -b
 
+MiniBufExplorer
+---------------
 
+Switching between buffers:
+Ctrl-^              previous buffer
+num-ctrl-^          switch to buffer <num>num
+Ctrl-hjkl and Tab   move to MBE window and select buffer with cursor
