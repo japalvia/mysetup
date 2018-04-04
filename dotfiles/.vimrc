@@ -78,7 +78,9 @@ set pastetoggle=<F2>
 map <F7> mzgg=G`z<CR>
 
 " Redraw with ctrl-l to remove search hits
-:noremap <silent> <c-l> :nohls<cr><c-l>
+" :noremap <silent> <c-l> :nohls<cr><c-l>
+
+nnoremap <silent> <esc> :noh<cr><esc>
 
 "map <ESC>[5D <C-Left>
 "map <ESC>[5C <C-Right>
