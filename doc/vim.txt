@@ -24,6 +24,12 @@ is lenghtly or needs escaping:
 Search for byte values, e.g. null byte:
 /[\x0]
 
+Moving around
+-------------
+
+^ To the first non-blank character of the line.
+
+
 Using tags
 ----------
 
