@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+# Decode percent (URL) encoded string.
+# Pass the argument as first command line parameter.
+
+import urllib, sys
+
+print urllib.unquote(sys.argv[1])
+
