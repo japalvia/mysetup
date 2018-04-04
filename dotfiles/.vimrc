@@ -1,6 +1,9 @@
 " Declare nocompatible before loading any plugins
 set nocompatible
 
+" Leader key for prefixing custom commands
+let mapleader=","
+
 " Debian 9 plugins/addons installed from repo
 set runtimepath+=/usr/share/vim-scripts,/usr/share/vim/addons
 
@@ -77,10 +80,8 @@ set pastetoggle=<F2>
 " format and return the same line where you were
 map <F7> mzgg=G`z<CR>
 
-" Redraw with ctrl-l to remove search hits
-" :noremap <silent> <c-l> :nohls<cr><c-l>
-
-nnoremap <silent> <esc> :noh<cr><esc>
+" Redraw with <leader>-l to remove search hits
+:nnoremap <silent> <leader>l :nohls<cr><leader>l
 
 "map <ESC>[5D <C-Left>
 "map <ESC>[5C <C-Right>
