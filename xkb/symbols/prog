@@ -22,5 +22,5 @@ replace key <FK08>   { [ XF86AudioMute, F8  ] };
 replace key <FK09>   { [ XF86AudioLowerVolume,  F9  ] };
 replace key <FK10>   { [ XF86AudioRaiseVolume,  F10  ] };
 replace key <FK11>   { [ XF86AudioPlay,  F11  ] };
-replace key <FK12>   { [ XF86Display,  F12  ] };
+replace key <FK12>   { [ F12, XF86Display  ] };
 };
