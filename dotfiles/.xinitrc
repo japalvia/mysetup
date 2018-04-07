@@ -1,4 +1,4 @@
-setxkbmap -layout fi -option ctrl:nocaps
+# Setup all keyboard mappings.
 ~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb
 
 xrdb ~/ws/mysetup/dotfiles/.Xresources
