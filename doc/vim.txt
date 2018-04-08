@@ -45,4 +45,10 @@ install cscope package
 run in source root directory:
 cscope -R -b
 
+--
 
+Start without loading any vimrc:
+vim -u NONE
+
+Start with system defaults only:
+vim -u /etc/vimrc
