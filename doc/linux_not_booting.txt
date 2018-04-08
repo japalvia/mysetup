@@ -1,0 +1,44 @@
+Recover broken Linux installation when boot fails
+=================================================
+
+Prepare a Linux live installation
+---------------------------------
+
+I used SystemRescueCd [http://www.system-rescue-cd.org/]
+that I installed on USB stick using the provided Windows installation method.
+SysRescueCd requires 1 GB storage.
+
+Boot the live CD
+----------------
+
+Insert USB stick to the machine and boot. Look for the key to enter the boot
+menu during the boot and select USB storage as the boot device.
+
+SysRescueCd gives a few choices what to load, choose high-resolution console.
+
+Follow the instructions on screen. Configure network if needed.
+
+Setup chroot
+------------
+
+The following steps were stolen from
+[https://aaronbonner.io/post/21103731114/chroot-into-a-broken-linux-install]
+
+Mount root filesystem:
+# mkdir /mnt/arch
+# mount -t xfs /dev/sda2 /mnt/arch
+
+Mount boot partition:
+# mount -t exf4 /dev/sda1 /mnt/arch/boot
+
+Mount special file system to chroot environment:
+# mount -t proc none /mnt/arch/proc
+# mount -o bind /dev /mnt/arch/dev
+# mount -o bind /sys /mnt/arch/sys
+
+Enable name resolution if needed:
+# cp /etc/resolv.conf /mnt/arch/etc/resolv.conf
+
+Login to chroot:
+# chroot /mnt/arch /bin/bash
+# source /etc/profile
