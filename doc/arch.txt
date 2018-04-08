@@ -34,6 +34,12 @@ SystemMaxUse=128M
 Add your own services to location: /etc/systemd/system/
 Reload systemd to read the new service: systemctl daemon-reload
 
+journalctl
+----------
+
+Jump to end of journal when opening:
+journalctl -e
+
 Managing network
 ----------------
 

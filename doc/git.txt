@@ -3,3 +3,6 @@ Git less commonly needed tricks
 
 Search for a file in all branches:
 git log --all -- '**/some_file'
+
+View file from another local branch without switching to it:
+git show <branch>:<file path>
