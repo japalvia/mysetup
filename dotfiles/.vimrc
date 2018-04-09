@@ -2,7 +2,7 @@
 set nocompatible
 
 " Debian 9 plugins/addons installed from repo
-set runtimepath+=/usr/share/vim-scripts,/usr/share/vim/addons
+" set runtimepath+=/usr/share/vim-scripts,/usr/share/vim/addons
 
 " Use pathogen only if the plugin isn't provided by distribution
 " execute pathogen#infect()
@@ -88,7 +88,9 @@ map <F7> mzgg=G`z<CR>
 " Don't insert comment automatically
 set formatoptions-=cro
 
-colors zenburn
+let rgb_file = "/home/palvja/ws/jellybeans.vim/ansi-term-colors.txt"
+colors jellybeans
+syntax off
 
 " Show status line always
 set laststatus=2
@@ -149,15 +151,15 @@ endif
 "		8 or i: Find files #including this file
 "		9 or a: Find places where this symbol is assigned a value
 
-nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <C-_>a :cs find a <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-j>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-j>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-j>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 " Using 'CTRL-spacebar' then a search type makes the vim window
 " split horizontally, with search result displayed in
