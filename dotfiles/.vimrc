@@ -1,4 +1,10 @@
-" Enable Pathogen if installing plugins outside OS packages.
+" Declare nocompatible before loading any plugins
+set nocompatible
+
+" Leader key for prefixing custom commands
+let mapleader=","
+
+" Use pathogen only if the plugin isn't provided by distribution
 " execute pathogen#infect()
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
@@ -71,9 +77,8 @@ set pastetoggle=<F2>
 " format and return the same line where you were
 map <F7> mzgg=G`z<CR>
 
-" Redraw with ctrl-l to remove search hits
-" FIXME: not working in Arch
-nnoremap <silent> <c-l> :nohls<cr><c-l>
+" Redraw with <leader>-l to remove search hits
+:nnoremap <silent> <leader>l :nohls<cr><leader>l
 
 " Don't insert comment automatically
 set formatoptions-=cro
@@ -103,6 +108,7 @@ fun! ShowFuncName()
 endfun
 map f :call ShowFuncName() <CR>
 
+" Move focus to window without pressing 'w'
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
