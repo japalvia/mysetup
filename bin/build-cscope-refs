@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Generates 'cscope.out' in the current directory.
+
+cscope -R -b

@@ -1,8 +1,24 @@
 Vim setup and commands
 ======================
 
+Loading vimrc
+-------------
+
+Reload config without editor restart:
+:so $MYVIMRC
+
+Start without loading any vimrc:
+vim -u NONE
+
+Start with system defaults only:
+vim -u /etc/vimrc
+
+
 Plugins
 -------
+
+List loaded plugins/addons:
+:scriptnames
 
 Plugins from AUR:
 aurman -S vim-pathogen vim-colors-zenburn-git vim-rust-git
@@ -30,6 +46,12 @@ z. or zz puts current line to center of screen
 zb puts current line to bottom of screen
 
 
+Moving around
+-------------
+
+^ To the first non-blank character of the line.
+
+
 Using tags
 ----------
 
@@ -51,18 +73,21 @@ taglist plugin, show tag window:
 navigate between windows in vim:
 Ctrl-[hjkl]
 
-cscope:
-install cscope package
+
+Cscope
+-------
+
+Install 'cscope' package
+Install pycscope: sudo pip install pycscope
 
 run in source root directory:
 cscope -R -b
 
 
-Loading vimrc
--------------
+MiniBufExplorer
+---------------
 
-Start without loading any vimrc:
-vim -u NONE
-
-Start with system defaults only:
-vim -u /etc/vimrc
+Switching between buffers:
+Ctrl-^              previous buffer
+num-ctrl-^          switch to buffer <num>num
+Ctrl-hjkl and Tab   move to MBE window and select buffer with cursor
