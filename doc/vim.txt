@@ -1,9 +1,15 @@
 Vim setup and commands
 ======================
 
+Plugins
+-------
+
 Plugins from AUR:
 aurman -S vim-pathogen vim-colors-zenburn-git vim-rust-git
 
+
+Commands
+--------
 
 Rename word under cursor, all instances. Alternative to :%s/foo/bar/g when foo
 is lenghtly or needs escaping:
@@ -17,6 +23,12 @@ is lenghtly or needs escaping:
 
 Search for byte values, e.g. null byte:
 /[\x0]
+
+Scrolling:
+zt puts current line to top of screen
+z. or zz puts current line to center of screen
+zb puts current line to bottom of screen
+
 
 Using tags
 ----------
@@ -45,7 +57,9 @@ install cscope package
 run in source root directory:
 cscope -R -b
 
---
+
+Loading vimrc
+-------------
 
 Start without loading any vimrc:
 vim -u NONE

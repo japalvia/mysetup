@@ -1,4 +1,5 @@
-execute pathogen#infect()
+" Enable Pathogen if installing plugins outside OS packages.
+" execute pathogen#infect()
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 
@@ -71,12 +72,8 @@ set pastetoggle=<F2>
 map <F7> mzgg=G`z<CR>
 
 " Redraw with ctrl-l to remove search hits
-:noremap <silent> <c-l> :nohls<cr><c-l>
-
-"map <ESC>[5D <C-Left>
-"map <ESC>[5C <C-Right>
-"map! <ESC>[5D <C-left>
-"map! <ESC>[5C <C-Right>
+" FIXME: not working in Arch
+nnoremap <silent> <c-l> :nohls<cr><c-l>
 
 " Don't insert comment automatically
 set formatoptions-=cro
@@ -186,5 +183,19 @@ nmap <C-h><C-h>d
 nmap <C-h><C-h>a
 		\:vert scs find a <C-R>=expand("<cword>")<CR><CR>
 
-" h bar selects word under cursor and enter visual mode
+" space selects word under cursor and enter visual mode
 map <space> viw
+
+" FIXME: not working in Arch
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+" http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
+" Keep the cursor centered in view when possible
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+augroup END

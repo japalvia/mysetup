@@ -9,6 +9,9 @@ Find 32-bit packages:
 pacman -Sl multilib |grep libstdc++
 pacman -S lib32-libstdc++5
 
+Show 'Required by' for a package:
+pacman -Sii package
+
 List packages explicitly installed by me (excluding initial base installation):
 pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'
 
