@@ -6,3 +6,10 @@ git log --all -- '**/some_file'
 
 View file from another local branch without switching to it:
 git show <branch>:<file path>
+
+Forking upstream and following it
+---------------------------------
+
+git remote add upstream https://github.com/user/repo.git
+git fetch upstream
+git checkout -b upstream_master --track upstream/master
