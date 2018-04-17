@@ -1,0 +1,22 @@
+Tmux cheat cheet
+================
+
+Config file
+-----------
+~/.tmux.conf
+
+Global prefix key is C-a
+
+Panes
+-----
+Split vertically: prefix-%
+Move focus to pane with vim bindigs: prefix-hjkl
+Close current pane: prefix-x
+
+Windows
+-------
+Create new window: prefix-c
+Close current window: prefix-&
+Previous window: prefix-p
+
+
