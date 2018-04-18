@@ -23,6 +23,11 @@ List loaded plugins/addons:
 Plugins from AUR:
 aurman -S vim-pathogen vim-colors-zenburn-git vim-rust-git
 
+Debian: install most plugins from repo
+# apt install vim-scripts
+The plugins are not loaded automatically, symlink the useful ones:
+$ ln -s /usr/share/vim-scripts/plugin/minibufexpl.vim ~/.vim/plugin/
+
 
 Commands
 --------
