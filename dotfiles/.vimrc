@@ -4,7 +4,7 @@ set nocompatible
 " Leader key for prefixing custom commands
 let mapleader=","
 
-" Use pathogen only if the plugin isn't provided by distribution
+runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
