@@ -5,7 +5,7 @@ set nocompatible
 let mapleader=","
 
 " Use pathogen only if the plugin isn't provided by distribution
-" execute pathogen#infect()
+execute pathogen#infect()
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 
