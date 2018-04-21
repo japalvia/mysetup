@@ -10,3 +10,6 @@
 [submodule "dotfiles/.vim/bundle/minibufexpl"]
 	path = dotfiles/.vim/bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "dotfiles/.vim/bundle/supertab"]
+	path = dotfiles/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
