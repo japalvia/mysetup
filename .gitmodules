@@ -7,3 +7,6 @@
 [submodule "dotfiles/.vim/bundle/zenburn"]
 	path = dotfiles/.vim/bundle/zenburn
 	url = https://github.com/jnurmine/Zenburn.git
+[submodule "dotfiles/.vim/bundle/minibufexpl"]
+	path = dotfiles/.vim/bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
