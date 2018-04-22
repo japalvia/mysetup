@@ -205,3 +205,5 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
+
+nmap <F12> <Plug>CscopeDBInit
