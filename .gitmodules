@@ -16,3 +16,6 @@
 [submodule "dotfiles/.vim/bundle/rust"]
 	path = dotfiles/.vim/bundle/rust
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule "dotfiles/.vim/bundle/cscope_dynamic"]
+	path = dotfiles/.vim/bundle/cscope_dynamic
+	url = https://github.com/erig0/cscope_dynamic.git
