@@ -84,6 +84,7 @@ map <F7> mzgg=G`z<CR>
 set formatoptions-=cro
 
 colors zenburn
+set background=dark
 
 " Show status line always
 set laststatus=2
