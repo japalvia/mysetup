@@ -84,6 +84,10 @@ nnoremap <F7> mzgg=G`z<CR>
 set formatoptions-=cro
 
 colors zenburn
+" Fallback colors in Linux subsystem for Windows (beta)
+if !empty($VIM_LSW)
+    colors default
+endif
 set background=dark
 
 " Show status line always
