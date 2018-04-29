@@ -201,10 +201,12 @@ let g:miniBufExplModSelTarget = 1
 
 " http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
 " Keep the cursor centered in view when possible
-augroup VCenterCursor
-  au!
-  au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        \ let &scrolloff=winheight(win_getid())/2
-augroup END
+if exists("##WinNew")
+    augroup VCenterCursor
+      au!
+      au BufEnter,WinEnter,WinNew,VimResized *,*.*
+            \ let &scrolloff=winheight(win_getid())/2
+    augroup END
+endif
 
 nnoremap <F12> <Plug>CscopeDBInit
