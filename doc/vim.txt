@@ -104,3 +104,10 @@ Switching between buffers:
 Ctrl-^              previous buffer
 num-ctrl-^          switch to buffer <num>num
 Ctrl-hjkl and Tab   move to MBE window and select buffer with cursor
+
+
+Alternate (a.vim)
+-----------------
+
+:A      Open header/source in the same window
+:AS     Open header/source in new horizontal split
