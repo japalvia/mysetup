@@ -58,6 +58,11 @@ Moving around
 
 C-o Go to the previous location
 
+Windows
+-------
+
+C-w c   Close current window but keep buffer open
+
 Using tags
 ----------
 
@@ -88,6 +93,8 @@ Install pycscope: sudo pip install pycscope
 
 run in source root directory:
 cscope -R -b
+
+TODO: document cscope_dynamic usage
 
 
 MiniBufExplorer
