@@ -87,8 +87,8 @@ colors zenburn
 " Fallback colors in Linux subsystem for Windows (beta)
 if !empty($VIM_LSW)
     colors default
+    set background=dark
 endif
-set background=dark
 
 " Show status line always
 set laststatus=2
