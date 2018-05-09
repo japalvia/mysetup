@@ -50,6 +50,7 @@ zt puts current line to top of screen
 z. or zz puts current line to center of screen
 zb puts current line to bottom of screen
 
+:retab      Convert all existing tabs to spaces
 
 Moving around
 -------------
