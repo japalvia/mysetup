@@ -49,3 +49,16 @@ Managing network
 netctl --help
 
 Restart wifi: systemctl restart netctl@your_network
+
+devmon
+------
+
+# pacman -S udevil
+
+Label your disks so they will use the label as mount point when automounted.
+Disks must be unmounted.
+ext2/3/4:   # e2label /dev/sdb9 lacie_o
+xfs:        # xfs_admin -L lacie_data /dev/sdb2
+
+Show labels:
+# lsblk -o name,mountpoint,label,size,uuid
