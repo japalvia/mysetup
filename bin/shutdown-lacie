@@ -12,7 +12,7 @@ for label in "lacie_data" "lacie_os" ; do
     mountpoint -q /media/$label && devmon --unmount /media/$label
 
     partition=$(lsblk --list  -o name,mountpoint,label |
-                awk '/lacie_data/ { print $1 }')
+                awk "/$label/ { print \$1 }")
 
     [ -n "$devices" ] && devices="$devices\n"
     devices="$devices$(tr -d "[[:digit:]]" <<< $partition)"
