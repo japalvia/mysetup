@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Lacie is my external USB disk with partition labels.
+# Udevil/devmon automounts configured partition to /media.
+# Unmount them and turn off the device power.
+
+set -e
+
+devices=
+
+for label in "lacie_data" "lacie_os" ; do
+    mountpoint -q /media/$label && devmon --unmount /media/$label
+
+    partition=$(lsblk --list  -o name,mountpoint,label |
+                awk '/lacie_data/ { print $1 }')
+
+    [ -n "$devices" ] && devices="$devices\n"
+    devices="$devices$(tr -d "[[:digit:]]" <<< $partition)"
+done
+
+devices=$(echo -e $devices | sort -u)
+for d in $devices ; do
+    echo "going to shutdown: /dev/$d"
+    sudo hdparm -q -y "/dev/$d"
+done
+
+

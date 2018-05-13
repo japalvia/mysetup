@@ -7,7 +7,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 
 redshift >/dev/null &
 clipmenud &
-devmon --no-gui &
+devmon --ignore-label lacie_os --no-gui &
 
 exec i3
 
