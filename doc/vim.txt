@@ -52,6 +52,8 @@ zb puts current line to bottom of screen
 
 :retab      Convert all existing tabs to spaces
 
+=           Re-indent selection
+
 Moving around
 -------------
 
