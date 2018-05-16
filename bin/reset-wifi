@@ -8,17 +8,19 @@
 # Identify device number in "vendor:device" format:
 # $ lspci -nn | grep "Network controller"
 
+set -e
+
 device_number=8086:422b
 bus=$(lspci -d $device_number | cut -d" " -f1)
 default_domain=0000
-pci_device="/sys/bus/pci/devices/$default_domain/$bus"
+pci_device="/sys/bus/pci/devices/$default_domain:$bus"
 
 echo 1 > "$pci_device/remove"
 sleep 1
 echo 1 > /sys/bus/pci/rescan
 sleep 1
 
-killall wpa_supplicant
+killall wpa_supplicant || true
 sleep 1
 
 netctl restore
