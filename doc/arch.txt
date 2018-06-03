@@ -15,6 +15,9 @@ pacman -Sii package
 List packages explicitly installed by me (excluding initial base installation):
 pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'
 
+Query package which provides specified filename:
+pacman -Qo
+
 Remove orphaned packages (dependencies not required anymore):
 pacman -Rns $(pacman -Qtdq)
 
@@ -25,6 +28,16 @@ Remove package and cascade removal down the dependers:
 pacman -Rsc
 
 Sync signing keys: pacman-key --refresh-keys
+
+AUR
+---
+
+Upgrade AUR packages only. If there are any missing package reported, they must
+be first handled before the upgrade can proceed:
+aurman -S --aur -u
+
+Alternative
+yaourt -S -a -u
 
 Systemd services
 ----------------
