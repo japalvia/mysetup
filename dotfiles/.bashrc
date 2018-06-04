@@ -25,3 +25,5 @@ export HISTCONTROL=ignorespace
 export PATH=$HOME/bin:$PATH
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
+
+export BC_ENV_ARGS=$HOME/.config/bcrc
