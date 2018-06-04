@@ -18,13 +18,13 @@ find "$dotfiles" -mindepth 1 -maxdepth 1 \
     \( -name ".config" -o -name "bootstrap" -o -name "README" \) -prune \
     -o -exec ln -v -s {} "$HOME" \;
 
-# RC files in .config/ root
+# RC files in .config/
 find "$config_in" -maxdepth 1 -type f -exec ln -v -s {} "$config_out" \;
 # Application-specific sub-directories, excluding .config itself
 find "$config_in" -mindepth 1 -type d -exec ln -v -s {} "$config_out" \;
 
 # Vim plugins
-pushd "$dotfiles"
+pushd "$dotfiles" >/dev/null
 git submodule init
 git submodule update
-popd
+popd >/dev/null
