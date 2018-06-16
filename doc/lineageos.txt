@@ -1,0 +1,31 @@
+Pre-requirements
+    - Adb and fastboot installed on the computer
+    - Booloader unlocked
+    - Custom recovery (TWRP) installed
+
+Reboot to bootloader screen
+    - Press volume down when powering up
+
+Boot to recovery
+    - select 'HBOOT' and press power button
+
+Upload the image
+    - adb push ~/Downloads/lineage-14.1-*-nightly-flounder_lte-signed.zip /sdcard/Download
+
+Download latest GApps
+    - https://opengapps.org/?api=7.1&variant=nano (LOS 14)
+    - Make sure to select arm64 when downloading
+
+Upload GApps
+    - adb push ~/Downloads/open_gapps-arm-7.1-nano-*.zip /sdcard/Download
+
+Wipe system in TWRP
+    - Select Wipe and then Advanced Wipe
+    - Select Cache, System and Data partitions to be wiped and then Swipe to Wipe
+
+Install OS and GApps in TWRP
+    - Select Install
+    - Select the uploaded OS zip package
+    - Add GApps zip1
+
+Reboot
