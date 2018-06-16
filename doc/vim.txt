@@ -72,6 +72,8 @@ Windows
 
 C-w c   Close current window but keep buffer open
 
+C-w =   Resize windows after terminal size has changed
+
 Using tags
 ----------
 
