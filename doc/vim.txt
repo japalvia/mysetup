@@ -54,6 +54,12 @@ zb puts current line to bottom of screen
 
 =           Re-indent selection
 
+Indent current line in Insert mode (regardless of cursor position):
+C-t
+
+De-indent current line in Insert mode (regardless of cursor position):
+C-d
+
 Moving around
 -------------
 
