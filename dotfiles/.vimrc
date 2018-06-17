@@ -52,7 +52,9 @@ set textwidth=79    " Maximum width of text that is being inserted. A longer
                     " t         Auto-wrap text using textwidth (does not apply
                     "           to comments)
 
+" Don't insert comment automatically
 set formatoptions-=cro
+
 set t_Co=256
 " more color related fixes, storing for future need:
 " set t_AB=^[[48;5;%dm
@@ -80,8 +82,6 @@ nnoremap <F7> mzgg=G`z<CR>
 " Redraw with <leader>-l to remove search hits
 :nnoremap <silent> <leader>l :nohls<cr><leader>l
 
-" Don't insert comment automatically
-set formatoptions-=cro
 
 colors zenburn
 " Fallback colors in Linux subsystem for Windows (beta)
@@ -160,7 +160,7 @@ nnoremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nnoremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-_>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
-" Using 'CTRL-spacebar' then a search type makes the vim window
+" Using 'CTRL-h' then a search type makes the vim window
 " split horizontally, with search result displayed in
 " the new window.
 
@@ -174,7 +174,7 @@ nnoremap <C-h>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nnoremap <C-h>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-h>a :scs find a <C-R>=expand("<cword>")<CR><CR>
 
-" Hitting CTRL-space *twice* before the search type does a vertical
+" Hitting CTRL-h *twice* before the search type does a vertical
 " split instead of a horizontal one
 " FIXME: why these are not working?
 nnoremap <C-h><C-h>s
@@ -195,6 +195,7 @@ nnoremap <C-h><C-h>a
 		\:vert scs find a <C-R>=expand("<cword>")<CR><CR>
 
 " space selects word under cursor and enter visual mode
+" useful for copying the selected text to primary clipboard
 map <space> viw
 
 " FIXME: not working in Arch
