@@ -220,7 +220,7 @@ nnoremap <F12> <Plug>CscopeDBInit
 " the word but to close the dialog.
 let g:SuperTabCrMapping = 1
 
-" <NUL> is ctrl-space in terminal
+" Terminal sends NUL character when pressing ctrl-space
 " reserve <tab> for literal tabs
 " Backward mapping is default <s-tab>
 let g:SuperTabMappingForward = '<NUL>'
