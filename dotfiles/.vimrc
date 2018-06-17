@@ -215,3 +215,12 @@ if exists("##WinNew")
 endif
 
 nnoremap <F12> <Plug>CscopeDBInit
+
+" Pressing only Enter cancels, useful when you actually don't want to complete
+" the word but to close the dialog.
+let g:SuperTabCrMapping = 1
+
+" <NUL> is ctrl-space in terminal
+" reserve <tab> for literal tabs
+" Backward mapping is default <s-tab>
+let g:SuperTabMappingForward = '<NUL>'
