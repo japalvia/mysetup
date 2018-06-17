@@ -1,6 +1,12 @@
 Ranger file manager
 ===================
 
-Toggle hidden files: zh
+Commands
+--------
 
-Quick search: type 'f' and search string
+zh      Toggle hidden files
+f       Quick search (like vim)
+S       Open terminal
+
+
+
