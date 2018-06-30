@@ -35,9 +35,10 @@ AUR
 Upgrade AUR packages only. If there are any missing package reported, they must
 be first handled before the upgrade can proceed:
 aurman -S --aur -u
-
-Alternative
 yaourt -S -a -u
+
+Import missing GPG key:
+gpg --recv-keys <id>
 
 Systemd services
 ----------------
