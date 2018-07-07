@@ -19,3 +19,6 @@
 [submodule "dotfiles/.vim/bundle/cscope_dynamic"]
 	path = dotfiles/.vim/bundle/cscope_dynamic
 	url = https://github.com/erig0/cscope_dynamic.git
+[submodule "dotfiles/.vim/bundle/ragel"]
+	path = dotfiles/.vim/bundle/ragel
+	url = https://github.com/msteinert/vim-ragel.git
