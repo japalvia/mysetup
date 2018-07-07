@@ -17,16 +17,13 @@ vim -u /etc/vimrc
 Plugins
 -------
 
+Install a plugin for pathogen using git submodule:
+https://gist.github.com/romainl/9970697
+git submodule add https://github.com/some/plugin.git dotfiles/.vim/bundle/plugin
+Next, open vim and run :Helptags command to make the plugin doc available
+
 List loaded plugins/addons:
 :scriptnames
-
-Plugins from AUR:
-aurman -S vim-pathogen vim-colors-zenburn-git vim-rust-git
-
-Debian: install most plugins from repo
-# apt install vim-scripts
-The plugins are not loaded automatically, symlink the useful ones:
-$ ln -s /usr/share/vim-scripts/plugin/minibufexpl.vim ~/.vim/plugin/
 
 
 Commands
