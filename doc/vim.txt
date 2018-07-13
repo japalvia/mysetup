@@ -60,6 +60,9 @@ C-t
 De-indent current line in Insert mode (regardless of cursor position):
 C-d
 
+Delete without yanking
+<leader> d
+
 Moving around
 -------------
 

@@ -224,3 +224,8 @@ let g:SuperTabCrMapping = 1
 " reserve <tab> for literal tabs
 " Backward mapping is default <s-tab>
 let g:SuperTabMappingForward = '<NUL>'
+
+" Black hole register to delete without yanking
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
