@@ -64,6 +64,15 @@ netctl --help
 
 Restart wifi: systemctl restart netctl@your_network
 
+Configure wifi using wifi adapter
+    Identify interface: ip addr
+    Generate profile (service) to your AP: wifi-menu <interface>
+    Reconfigure the primary network profile:
+        netctl stop <old-profile>
+        netctl disable <old-profile>
+        netctl start <new-profile>
+        netctl enable <new-profile>
+
 devmon
 ------
 
