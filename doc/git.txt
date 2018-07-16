@@ -7,6 +7,9 @@ git log --all -- '**/some_file'
 View file from another local branch without switching to it:
 git show <branch>:<file path>
 
+Prune remote branches that were removed by someone else/other clone:
+git remote prune origin
+
 Forking upstream and following it
 ---------------------------------
 
