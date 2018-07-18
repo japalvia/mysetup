@@ -60,6 +60,9 @@ C-d
 Delete without yanking
 <leader> d
 
+Insert NUL byte (looks like ^@):
+C-v 000
+
 Moving around
 -------------
 
