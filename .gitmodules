@@ -22,3 +22,9 @@
 [submodule "dotfiles/.vim/bundle/ragel"]
 	path = dotfiles/.vim/bundle/ragel
 	url = https://github.com/msteinert/vim-ragel.git
+[submodule "dotfiles/.vim/bundle/rename"]
+	path = dotfiles/.vim/bundle/rename
+	url = https://github.com/danro/rename.vim
+[submodule "dotfiles/.vim/bundle/scons"]
+	path = dotfiles/.vim/bundle/scons
+	url = https://github.com/vim-scripts/scons.vim
