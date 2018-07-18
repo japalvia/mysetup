@@ -67,6 +67,8 @@ Moving around
 
 C-o Go to the previous location
 
+[{  Go to matching bracket
+
 Windows
 -------
 
