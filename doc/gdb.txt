@@ -1,0 +1,17 @@
+TODO: create ~/.gdbinit in dotfiles:
+chmod 600 ~/.gdbinit
+define hook-quit
+    set confirm off
+end
+set history save on
+set history size 5000
+
+
+Starting a session
+------------------
+
+Pass program arguments on command line:
+gdb --args
+
+Start pgrogram from command line:
+gdb -ex=run

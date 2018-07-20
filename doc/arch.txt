@@ -57,6 +57,14 @@ journalctl
 Jump to end of journal when opening:
 journalctl -e
 
+coredumpctl
+-----------
+
+Install package systemd-coredump
+Core dumps are now recorded to journalctl
+Access the latest core dump in gdb:
+# coredumpctl gdb
+
 Managing network
 ----------------
 
