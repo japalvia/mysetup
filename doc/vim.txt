@@ -19,8 +19,13 @@ Plugins
 
 Install a plugin for pathogen using git submodule:
 https://gist.github.com/romainl/9970697
+
 git submodule add https://github.com/some/plugin.git dotfiles/.vim/bundle/plugin
+
 Next, open vim and run :Helptags command to make the plugin doc available
+
+New submodules must be initialized explicitly when using in another repo clone:
+git submodule init && git submodule update
 
 List loaded plugins/addons:
 :scriptnames
