@@ -132,3 +132,18 @@ Alternate (a.vim)
 
 :A      Open header/source in the same window
 :AS     Open header/source in new horizontal split
+
+
+Clipboard (textobj-user, textobj-line)
+--------------------------------------
+
+.vimrc:
+set clipboard=unnamed
+
+Yank/delete text copies to system clipboard. Copying a line includes also the
+newline character. To omit the newline use texobj-line:
+vil     select inner part
+val     select whole line
+
+TODO: does clipmenu need configuration to sync primary and clipboard?
+

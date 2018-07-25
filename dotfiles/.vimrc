@@ -229,3 +229,7 @@ let g:SuperTabMappingForward = '<NUL>'
 nnoremap <leader>d "_d
 xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
+
+" Use system clipboard.
+set clipboard=unnamed
+
