@@ -52,9 +52,11 @@ zt puts current line to top of screen
 z. or zz puts current line to center of screen
 zb puts current line to bottom of screen
 
-:retab      Convert all existing tabs to spaces
+Convert all existing tabs to spaces:
+:retab
 
-=           Re-indent selection
+Re-indent selection (visual mode):
+=
 
 Indent current line in Insert mode (regardless of cursor position):
 C-t
@@ -64,6 +66,9 @@ C-d
 
 Delete without yanking
 <leader> d
+
+Delete from start of line until cursor position (insert mode):
+C-u
 
 Insert NUL byte (looks like ^@):
 C-v 000
