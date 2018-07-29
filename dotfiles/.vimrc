@@ -233,3 +233,5 @@ xnoremap <leader>p "_dP
 " Use system clipboard.
 set clipboard=unnamed
 
+" Show tab completion for editor commands
+set wildmenu
