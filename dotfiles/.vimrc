@@ -243,3 +243,6 @@ let &showbreak='>>> '
 
 " Highlight cursor line
 set cursorline
+
+" Allow switching out of buffer without saving file
+set hidden
