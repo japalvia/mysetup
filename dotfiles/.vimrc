@@ -239,7 +239,7 @@ set wildmenu
 " Long lines are indented to the beginning of the line
 " and marked with highlighted break characters
 set breakindent
-let &showbreak='>>> '
+"let &showbreak='>>> '
 
 " Highlight cursor line
 set cursorline
