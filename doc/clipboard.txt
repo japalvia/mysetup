@@ -1,0 +1,16 @@
+Clipboard using clipmenu
+========================
+
+clipmenud is run on Xorg startup and invoked by i3 window manager keyboard
+bindings.
+
+Delete all history:
+clipdel -d .*
+
+Test what would be deleted by a regex:
+clipdel <regex>
+
+Delete by regex:
+clipdel -d <regex>
+
+
