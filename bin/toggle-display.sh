@@ -15,3 +15,6 @@ else
     xrandr --output HDMI1 --auto --output LVDS1 --auto
 fi
 
+# Assume switching displays involved attaching/detaching keyboard.
+# Reload keys always.
+~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb
