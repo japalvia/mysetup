@@ -1,7 +1,7 @@
 # Setup all keyboard mappings.
 ~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb
 
-xrdb ~/ws/mysetup/dotfiles/.Xresources
+xrdb ~/.Xresources
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
