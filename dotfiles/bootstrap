@@ -11,6 +11,7 @@ dotfiles=$(dirname "$0")
 dotfiles=$(dirname $(readlink -f $0))
 config_in="$dotfiles"/.config
 config_out="$XDG_CONFIG_HOME"/.config
+mkdir -p "$config_out"
 
 # dotfiles and -directories in user $HOME, excluding starting-point,
 # README and so forth
