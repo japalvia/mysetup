@@ -22,4 +22,7 @@ git config --global user.email xxx.yyy@gmail.com
 git config --global user.name "XXX YYY"
 git config --global color.ui auto
 
+Github: add new key to your account.
+
 echo "EDITOR=vim" >> /etc/environment
+
