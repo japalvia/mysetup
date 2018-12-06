@@ -29,6 +29,9 @@ pacman -Rsc
 
 Sync signing keys: pacman-key --refresh-keys
 
+Synchronize database when a download fails, optionally also install a package:
+pacman -Sy [package]
+
 AUR
 ---
 
@@ -93,3 +96,11 @@ xfs:        # xfs_admin -L lacie_data /dev/sdb2
 
 Show labels:
 # lsblk -o name,mountpoint,label,size,uuid
+
+
+pip
+---
+
+Install packages as normal user:
+pip install --user <package>
+
