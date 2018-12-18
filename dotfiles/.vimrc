@@ -246,3 +246,9 @@ set cursorline
 
 " Allow switching out of buffer without saving file
 set hidden
+
+" Switch to the most recent buffer
+nnoremap <F4> :b#<CR>
+
+" Refresh current file
+nnoremap <F5> :e<CR>
