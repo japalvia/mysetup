@@ -11,14 +11,20 @@ alias ggrep='git grep'
 
 PS1='[\u@\h:\W]\$ '
 
-if source $(find /usr/share/git -name git-prompt.sh) 2>/dev/null ; then
+# Expect system installed git-prompt, fallback to local bin
+git_prompt=$(find /usr/share/git $HOME/bin \
+             -name git-prompt.sh -print -quit 2>/dev/null)
+
+if source "$git_prompt" 2>/dev/null ; then
     export GIT_PS1_SHOWCOLORHINTS=1
     PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ "'
 else
     echo "failed to source git-prompt.sh"
 fi
 
-eval $(keychain --eval --quiet id_rsa)
+if which keychain >/dev/null 2>&1 ; then
+    eval $(keychain --eval --quiet id_rsa)
+fi
 
 export HISTCONTROL=ignorespace
 
