@@ -32,6 +32,9 @@ Sync signing keys: pacman-key --refresh-keys
 Synchronize database when a download fails, optionally also install a package:
 pacman -Sy [package]
 
+Find package that provides a file:
+pacman -Fs [file]
+
 AUR
 ---
 
