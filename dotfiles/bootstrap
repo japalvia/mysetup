@@ -4,8 +4,6 @@
 # XDG Base Directory Specification.
 # Symlinks will not be created if the link name already exists.
 
-dotfiles=$(dirname "$0")
-
 [ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME=$HOME
 
 dotfiles=$(dirname $(readlink -f $0))
