@@ -26,3 +26,4 @@ Github: add new key to your account.
 
 echo "EDITOR=vim" >> /etc/environment
 
+# TODO: enable multilib in /etc/pacman.conf
