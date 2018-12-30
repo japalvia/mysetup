@@ -1,0 +1,78 @@
+# Use the system default Finnish keyboard layout
+include "fi.map"
+
+# Use 'dumpkeys' command for the full keycode configuration and then replace
+# the 3rd column on the keycode declaration.
+#
+# Note, that loadkeys overrides only conflicting values and keeps any previous
+# definitions. Discard all changes by explicitly loading the system default:
+# loadkeys /usr/share/kbd/keymaps/i386/qwerty/fi.map.gz
+# and then load this keymap to ensure clean setup.
+
+keycode  16 = +q               +Q               asciitilde       +Q               Control_q        Control_q        Control_q
+    alt keycode  16 = Meta_q
+    shift   alt keycode  16 = Meta_Q
+    altgr   alt keycode  16 = Meta_q
+    control alt keycode  16 = Meta_Control_q
+    shift   control alt keycode  16 = Meta_Control_q
+    altgr   control alt keycode  16 = Meta_Control_q
+keycode  17 = +w               +W               slash            backslash        Control_w        Control_w        Control_w
+    alt keycode  17 = Meta_w
+    shift   alt keycode  17 = Meta_W
+    altgr   alt keycode  17 = Meta_w
+    control alt keycode  17 = Meta_Control_w
+    shift   control alt keycode  17 = Meta_Control_w
+    altgr   control alt keycode  17 = Meta_Control_w
+keycode  18 = +e               +E               braceleft
+    control keycode  18 = Control_e
+    shift   control keycode  18 = Control_e
+    altgr   control keycode  18 = Control_e
+    alt keycode  18 = Meta_e
+    shift   alt keycode  18 = Meta_E
+    altgr   alt keycode  18 = Meta_e
+    control alt keycode  18 = Meta_Control_e
+    shift   control alt keycode  18 = Meta_Control_e
+    altgr   control alt keycode  18 = Meta_Control_e
+keycode  19 = +r               +R               braceright
+    control keycode  19 = Control_r
+    shift   control keycode  19 = Control_r
+    altgr   control keycode  19 = Control_r
+    alt keycode  19 = Meta_r
+    shift   alt keycode  19 = Meta_R
+    altgr   alt keycode  19 = Meta_r
+    control alt keycode  19 = Meta_Control_r
+    shift   control alt keycode  19 = Meta_Control_r
+    altgr   control alt keycode  19 = Meta_Control_r
+keycode  30 = +a               +A               parenleft
+    control keycode  30 = Control_a
+    shift   control keycode  30 = Control_a
+    altgr   control keycode  30 = Control_a
+    alt keycode  30 = Meta_a
+    shift   alt keycode  30 = Meta_A
+    altgr   alt keycode  30 = Meta_a
+    control alt keycode  30 = Meta_Control_a
+    shift   control alt keycode  30 = Meta_Control_a
+    altgr   control alt keycode  30 = Meta_Control_a
+keycode  31 = +s               +S              parenright
+    control keycode  31 = Control_s
+    shift   control keycode  31 = Control_s
+    alt keycode  31 = Meta_s
+    shift   alt keycode  31 = Meta_S
+    altgr   alt keycode  31 = Meta_s
+    control alt keycode  31 = Meta_Control_s
+    shift   control alt keycode  31 = Meta_Control_s
+    altgr   control alt keycode  31 = Meta_Control_s
+keycode  32 = +d               +D              bracketleft      +ETH             Control_d        Control_d        Control_d
+    alt keycode  32 = Meta_d
+    shift   alt keycode  32 = Meta_D
+    altgr   alt keycode  32 = Meta_d
+    control alt keycode  32 = Meta_Control_d
+    shift   control alt keycode  32 = Meta_Control_d
+    altgr   control alt keycode  32 = Meta_Control_d
+keycode  33 = +f               +F              bracketright      +F               Control_f        Control_f        Control_f
+    alt keycode  33 = Meta_f
+    shift   alt keycode  33 = Meta_F
+    altgr   alt keycode  33 = Meta_f
+    control alt keycode  33 = Meta_Control_f
+    shift   control alt keycode  33 = Meta_Control_f
+    altgr   control alt keycode  33 = Meta_Control_f
