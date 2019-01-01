@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Symlink $HOME/bin directory.
+# Existing directory will be moved to a numbered backup.
+
+bindir=$(dirname $(readlink -f $0))
+
+if [ -L "$HOME/bin" ] ; then
+    echo "$HOME/bin exists and is a symlink, do nothing."
+    exit 0
+elif [ -d "$HOME/bin" ] ; then
+    mv -v -b "$HOME/bin" "$HOME/bin.OLD"
+fi
+
+ln -v -s --no-target-directory "$bindir" "$HOME/bin"

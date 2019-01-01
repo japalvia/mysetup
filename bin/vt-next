@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Print active virtual terminal number
+active=$(cat /sys/class/tty/tty0/active | egrep -o "[0-9]+")
+
+[ -z "$active" ] && exit 1
+
+let next=active+1
+
+xdotool key ctrl+alt+F$next
+
+

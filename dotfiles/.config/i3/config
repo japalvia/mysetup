@@ -200,3 +200,6 @@ bindsym shift+F12 exec --no-startup-id ~/bin/toggle-display.sh
 # Clipmenu invocation
 bindsym $mod+section exec --no-startup-id clipmenu
 
+# Switch virtual terminal from Xorg
+bindsym Mod4+Left exec --no-startup-id ~/bin/vt-prev
+bindsym Mod4+Right exec --no-startup-id ~/bin/vt-next

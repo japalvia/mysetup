@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Symlink configuration files/directories in /etc.
+# Symlinks will not be created if the link name already exists.
+
+set -x
+
+etcdir=$(dirname $(readlink -f $0))
+
+ln -v -s --backup=numbered \
+    "$etcdir/vconsole.conf" /etc/vconsole.conf
