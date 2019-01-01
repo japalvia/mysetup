@@ -3,6 +3,14 @@
 # Symlink all configs to their appropriate location in according to
 # XDG Base Directory Specification.
 # Symlinks will not be created if the link name already exists.
+# General assumptions:
+# * ~/.config dir exists and is populated with many other configs; don't try to
+#   replace top-level ~/.config
+# * Symlink the application top-level directory, not every file recursively in
+#   it. Example: link ~/.vim/ and ~/.config/i3/ directories to their
+#   appropriate locations.
+# * Use 'find' in this directory, study the output and exclude anything that
+#   isn't part of my system configuration.
 
 [ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME=$HOME
 
@@ -17,12 +25,16 @@ find "$dotfiles" -mindepth 1 -maxdepth 1 \
     \( -name ".config" -o -name "bootstrap" -o -name "README" \) -prune \
     -o -exec ln -v -s {} "$HOME" \;
 
-# RC files in .config/
+# RC files in .config/, don't recurse to sub-dirs.
 find "$config_in" -maxdepth 1 -type f -exec ln -v -s {} "$config_out" \;
-# Application-specific sub-directories, excluding .config itself
-find "$config_in" -mindepth 1 -type d -exec ln -v -s {} "$config_out" \;
 
-# Vim plugins
+# Application-specific sub-directories, excluding .config itself.
+# Filter out generated directories (python runtime).
+find "$config_in" -mindepth 1 -maxdepth 1 \
+    -name "__pycache__" -prune \
+    -o -type d -exec ln -v -s {} "$config_out" \;
+
+# Vim plugins as part of ~/.vim/ directory
 pushd "$dotfiles" >/dev/null
 git submodule init
 git submodule update
