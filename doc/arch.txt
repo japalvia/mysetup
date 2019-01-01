@@ -46,6 +46,18 @@ yaourt -S -a -u
 Import missing GPG key:
 gpg --recv-keys <id>
 
+AUR: yay
+--------
+
+Setup:
+$ git clone https://aur.archlinux.org/yay.git
+$ cd yay
+$ makepkg -si
+
+Usage: command line interface is the same as pacman. Yay commands apply to all
+packages, not just AUR.
+
+
 Systemd services
 ----------------
 
