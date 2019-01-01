@@ -3,9 +3,9 @@ https://gist.github.com/HardenedArray/31915e3d73a4ae45adc0efa9ba458b07
 - CHANGES:
     No swap
     No encrypted /boot partition
-    systemctl enable dhcpcd
     timedatectl set-timezone Europe/Helsinki
-    echo KEYMAP=fi > /etc/vconsole.conf
+
+TODO: dhcpd? Don't enable the service, 'netctl start' fails
 
 mkdir ws doc
 pushd ws
@@ -27,3 +27,4 @@ Github: add new key to your account.
 echo "EDITOR=vim" >> /etc/environment
 
 # TODO: enable multilib in /etc/pacman.conf
+# TODO: symlink vim setup for root
