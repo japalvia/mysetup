@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Top-level bootstrap command. Used to initiate symlinking all sub-directories
+# and files from this repo to the system.
+
+subdirs=(bin dotfiles etc)
+
+for i in ${subdirs[@]}; do
+    echo "bootstrapping $i"
+    $i/bootstrap
+done
