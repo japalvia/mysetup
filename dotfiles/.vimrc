@@ -132,66 +132,6 @@ if has("cscope")
 		set csverb
 endif
 
-" scope bindings
-"USAGE   :cs find {querytype} {name}
-"
-"	{querytype} corresponds to the actual cscope line
-"	interface numbers as well as default nvi commands:
-"
-"		0 or s: Find this C symbol
-"		1 or g: Find this definition
-"		2 or d: Find functions called by this function
-"		3 or c: Find functions calling this function
-"		4 or t: Find this text string
-"		6 or e: Find this egrep pattern
-"		7 or f: Find this file
-"		8 or i: Find files #including this file
-"		9 or a: Find places where this symbol is assigned a value
-
-nnoremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nnoremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-_>a :cs find a <C-R>=expand("<cword>")<CR><CR>
-
-" Using 'CTRL-h' then a search type makes the vim window
-" split horizontally, with search result displayed in
-" the new window.
-
-nnoremap <C-h>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <C-h>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nnoremap <C-h>d :scs find d <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h>a :scs find a <C-R>=expand("<cword>")<CR><CR>
-
-" Hitting CTRL-h *twice* before the search type does a vertical
-" split instead of a horizontal one
-" FIXME: why these are not working?
-nnoremap <C-h><C-h>s
-		\:vert scs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h><C-h>g
-		\:vert scs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h><C-h>c
-		\:vert scs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h><C-h>t
-		\:vert scs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h><C-h>e
-		\:vert scs find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h><C-h>i
-		\:vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nnoremap <C-h><C-h>d
-		\:vert scs find d <C-R>=expand("<cword>")<CR><CR>
-nnoremap <C-h><C-h>a
-		\:vert scs find a <C-R>=expand("<cword>")<CR><CR>
-
 " space selects word under cursor and enter visual mode
 " useful for copying the selected text to primary clipboard
 map <space> viw
