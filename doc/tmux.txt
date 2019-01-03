@@ -7,6 +7,9 @@ Config file
 
 Global prefix key is C-a
 
+Reload config directly from command line:
+tmux source-file ~/.tmux.conf
+
 Panes
 -----
 Split vertically: prefix-%

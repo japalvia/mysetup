@@ -20,6 +20,7 @@ Plugins
 Install a plugin for pathogen using git submodule:
 https://gist.github.com/romainl/9970697
 
+Note: the target directory must be .vim/bundle/plugin
 git submodule add https://github.com/some/plugin.git dotfiles/.vim/bundle/plugin
 
 Next, open vim and run :Helptags command to make the plugin doc available
@@ -29,6 +30,9 @@ git submodule init && git submodule update
 
 List loaded plugins/addons:
 :scriptnames
+
+Load pathogen plugin without restarting vim:
+:source ~/.vim/bundle/foobar/plugin/*.vim
 
 
 Commands
