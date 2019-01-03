@@ -156,3 +156,12 @@ val     select whole line
 
 TODO: does clipmenu need configuration to sync primary and clipboard?
 
+
+Sessions
+--------
+
+Save current editor state:
+:mks ~/.vim/sessions/rooster.vim
+
+Load on editor start:
+$ vim -S ~/.vim/sessions/rooster.vim

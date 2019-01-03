@@ -39,3 +39,6 @@ pushd "$dotfiles" >/dev/null
 git submodule init
 git submodule update
 popd >/dev/null
+
+# More vim setup
+mkdir -p ~/.vim/sessions
