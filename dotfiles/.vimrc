@@ -55,11 +55,9 @@ set textwidth=79    " Maximum width of text that is being inserted. A longer
 " Don't insert comment automatically
 set formatoptions-=cro
 
+" Set term to workaround tmux TERM
+set term=xterm-256color
 set t_Co=256
-" more color related fixes, storing for future need:
-" set t_AB=^[[48;5;%dm
-" set t_AF=^[[38;5;%dm
-" set background=light
 
 filetype plugin indent on
 syntax on
@@ -252,12 +250,3 @@ nnoremap <F4> :b#<CR>
 
 " Refresh current file
 nnoremap <F5> :e<CR>
-
-" https://superuser.com/a/402084
-if &term =~ '^screen'
-    " tmux will send xterm-style keys when its xterm-keys option is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-endif
