@@ -55,8 +55,6 @@ set textwidth=79    " Maximum width of text that is being inserted. A longer
 " Don't insert comment automatically
 set formatoptions-=cro
 
-" Set term to workaround tmux TERM
-set term=xterm-256color
 set t_Co=256
 
 filetype plugin indent on
