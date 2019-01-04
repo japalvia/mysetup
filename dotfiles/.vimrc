@@ -188,3 +188,7 @@ nnoremap <F4> :b#<CR>
 
 " Refresh current file
 nnoremap <F5> :e<CR>
+
+" Store only the open file, ignore others. This helps to
+" drop configuration edits on run-time that are no longer valid.
+set sessionoptions=buffers
