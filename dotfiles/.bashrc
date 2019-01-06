@@ -29,7 +29,11 @@ if which keychain >/dev/null 2>&1 ; then
     eval $(keychain --eval --quiet id_rsa)
 fi
 
-export HISTCONTROL=ignorespace
+# Exiting shell appends cleaned up history
+export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE='ls*:bg:fg:history*'
+shopt -s histappend
+shopt -s cmdhist
 
 export PATH=$HOME/bin:$PATH
 
