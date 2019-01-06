@@ -12,6 +12,9 @@ alias la='ls -la'
 alias grep='grep --color=auto'
 alias ggrep='git grep'
 
+# Disable XON/XOFF flow control
+stty -ixon
+
 PS1='[\u@\h:\W]\$ '
 
 # Expect system installed git-prompt, fallback to local bin
