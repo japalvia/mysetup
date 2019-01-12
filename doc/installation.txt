@@ -26,5 +26,9 @@ Github: add new key to your account.
 
 echo "EDITOR=vim" >> /etc/environment
 
+/etc/bluetooth/main.conf
+[Policy]
+AutoEnable=true
+
 # TODO: enable multilib in /etc/pacman.conf
 # TODO: symlink vim setup for root
