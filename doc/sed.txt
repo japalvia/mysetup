@@ -1,0 +1,11 @@
+GNU sed
+=======
+
+-n      Print only match
+-E      extended regex, needed for OR operator '|'
+
+Group matching
+--------------
+Print only selected groups:
+
+sed -n 's/foobar(xxx)(yyy)goo/\1\2/p'
