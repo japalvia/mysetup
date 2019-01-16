@@ -28,3 +28,9 @@ git checkout master
 git rebase fix_author
 # WARNING: force push will break remote for everyone else
 git push -f origin master
+
+Make a quick backup of local branch before rebasing
+---------------------------------------------------
+
+git fetch . somebranch:somebranch-bak
+
