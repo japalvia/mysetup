@@ -19,7 +19,7 @@ stty -ixon
 PS1='[\u@\h:\W]\$ '
 
 # Expect system installed git-prompt, fallback to local bin
-git_prompt=$(find /usr/share/git $HOME/bin \
+git_prompt=$(find -L /usr/share/git $HOME/bin \
              -name git-prompt.sh -print -quit 2>/dev/null)
 
 if source "$git_prompt" 2>/dev/null ; then
