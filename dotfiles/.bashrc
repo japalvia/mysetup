@@ -12,6 +12,11 @@ alias la='ls -la'
 alias grep='grep --color=auto'
 alias ggrep='git grep'
 alias git-squash='git rebase -i --autosquash'
+alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
+--format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - \
+%(color:red)%(objectname:short)%(color:reset) - \
+%(contents:subject) - \
+%(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
 # Disable XON/XOFF flow control
 stty -ixon
