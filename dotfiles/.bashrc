@@ -11,7 +11,7 @@ alias lt='ls -lt'
 alias la='ls -la'
 alias grep='grep --color=auto'
 alias ggrep='git grep'
-alias gsquash='git rebase -i --autosquash'
+alias git-squash='git rebase -i --autosquash'
 
 # Disable XON/XOFF flow control
 stty -ixon
