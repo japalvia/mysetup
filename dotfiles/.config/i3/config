@@ -206,3 +206,15 @@ bindsym $mod+section exec --no-startup-id clipmenu
 # Switch virtual terminal from Xorg
 bindsym Mod4+Left exec --no-startup-id ~/bin/vt-prev
 bindsym Mod4+Right exec --no-startup-id ~/bin/vt-next
+
+mode "moveit" {
+    bindsym Up move up 20px
+    bindsym Left move left 20px
+    bindsym Down move down 20px
+    bindsym Right move right 20px
+
+    bindsym $mod+m mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m focus floating; mode "moveit"
