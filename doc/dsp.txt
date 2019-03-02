@@ -1,0 +1,32 @@
+DSP correction for AudioEngine A2+
+==================================
+
+Reference:
+[1] http://noaudiophile.com/AudioEngine_A2_Plus/
+[2] http://noaudiophile.com/DSP_Corrections/AudioEngine_A2_Plus.php
+[3] https://github.com/bmc0/dsp/wiki/System-Wide-DSP-Guide
+
+Install system-wide  from AUR:
+$ yay -S dsp-git
+
+Download the Room EQ  Wizard filter settings file for A2+ speakers in [1].
+
+Generate the effects chain from filter settings:
+- clone https://github.com/bmc0/dsp.git
+- dsp/scripts/rew_to_dsp.sh ~/Downloads/AudioEngine_A2_Plus.txt \
+    >> $HOME/.config/ladspa_dsp/config
+
+Load ladpsa plugin to pulseaudio:
+- find the sink name for digital output (iec958):
+	$ pacmd list-sinks |grep "name:"
+- Load plugin for the sink:
+	$ pacmd \
+		load-module \
+		module-ladspa-sink \
+		sink_name=dsp \
+    	sink_master=alsa_output.usb-Audioengine_Audioengine_2_-00.iec958-stereo \
+		plugin=ladspa_dsp \
+		label=ladspa_dsp
+
+Use pavucontrol to select the output device and check the plugin is loaded.
+
