@@ -32,9 +32,6 @@ if which keychain >/dev/null 2>&1 ; then
     eval $(keychain --eval --quiet id_rsa)
 fi
 
-# Exiting shell appends cleaned up history
-export HISTCONTROL=ignoreboth:erasedups
-export HISTIGNORE='ls*:bg:fg:history*'
 shopt -s histappend
 shopt -s cmdhist
 
@@ -45,3 +42,6 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export BC_ENV_ARGS=$HOME/.config/bcrc
 
 export EDITOR=vim
+
+unset HISTCONTROL
+unset HISTIGNORE
