@@ -119,3 +119,9 @@ pip
 Install packages as normal user:
 pip install --user <package>
 
+Audio
+-----
+
+Legacy application using OSS:
+Install ossp
+Run the command with 'padsp' wrapper

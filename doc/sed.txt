@@ -4,6 +4,8 @@ GNU sed
 -n      Print only match
 -E      extended regex, needed for OR operator '|'
 
+\s      Whitespace character
+
 Group matching
 --------------
 Print only selected groups:
