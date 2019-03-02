@@ -194,7 +194,10 @@ bindsym XF86AudioPause exec --no-startup-id playerctl pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-# Output switch
+# Toggle wireless headphones connection
+bindsym shift+F11 exec --no-startup-id ~/bin/toggle-bt-headphones
+
+# Toggle active display between laptop and external monitor
 bindsym shift+F12 exec --no-startup-id ~/bin/toggle-display.sh
 
 # Clipmenu invocation
