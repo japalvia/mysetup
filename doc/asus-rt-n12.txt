@@ -1,0 +1,58 @@
+Installing DD-WRT firmware on Asus RT-N12 D1 wireless router.
+=============================================================
+
+Documentation: https://wiki.dd-wrt.com/wiki/index.php/Asus_RT-N12
+Original forum post for the documentation:
+https://forum.dd-wrt.com/phpBB2/viewtopic.php?p=934736
+
+The official firmware versions do some sanity/signature/etc checks and do not
+accept uploading DD-WRT image directly from the web UI.
+
+A working method is to downgrade to Asus firmware 3.0.0.4.374.813 (available
+from Asus support page) and then install "mini rtx" followed by "mini bin".
+
+Enter recovery mode:
+- Connect computer with ethernet to router
+- Configure a static IP address to the network interface: 192.168.1.2
+- Turn off router
+- Press and hold Reset button (a recessed button on left side of power)
+- Turn on router
+- Hold Reset until power led starts blinking slowly (5 sec interval)
+
+Install Asus firmware 3.0.0.4.374.81 in Recovery mode:
+- Open web browser to http://192.168.1.1
+- Upload the firmware
+- Wait for a few minutes to complete
+- It's probably a good idea to do factory reset: hold Reset button until power
+  led blinks and wait a few minutes that nvram is completely written
+
+Install DD-WRT mini rtx in normal mode:
+- Login to http://192.168.1.1
+- Setup wizard requires first-time configuration but the upper-right corner
+  button might let skip the wizard
+- Click the firmware version link to go to the management page
+- Upload the rtx image
+- Wait for a few minutes
+
+Factory reset after installing DD-WRT:
+- Turn off the router
+- Press and hold WPS button
+- Turn on router
+- Power led blinks, keep pressing 30 seconds (required time unknown)
+- Release WPS button and wait for a few minutes
+
+Install DD-WRT mini bin:
+- Go to http://192.168.1.1
+- If factory reset is successful the page requires setting admin credentials
+- Navigate to firmware management and upload the firmare
+- wait for a few minutes
+- Repeat the factory reset as described above
+
+
+Setting up DD-WRT as wireless client for end-points without wifi
+----------------------------------------------------------------
+
+https://wiki.dd-wrt.com/wiki/index.php/Client_Mode_Wireless
+
+
+
