@@ -13,6 +13,7 @@ tmux source-file ~/.tmux.conf
 Panes
 -----
 Split vertically: prefix-%
+Split horizontally: prefix-"
 Move focus to pane with vim bindigs: prefix-hjkl
 Close current pane: prefix-x
 
@@ -21,5 +22,4 @@ Windows
 Create new window: prefix-c
 Close current window: prefix-&
 Previous window: prefix-p
-
-
+Rename: prebix-,
