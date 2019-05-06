@@ -14,3 +14,16 @@ Delete by regex:
 clipdel -d <regex>
 
 
+Recover clipmenud
+-----------------
+
+Sometimes clipmenud appears to stop storing (any) new entries. Remove
+the runtime storage directory:
+- By default $XDG_RUNTIME_DIR is used:
+    /run/user/1000/clipmenu.5./$USER
+- TODO: debug clipmenud script why this works? Next clipmenud run creates the
+  same directory so the name itself is not issue. Does systemd cleanup inode
+  etc?
+
+
+
