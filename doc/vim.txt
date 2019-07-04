@@ -86,6 +86,8 @@ C-o Go to the previous location
 
 [{  Go to matching bracket
 
+zz  Recenter the view (move current position to screen center)
+
 Windows
 -------
 
