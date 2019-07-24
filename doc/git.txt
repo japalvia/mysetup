@@ -35,7 +35,7 @@ git push -f origin master
 Make a quick backup of local branch before rebasing
 ---------------------------------------------------
 
-git fetch . somebranch:somebranch-bak
+branch=$(git symbolic-ref --short HEAD) ;  git fetch . $branch:$branch-bak
 
 
 Ignore a file that has only local changes

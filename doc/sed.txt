@@ -10,4 +10,5 @@ Group matching
 --------------
 Print only selected groups:
 
-sed -n 's/foobar(xxx)(yyy)goo/\1\2/p'
+# escape parenthesis
+sed -n 's/foobar\(xxx\)\(yyy\)goo/\1\2/p'
