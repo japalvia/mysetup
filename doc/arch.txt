@@ -125,3 +125,18 @@ Audio
 Legacy application using OSS:
 Install ossp
 Run the command with 'padsp' wrapper
+
+
+Temperatures
+------------
+
+Detect sensors once and write to /etc/..
+# sensors-detect --auto
+
+Print sensors info:
+$ sensors
+Output interpretation:
+acpitz-acpi-0: almost always the CPU or CPU socket temperature
+
+Print SSD info:
+# smartctl --attributes /dev/nvme0
