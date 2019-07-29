@@ -49,5 +49,5 @@ export BC_ENV_ARGS=$HOME/.config/bcrc
 
 export EDITOR=vim
 
-unset HISTCONTROL
-unset HISTIGNORE
+export HISTCONTROL=ignorespace
+
