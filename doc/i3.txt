@@ -8,3 +8,10 @@ Notable changes to the default configuration
 
 # split in horizontal orientation
 bindsym $mod+n split h
+
+Less commonly needed command
+----------------------------
+
+Move current workspace to another monitor:
+i3-msg '[workspace="workspace_name"]' move workspace to output output_index
+i3-msg move workspace to DP2-1
