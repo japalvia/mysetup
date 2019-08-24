@@ -1,0 +1,18 @@
+#!/bin/bash
+
+TYPE=$1
+DEVICE=$2
+STATUS=$3
+DESC=$4
+
+echo "TEST TEST"
+
+# Handle keyboard, ignore device ID
+case "$TYPE,$STATUS,$DESC" in
+    keyboard,connected,*)
+        cd ~/ws/mysetup/xkb/ &&
+            ./apply_xkb.sh . 2>/dev/null
+        ;;
+esac
+
+# TODO: Handle display with xrandr call

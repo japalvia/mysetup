@@ -8,6 +8,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 redshift >/dev/null &
 clipmenud &
 devmon --ignore-label lacie_os --no-gui &
+xplugd
 
 exec i3
 
@@ -15,3 +16,4 @@ exec i3
 pkill redshift
 pkill clipmenud
 pkill devmon
+pkill xplugd

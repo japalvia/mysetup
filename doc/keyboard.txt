@@ -1,0 +1,16 @@
+Apply xkb to keyboard when connected
+====================================
+
+https://github.com/troglobit/xplugd
+
+Install daemon:
+yay -S xplugd-git
+
+RC file is run on every XInput event which executes necessary operation
+(see xkb/):
+dotfiles/.config/xplugrc
+
+For debugging, run daemon on foreground:
+xplugd -n
+
+Otherwise, the daemon is started by dotfiles/.xinitrc
