@@ -42,3 +42,4 @@ popd >/dev/null
 
 # More vim setup
 mkdir -p ~/.vim/sessions
+mkdir -p ~/.vim/spell

@@ -165,3 +165,19 @@ Save current editor state:
 
 Load on editor start:
 $ vim -S ~/.vim/sessions/rooster.vim
+
+
+Spell check
+-----------
+
+Show spell check:
+:set spell
+
+Show suggestions for word under cursor:
+z=
+
+Save new word:
+zg
+
+More info:
+https://www.ostechnix.com/use-spell-check-feature-vim-text-editor/

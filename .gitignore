@@ -2,4 +2,5 @@ dotfiles/.config/ranger/colorschemes/__init__.py
 dotfiles/.config/ranger/colorschemes/__pycache__/
 dotfiles/.vim/.netrwhist
 dotfiles/.vim/sessions
+dotfiles/.vim/spell
 **.swp

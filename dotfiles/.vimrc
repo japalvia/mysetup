@@ -200,3 +200,6 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
+
+" Spell check added words
+set spellfile=~/.vim/spell/en.utf-8.add
