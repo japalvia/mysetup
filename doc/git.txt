@@ -53,3 +53,28 @@ git update-index --no-skip-worktree
 List untracked files: TODO
 
 TODO: is this better or worse than using git ignore?
+
+Moving a change from a commit to another commit
+-----------------------------------------------
+
+Example history:
+commit 123
+commit 456
+commit 789
+
+Now, you realize commit 456 has a partial change in path foo/bar/goo.cpp
+that should be part of commit 789. But commit 456 cannot be just squashed into
+789 as it has unrelated stuff. So, let's make a patch from the problematic part:
+$ git format-patch -1 456 -- foo/bar/goo.cpp
+
+Next, start an interactive rebase where the change is removed using 'edit' option
+for both 789 and 456 commits:
+$ git rebase -i 789^
+
+For commit 789, apply the formatted patch:
+$ git apply < 0001-some-commit-title.patch
+$ git rebase --continue
+
+For commit 456, checkout foo/bar/goo.cpp from earlier version during rebase edit:
+$ git checkout 789 -- foo/bar/goo.cpp
+$ git rebase --continue
