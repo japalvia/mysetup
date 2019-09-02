@@ -179,5 +179,9 @@ z=
 Save new word:
 zg
 
+Previous and next hit:
+[s
+]s
+
 More info:
 https://www.ostechnix.com/use-spell-check-feature-vim-text-editor/
