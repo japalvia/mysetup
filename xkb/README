@@ -19,6 +19,14 @@ Find the symbol in the system-wide default definition:
 $ grep dead_diaeresis /usr/share/X11/xkb/symbols/fi
     key <AD12> { [ dead_diaeresis, dead_circumflex, dead_tilde, dead_macron ] };
 
+If there are no hits make a wider search:
+$ grep -Ir Pause /usr/share/X11/xkb/symbols/ | grep -v Audio
+-->
+    key <PAUS> {
+    type= "PC_CONTROL_LEVEL2",
+    symbols[Group1]= [ Pause, Break ]
+    };
+
 In this keyboard, pressing AD12 twice is '¨' and shitf-AD12-AD12 is '^'
 We want to change single press AD12 to ^ and shitf-AD12 to Insert to paste X11
 clipboard to terminal.
