@@ -44,7 +44,6 @@ Ignore a file that has only local changes
 Example: your local build requires a minor modification to a script/tool
 that should not be pushed to remote but always needed to build.
 
-git update-index --assume-unchanged <file>
 git update-index --skip-worktree <file>
 
 Resume tracking by:
