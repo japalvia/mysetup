@@ -10,6 +10,9 @@ clipmenud &
 devmon --ignore-label lacie_os --no-gui &
 xplugd
 
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
+
 exec i3
 
 # Cleanup on exit
@@ -17,3 +20,4 @@ pkill redshift
 pkill clipmenud
 pkill devmon
 pkill xplugd
+pkill autocutsel
