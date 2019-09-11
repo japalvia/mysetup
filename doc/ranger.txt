@@ -8,5 +8,6 @@ zh      Toggle hidden files
 f       Quick search (like vim)
 S       Open terminal
 
+yp      yank current file path to clipboard
 
 
