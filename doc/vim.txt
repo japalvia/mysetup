@@ -187,3 +187,12 @@ Previous and next hit:
 
 More info:
 https://www.ostechnix.com/use-spell-check-feature-vim-text-editor/
+
+Mark (bookmark a line and column)
+---------------------------------
+
+Mark current line to a letter 'a':
+ma
+
+Go to mark 'a':
+'a

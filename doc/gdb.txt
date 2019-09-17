@@ -15,3 +15,10 @@ gdb --args
 
 Start pgrogram from command line:
 gdb -ex=run
+
+Log session with full backtrace
+-------------------------------
+
+set pagination off
+set logging file mylog.txt
+set logging on
