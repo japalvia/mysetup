@@ -10,8 +10,17 @@ alias ll='ls -l'
 alias lt='ls -lt'
 alias la='ls -la'
 alias grep='grep --color=auto'
-alias ggrep='git grep'
-alias git-squash='git rebase -i --autosquash'
+
+alias ga='git add'
+alias gc='git commit'
+alias gg='git grep'
+alias gl='git log'
+alias gr='git rebase'
+alias gri='git rebase -i'
+alias gria='git rebase -i --autosquash'
+alias gs='git status'
+alias gss='git status --short'
+
 alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - \
 %(color:red)%(objectname:short)%(color:reset) - \
