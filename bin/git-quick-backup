@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Creates a backup from the current branch by adding "-bak[n]" to the branch name
+# where [n] is next backup calculated from the currently latest existing backup
+# branch.
+
+set -e
+
+branch=$(git symbolic-ref --short HEAD)
+
+# NOTE: colors from git output causes escape char in output
+latest_bak=$(git branch --no-color --list --sort=-committerdate "$branch-bak*"  | head -1)
+if [ -z "$latest_bak" ] ; then
+    echo "First backup"
+    count=0
+else
+    count=$(sed -n "s/\([[:space:]]*$branch-bak\)\([[:digit:]]*\)/\2/p" <<< "$latest_bak")
+fi
+
+count=$((count + 1))
+next_bak="$branch-bak$count"
+
+git fetch . "$branch:$next_bak"
+
