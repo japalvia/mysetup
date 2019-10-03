@@ -218,3 +218,14 @@ mode "moveit" {
     bindsym Escape mode "default"
 }
 bindsym $mod+m focus floating; mode "moveit"
+
+# Android Emulator flickers when focus changes in other windows.
+# Fix by changing to floating mode and moving it in a hardcoded
+# position for 3840x160 monitor (upper right corner).
+#
+# Normally, class is used but this window does not set WM_CLASS
+for_window [title="Android Emulator*"] \
+    floating enable; \
+    resize shrink width 200 px; \
+    resize shrink height 300 px; \
+    move position 3082 px 10 px
