@@ -13,6 +13,7 @@ replace key <AE07> { [  7,	slash ] };
 replace key <AE08> { [  8, NoSymbol, NoSymbol, Nosymbol ] };
 replace key <AE09> { [  9, NoSymbol, NoSymbol, Nosymbol ] };
 replace key <AE10> { [  0,  equal ] };
+replace key <AE12> { [  acute,  grave] };
 replace key <AC01> { [  a,	A,	parenleft  ] };
 replace key <AC02> { [  s,	S,	parenright ] };
 replace key <AC03> { [  d,	D,	bracketleft ] };
