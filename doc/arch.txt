@@ -144,3 +144,12 @@ acpitz-acpi-0: almost always the CPU or CPU socket temperature
 
 Print SSD info:
 # smartctl --attributes /dev/nvme0
+
+Suspend
+-------
+
+Disable wake-on-lan for the current boot:
+sudo ethtool -s eno1 wol d
+sudo ethtool eno1 | grep Wake-on
+	Supports Wake-on: pumbg
+	Wake-on: d
