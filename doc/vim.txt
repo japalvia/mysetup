@@ -196,3 +196,12 @@ ma
 
 Go to mark 'a':
 'a
+
+Build and dispatch
+------------------
+
+From vim, build with default build tool 'make':
+m-<Enter>
+
+Run a test/binary/etc without blocking editor
+:Dispatch ./main
