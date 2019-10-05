@@ -137,6 +137,9 @@ Ctrl-^              previous buffer
 num-ctrl-^          switch to buffer <num>num
 Ctrl-hjkl and Tab   move to MBE window and select buffer with cursor
 
+Reopen the last closed buffer:
+:tabnew#
+
 
 Alternate (a.vim)
 -----------------
