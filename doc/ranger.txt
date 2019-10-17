@@ -10,4 +10,5 @@ S       Open terminal
 
 yp      yank current file path to clipboard
 
+R       Refresh (useful when image preview is not shown)
 

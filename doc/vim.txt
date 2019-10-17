@@ -208,3 +208,18 @@ m-<Enter>
 
 Run a test/binary/etc without blocking editor
 :Dispatch ./main
+
+Visual blocks
+-------------
+
+Sorting:
+Select a block, for example:
+    press 'V' and navigate lines
+    enter command by pressing ':'
+    type 'sort' or 'sort -u' command and press enter
+
+Select rectangular section:
+example: paste git commit message with preceding whitespaces
+Ctrl-v to enter mode
+Select section with normal navigation
+Press 'd' to delete
