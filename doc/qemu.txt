@@ -1,0 +1,15 @@
+QEMU with KVM
+=============
+
+Allocate a disk:
+qemu-img create -f raw ~/virtual-machines/ubuntu-18.04 10G
+
+Create a machine using ISO image:
+qemu-system-x86_64 -enable-kvm -m 2048 \
+	-cdrom ~/Downloads/ubuntu-18.04.3-desktop-amd64.iso \
+	-boot order=d \
+	-drive file=$HOME/$USER/virtual-machines/ubuntu-18.04,format=raw
+
+Start machine:
+qemu-system-x86_64 -enable-kvm -m 2048 \
+	-drive file=/home/palvja/virtual-machines/ubuntu-18.04,format=raw
