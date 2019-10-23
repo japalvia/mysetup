@@ -42,3 +42,12 @@ Enable name resolution if needed:
 Login to chroot:
 # chroot /mnt/arch /bin/bash
 # source /etc/profile
+
+-----
+Crypto:
+
+cryptsetup luksOpen /dev/sda2 crypt2
+vgchange -ay
+mount /dev/mapper/crypt2 /mnt/crypt2
+
+Then do the normal chroot setup.
