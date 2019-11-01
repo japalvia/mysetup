@@ -5,6 +5,12 @@ xrdb ~/.Xresources
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
+# TODO: systemctl --user enable redshift.service
+# could be nicer but fails to start
+# Test adding to redshift.service:
+# Environment='XAUTHORITY=/home/MY_USER/.Xauthority' 'DISPLAY=:0'
+# OR
+# Creating a new dir/file for ~/.config/systemd/user/redshift.service.d/display.conf
 redshift >/dev/null &
 clipmenud &
 devmon --ignore-label lacie_os --no-gui &
