@@ -1,0 +1,31 @@
+Using android studio on Arch
+============================
+
+Setup
+-----
+
+Install studio from AUR and (adb) tools from community:
+yay -S android-studio android-tools android-udev
+
+Local user must be in plugdev group, check with 'id' command.
+
+Add user to adbusers group. Note: this differs from android developer for
+Ubuntu instructions.
+sudo usermod -aG adbusers $LOGNAME
+Reboot machine to make sure udev rules are loaded properly.
+
+
+Emulator
+--------
+
+Lots of flickering with i3 when tiling. Floating mode seems to work better.
+i3 config has been tailored to put the emulator window to floating and position
+on 3840p ultra wide monitor.
+
+Running app on device
+---------------------
+
+Test access to Android device:
+adb devices
+--> must say no "permission denied" or "Unauthorized" (accept connection on device)
+
