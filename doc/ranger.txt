@@ -12,3 +12,9 @@ yp      yank current file path to clipboard
 
 R       Refresh (useful when image preview is not shown)
 
+m<key>  bookmark durrent directory to <key>
+'<key>  go to bookmark <key>
+''      go to previous bookmark
+        bookmark file is ~/.local/share/ranger/bookmarks
+        and can be edited on-the-fly
+
