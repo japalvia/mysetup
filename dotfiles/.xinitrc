@@ -12,9 +12,10 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 # OR
 # Creating a new dir/file for ~/.config/systemd/user/redshift.service.d/display.conf
 redshift >/dev/null &
+
 clipmenud &
 devmon --ignore-label lacie_os --no-gui &
-xplugd
+# xplugd
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
@@ -25,5 +26,5 @@ exec i3
 pkill redshift
 pkill clipmenud
 pkill devmon
-pkill xplugd
+# pkill xplugd
 pkill autocutsel
