@@ -1,0 +1,79 @@
+Viewing PDFs
+============
+
+mupdf
+-----
+
+Supports loading the last accessed document page.
+
+Useful keys:
+
+Z       Zoom to fit document height or width (whichever comes first)
+z       Reset zoom
+m       Put position in stack
+t       Load position from stack
+m[0-9]  Save a position (bookmark)
+t[0-9]  Load a position (bookmark)
+/       Search document
+123g    Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document123g Go to page 123
+
+Other vim-like controls:
+g, G    First, last page
+q       Quit
+r       Reload document
+
