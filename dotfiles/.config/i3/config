@@ -229,3 +229,8 @@ for_window [title="Android Emulator*"] \
     resize shrink width 200 px; \
     resize shrink height 300 px; \
     move position 3082 px 10 px
+
+# Viewing images with display works better when picture is not
+# tiled to container size.
+for_window [class="Display"] \
+    floating enable
