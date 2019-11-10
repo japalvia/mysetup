@@ -22,3 +22,56 @@ Log session with full backtrace
 set pagination off
 set logging file mylog.txt
 set logging on
+
+TUI
+---
+
+Start with -tui option to launch ncurses UI for source/assembly browsing.
+Without option, use ctrl-x a to toggle TUI.
+
+TUI mode processes any input first and redirects it to ncurses view or or gdb
+prompt. Useful key bindings to navigate the prompt:
+Previous command:       C-p
+Nex command:            C-n
+Move cursor to left:    C-b
+Move cursor to right-:  C-f
+
+Registers
+---------
+
+Print all registers:
+info reg
+
+Print one or more registers
+info reg rax rbp rsp
+
+Stack content:
+x/<n> $rsp
+x/f $rsp
+x/u $rsp
+
+Examine memory location <variable>
+<n>   number  of  locations  to  display,  1  is default.
+<f> format:
+    d – decimal (signed)
+    x – hex
+    u – decimal (unsigned)
+    c – character
+    s – string
+    f – floating-point
+<u> unit size: b – byte (8-bits)
+    h – halfword (16-bits)
+    w – word (32-bits)
+    g – giant (64-bits)
+
+Arrays:
+example declaration:
+list1   dd  100001, -100002, 100003, 100004, 100005
+-->
+size (number of location to show: 5)
+format signed decimal: d
+unit size: w (32-bits), declaration uses 'dd' for double word (2 x 16-bits)
+command: x/5dw &list1
+
+Examine direct memory location:
+x/dw 0x600d44

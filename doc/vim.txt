@@ -68,6 +68,10 @@ C-t
 De-indent current line in Insert mode (regardless of cursor position):
 C-d
 
+Indent/de-indent a block in visual mode:
+>
+<
+
 Delete without yanking
 <leader> d
 
