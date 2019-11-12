@@ -49,7 +49,8 @@ git update-index --skip-worktree <file>
 Resume tracking by:
 git update-index --no-skip-worktree
 
-List untracked files: TODO
+List skipped files:
+git ls-files -v | grep '^S'
 
 TODO: is this better or worse than using git ignore?
 
