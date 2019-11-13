@@ -153,3 +153,21 @@ sudo ethtool -s eno1 wol d
 sudo ethtool eno1 | grep Wake-on
 	Supports Wake-on: pumbg
 	Wake-on: d
+
+Name resolution
+---------------
+
+Generate /etc/resolv.conf:
+resolvconf -u
+
+netctl uses dhcpcd to handle dynamically configured interfaces
+which in turn invokes resolvconf.
+
+openresolv package is the default(?) resolvconf implementation.
+systemd-resolved is alternative implementation. Most likely
+these should not be running at the same time.
+
+If /etc/resolv.conf stops being generated, look for stale nameservers:
+$ grep -Ir "127.0.0.1" /run/resolvconf/
+/run/resolvconf/interfaces/enp60s0u1u3:nameserver 127.0.0.1
+--> removing the extra address and generating resolv.conf seems to help.
