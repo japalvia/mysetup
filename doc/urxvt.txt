@@ -1,0 +1,8 @@
+rxvt-unicode
+============
+
+Input unicode glyph:
+♥ (U+2665)
+- Press Ctrl+Shift and hold
+- Type glyph keycode 2665
+- Release modifier keys

@@ -61,6 +61,13 @@ $ makepkg -si
 Usage: command line interface is the same as pacman. Yay commands apply to all
 packages, not just AUR.
 
+yay: error while loading shared libraries
+Newer version of yay must be installed after a system update.
+Remove the current:
+$ sudo pacman -R yay
+$ cd yay
+$ git pull origin master
+$ makepkg -si
 
 Systemd services
 ----------------

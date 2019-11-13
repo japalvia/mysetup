@@ -1,0 +1,8 @@
+Intel Graphics UHD 620
+======================
+
+
+mpv
+===
+
+LIBVA_DRIVER_NAME=iHD mpv --hwdec=auto --vo=vaapi [video_file]

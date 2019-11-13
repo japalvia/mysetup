@@ -5,6 +5,9 @@ https://gist.github.com/HardenedArray/31915e3d73a4ae45adc0efa9ba458b07
     No encrypted /boot partition
     timedatectl set-timezone Europe/Helsinki
 
+Forked copy:
+https://gist.github.com/japalvia/cb928935a8ca31bd2399e4d5c594d115
+
 TODO: dhcpd? Don't enable the service, 'netctl start' fails
 
 mkdir ws doc

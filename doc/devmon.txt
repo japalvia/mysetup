@@ -1,0 +1,9 @@
+devmon for removable storage devices
+====================================
+
+devmon is started by ~/.xinitrc.
+
+Devices are automounted to /media/
+
+Unmount as user with:
+$ devmon --unmount /media/some_mountpoint
