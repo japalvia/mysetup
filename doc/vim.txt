@@ -78,6 +78,9 @@ Delete without yanking
 Delete from start of line until cursor position (insert mode):
 C-u
 
+Delete from cursor position to end of line without new line:
+vg_d
+
 Insert NUL byte (looks like ^@):
 C-v 000
 
