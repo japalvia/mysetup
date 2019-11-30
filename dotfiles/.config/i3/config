@@ -203,6 +203,9 @@ bindsym shift+F12 exec --no-startup-id ~/bin/toggle-display.sh
 # Clipmenu invocation
 bindsym $mod+section exec --no-startup-id clipmenu
 
+# Try loading workspace layout from last saved
+bindsym $mod+F1 exec --no-startup-id ~/bin/i3-load-layout
+
 # Switch virtual terminal from Xorg
 bindsym Mod4+Left exec --no-startup-id ~/bin/vt-prev
 bindsym Mod4+Right exec --no-startup-id ~/bin/vt-next
