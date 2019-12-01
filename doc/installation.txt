@@ -35,3 +35,9 @@ AutoEnable=true
 
 # TODO: enable multilib in /etc/pacman.conf
 # TODO: symlink vim setup for root
+
+Sync time
+---------
+
+systemctl start systemd-timesyncd.service
+systemctl enable systemd-timesyncd.service
