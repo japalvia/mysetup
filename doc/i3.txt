@@ -16,3 +16,11 @@ Move current workspace to another monitor:
 i3-msg '[workspace="workspace_name"]' move workspace to output output_index
 i3-msg move workspace to DP2-1
 i3-msg move workspace to output left
+
+Save and load workspace layouts
+-------------------------------
+
+Save each workspace by running command 'i3-layout-manager' (select Default).
+
+i3config binds Mod key (Alt) + F1 to 'bin/i3-load-layout' to load the current
+workspace.

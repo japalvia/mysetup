@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Load previously save layout current current workspace# in
+# /home/jarkko/.layouts/layout-#.json
+
+current=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')
+
+i3-layout-manager "$current"

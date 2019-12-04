@@ -23,3 +23,21 @@ g, G    First, last page
 q       Quit
 r       Reload document
 
+mupdf-gl
+--------
+
+Support for saving history including last location and bookmarks
+appears to be available only in -gl version. However, the upstream
+freeglut does not support clipboard and the patches from mupdf
+vendor are still pending/not accepted.
+
+Workaround is to use the ghostscript version of freeglut:
+https://git.ghostscript.com/?p=thirdparty-freeglut.git
+Note: cloned as ~/ws/ghostscript-freeglut
+
+Build mupdf from source:
+- remove any existing mupdf* packages
+- uninstall any existing mupdf in /usr/local
+
+make prefix=/usr/local
+sudo make prefix=/usr/local install
