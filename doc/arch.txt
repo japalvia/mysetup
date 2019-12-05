@@ -178,3 +178,9 @@ If /etc/resolv.conf stops being generated, look for stale nameservers:
 $ grep -Ir "127.0.0.1" /run/resolvconf/
 /run/resolvconf/interfaces/enp60s0u1u3:nameserver 127.0.0.1
 --> removing the extra address and generating resolv.conf seems to help.
+
+TODO: should 'netctl disable/enable ix-dhcp' be run to reload systemd?
+
+NOTE: interface can get seemingly stuck, no changes using netctl.
+Then do the following to stop interface:
+ip link set enp0s31f6 down
