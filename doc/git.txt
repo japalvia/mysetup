@@ -78,3 +78,8 @@ $ git rebase --continue
 For commit 456, checkout foo/bar/goo.cpp from earlier version during rebase edit:
 $ git checkout 789 -- foo/bar/goo.cpp
 $ git rebase --continue
+
+Show a graph of commit history
+------------------------------
+
+$ git log --oneline --graph --decorate --all
