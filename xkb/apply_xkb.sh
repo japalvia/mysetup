@@ -21,4 +21,4 @@ dir=$1
 
 setxkbmap -layout fi
 setxkbmap -option ctrl:nocaps
-setxkbmap -I"$dir" prog -print | xkbcomp -I"$dir" - $DISPLAY
+setxkbmap -I"$dir" prog -print | xkbcomp -w 3 -I"$dir" - $DISPLAY
