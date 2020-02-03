@@ -5,7 +5,8 @@ usage() {
 xkb loader usage:
 $0 [directory]
     where directory is the location for kxb layout files
-    (i.e. directory must contain 'symbols' subdirectory)
+    (i.e. directory must contain 'symbols' subdirectory).
+    Default is the location of this script file.
 EOF
 }
 
@@ -16,8 +17,7 @@ bad_usage() {
 }
 
 dir=$1
-[ -z "$dir" ] && bad_usage "Directory argument missing"
-[ ! -d "$dir" ] && bad_usage "Does not exist or is not a directory: $dir"
+[ -z "$dir" ] && dir=$(dirname $(readlink -f $0))
 
 setxkbmap -layout fi
 setxkbmap -option ctrl:nocaps
