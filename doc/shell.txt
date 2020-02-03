@@ -1,0 +1,6 @@
+Shell / Bash
+============
+
+Find non-ascii lines in a file:
+grep --color='auto' -P -n "[\x80-\xFF]" file
+
