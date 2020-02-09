@@ -1,8 +1,27 @@
 Intel Graphics UHD 620
 ======================
 
+Driver
+------
+
+Packages:
+intel-media-driver xf86-video-intel
+
+/etc/environment:
+LIBVA_DRIVER_NAME=iHD
+
+/etc/X11/xorg.conf.d/20-intel.conf:
+Section "Device"
+  Identifier  "Intel Graphics"
+  Driver      "intel"
+  Option "DRI" "2"
+  Option "AccelMethod" "SNA"
+  Option "TripleBuffer" "true"
+  Option "TearFree" "true"
+EndSection
+
 
 mpv
-===
+---
 
 LIBVA_DRIVER_NAME=iHD mpv --hwdec=auto --vo=vaapi [video_file]
