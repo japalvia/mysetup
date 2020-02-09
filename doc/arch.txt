@@ -9,7 +9,8 @@ Find 32-bit packages:
 pacman -Sl multilib |grep libstdc++
 pacman -S lib32-libstdc++5
 
-Show 'Required by' for a package:
+Show 'Required by' aka reverse dependencies for a package:
+Note: doesn't work with yay
 pacman -Sii package
 
 List packages explicitly installed by me (excluding initial base installation):
