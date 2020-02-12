@@ -1,0 +1,11 @@
+Renameutils
+===========
+
+yay -S renameutils
+
+Rename files using default editor
+---------------------------------
+
+Default formatting shows two columns: the original name and target name.
+For easy manipulation with regex in vim only destination name can be shown:
+qmv -fdo my\ file\n with\ spaces.txt
