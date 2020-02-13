@@ -1,5 +1,5 @@
 # Setup all keyboard mappings.
-~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb
+~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb >/dev/null 2>&1
 
 xrdb ~/.Xresources
 
