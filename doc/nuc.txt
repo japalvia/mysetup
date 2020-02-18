@@ -1,11 +1,14 @@
 Intel NUC7i7DNHE
 ================
 
+Print system info and BIOS version:
+nuc-info
+
 Look for BIOS Update:
 https://downloadcenter.intel.com/product/130393/Intel-NUC-Kit-NUC7i7DNHE
 
 Select download for .BIO file.
 
-Copy to USB flash drive.
+Copy to USB flash drive. See usb.txt for preparing USB drive.
 
 Reboot and select F2.
