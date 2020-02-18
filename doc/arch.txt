@@ -179,3 +179,9 @@ If /etc/resolv.conf stops being generated, look for stale nameservers:
 $ grep -Ir "127.0.0.1" /run/resolvconf/
 /run/resolvconf/interfaces/enp60s0u1u3:nameserver 127.0.0.1
 --> removing the extra address and generating resolv.conf seems to help.
+
+Kernel
+------
+
+Updating grub menu entries after installing new kernel version:
+sudo grub-mkconfig -o /boot/grub/grub.cfg
