@@ -1,6 +1,7 @@
 atool
 autocutsel
 bash-completion
+base
 bc
 bluez
 bluez-utils
@@ -38,3 +39,16 @@ wpa_supplicant
 xorg-server
 xorg-xinit
 zip
+dnsutils
+keepassx
+libreoffice-fresh
+libreoffice-fresh-fi
+lm_sensors
+lshw
+ncdu # ncurses disk space usage analysis
+pwgen
+python-pip
+rrdtool # used by sensord
+strace
+valgrind
+xorg-xev
