@@ -3,9 +3,33 @@
 # Symlink configuration files/directories in /etc.
 # Symlinks will not be created if the link name already exists.
 
-set -x
+error()
+{
+    msg=$1
+    echo "ERROR: $msg"
+    exit 1
+}
+
+install_link()
+{
+    local src=$1
+    local src_base=$(basename "$src")
+    local dest=$2
+    local dest_dir=$(dirname "$dest")
+    local dest_base=$(basename "$dest")
+
+    [ -r "$src" ] || error "source: $src path is not readable"
+    [ -d "$dest_dir" ] || error "destination directory: $dest is invalid"
+    [ "$src_base" = "$dest_base" ] || error "source basename: $src_base and \
+        destination basename $dest_base mismatch"
+
+    sudo ln -v -s --backup=numbered "$src" "$dest"
+}
 
 etcdir=$(dirname $(readlink -f $0))
 
-ln -v -s --backup=numbered \
-    "$etcdir/vconsole.conf" /etc/vconsole.conf
+#ln -v -s --backup=numbered \
+#    "$etcdir/vconsole.conf" /etc/vconsole.conf
+
+install_link "$etcdir/vconsole.conf"   /etc/vconsole.conf
+install_link "$etcdir/default/grub"    /etc/default/grub
