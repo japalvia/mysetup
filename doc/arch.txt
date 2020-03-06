@@ -52,6 +52,9 @@ yaourt -S -a -u
 Import missing GPG key:
 gpg --recv-keys <id>
 
+Parallel complication:
+MAKEFLAGS="-j$(nproc)" yay -S
+
 AUR: yay
 --------
 
