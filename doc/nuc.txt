@@ -1,6 +1,11 @@
 Intel NUC7i7DNHE
 ================
 
+https://en.wikipedia.org/wiki/Kaby_Lake#List_of_8th_generation_Kaby_Lake_R_processors
+https://ark.intel.com/content/www/us/en/ark/products/124968/intel-core-i7-8650u-processor-8m-cache-up-to-4-20-ghz.html
+https://en.wikichip.org/wiki/intel/core_i7/i7-8650u
+https://en.wikichip.org/wiki/intel/uhd_graphics/620
+
 Print system info and BIOS version:
 nuc-info
 

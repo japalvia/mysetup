@@ -29,6 +29,12 @@ pacman -Rs
 Remove package and cascade removal down the dependers:
 pacman -Rsc
 
+Show dependencies in a tree structure:
+pactree <package>
+
+Show reverse dependencies in a tree structure:
+pactree -r <package>
+
 Sync signing keys: pacman-key --refresh-keys
 
 Synchronize database when a download fails, optionally also install a package:
@@ -40,6 +46,22 @@ pacman -Fs [file]
 Find all 32bit multilib packages:
 yay  -Ss | grep multilib | grep Installed | cut -d" " -f1 | cut -d"/" -f2
 Then remove them one by one using "pacman -Rsc"
+
+Testing
+-------
+
+Using testing repositories:
+https://joshtronic.com/2019/08/19/how-to-install-packages-from-testing-on-arch-linux/
+
+Uncomment section in /etc/pacman.conf
+pacman -Sy
+pacman -S community-testing/
+
+Disable testing:
+Revert changes in /etc/pacman.conf
+"rollback" your updates from these repositories:
+pacman -Syuu
+
 
 AUR
 ---
@@ -189,3 +211,18 @@ Kernel
 
 Updating grub menu entries after installing new kernel version:
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+Applications
+------------
+
+Enable Chromecast discovery in Chromium:
+chrome://flags/#load-media-router-component-extension
+
+System
+------
+
+Print performance BIAS setting:
+sudo x86_energy_perf_policy
+
+CPU frequency scaling:
+cpupower frequency-info
