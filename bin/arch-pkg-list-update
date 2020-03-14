@@ -11,9 +11,6 @@ pkg_installed_foreign=$(mktemp)
 trap "{ rm -f "$pkg_installed_native"; }" EXIT
 trap "{ rm -f "$pkg_installed_foreign"; }" EXIT
 
-# cat "$docdir/arch_packages.txt" "$docdir/aur_packages.txt" \
-#    | cut -f1 -d" " | sort > "$pkg_doc"
-
 yay -a -Qe -n | cut -f1 -d" " | sort > "$pkg_installed_native"
 meld "$docdir/arch_packages.txt" "$pkg_installed_native"
 
