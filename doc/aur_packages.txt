@@ -1,1 +1,8 @@
 i3-layout-manager-git
+chromium-vaapi
+i3-layout-manager-git
+keepassx
+pacolog
+spotify
+xcwd-git
+xplugd-git
