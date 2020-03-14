@@ -17,3 +17,15 @@ Select download for .BIO file.
 Copy to USB flash drive. See usb.txt for preparing USB drive.
 
 Reboot and select F2.
+
+Disable GPU power management
+----------------------------
+
+Causes random reboots when computer goes to idle:
+https://linuxreviews.org/Intel_graphics
+
+Some Intel systems, like Kaby Lake Refresh chips, require both intel_idle.max_cstate=1 and i915.enable_dc=0 to ensure a hang-free experience.
+
+https://wiki.archlinux.org/index.php/kernel_parameters#GRUB
+
+See etc/default/grub.
