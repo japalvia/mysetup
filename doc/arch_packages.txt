@@ -53,6 +53,7 @@ linux-lts
 logrotate
 lshw
 lsof
+lvm2
 m4
 make
 man-db
