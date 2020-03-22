@@ -23,6 +23,9 @@ autocutsel -selection PRIMARY -fork &
 # Run compositor with default settings from /etc/xdg/picom.conf
 picom -b
 
+# Set workspace root window background to black
+hsetroot -solid "#000000"
+
 exec i3
 
 # Cleanup on exit
