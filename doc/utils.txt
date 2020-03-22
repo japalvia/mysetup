@@ -1,0 +1,20 @@
+Linux utilities
+===============
+
+sponge
+------
+Soak up standard input and write to a file
+sort -u < some_file | sponge some_file
+
+
+renameutils
+-----------
+Rename or copy files quickly, editing the file names in a text editor.
+
+Show list of files in vim a single column with destination names only:
+qmv -fd some_dir/some_file*png
+vim regex command: %s/foo/bar/g
+
+
+
+

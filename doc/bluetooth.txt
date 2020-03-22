@@ -1,0 +1,36 @@
+Bluetooth devices
+=================
+
+Connecting headset
+------------------
+
+# bluetoothctl
+[bluetooth]# power on
+[bluetooth]# agent on
+[bluetooth]# default-agent
+[bluetooth]# pairable on
+[bluetooth]# scan on
+[bluetooth]# pair <remote_device>
+[bluetooth]# trust <remote_device>
+[bluetooth]# connect <remote_device>
+
+If connect fails, kill pulseaudio:
+$ pulseaudio -k
+
+Capture traffic
+---------------
+
+# btmon --write /tmp/bt.dump
+
+Open in wireshark.
+
+Misc info
+---------
+
+Disconnect and read device info:
+$ avinfo <mac_address>
+
+https://mobilityarena.com/bluetooth-profiles-protocols-hsp-a2dp-avrcp-hfp/
+
+AAC, AptX etc codec support:
+aur/pulseaudio-modules-bt-git

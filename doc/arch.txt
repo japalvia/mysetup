@@ -28,11 +28,19 @@ pacman -Rs
 Remove package and cascade removal down the dependers:
 pacman -Rsc
 
+Mark package to be installed as dependency in the local database:
+pacman -D --asdeps
+
 Show dependencies in a tree structure:
 pactree <package>
 
 Show reverse dependencies in a tree structure:
 pactree -r <package>
+
+Show query results only for native Arch packages:
+pacman -Qn
+Show query results only for foreign (AUR/local builds) packages:
+pacman -Qm
 
 Sync signing keys: pacman-key --refresh-keys
 
