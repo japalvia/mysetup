@@ -23,3 +23,11 @@ Create new window: prefix-c
 Close current window: prefix-&
 Previous window: prefix-p
 Rename: prebix-,
+
+X11
+---
+
+Long running sessions might get their DISPLAY variable
+out of sync when local machine is restarted etc.
+
+export DISPLAY="`tmux show-env | sed -n 's/^DISPLAY=//p'`"
