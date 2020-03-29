@@ -5,8 +5,6 @@ DEVICE=$2
 STATUS=$3
 DESC=$4
 
-echo "TEST TEST"
-
 # Handle keyboard, ignore device ID
 case "$TYPE,$STATUS,$DESC" in
     keyboard,connected,*)

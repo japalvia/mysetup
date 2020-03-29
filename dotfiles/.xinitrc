@@ -15,7 +15,7 @@ redshift >/dev/null &
 
 clipmenud &
 devmon --ignore-label lacie_os --no-gui &
-# xplugd
+xplugd
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
@@ -33,5 +33,5 @@ pkill picom
 pkill redshift
 pkill clipmenud
 pkill devmon
-# pkill xplugd
+pkill xplugd
 pkill autocutsel
