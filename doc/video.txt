@@ -1,8 +1,8 @@
 Intel Graphics UHD 620
 ======================
 
-Driver
-------
+Intel driver
+------------
 
 Packages:
 intel-media-driver xf86-video-intel
@@ -20,6 +20,30 @@ Section "Device"
   Option "TearFree" "true"
 EndSection
 
+Modesetting driver
+------------------
+
+TODO: add X11 conf to etc/
+
+Packages:
+intel-media-driver
+
+Note: libva-intel-driver is for older Intel GPUs.
+
+Show information from VA-API driver
+$ vainfo
+
+Generally, VAAPI is used for Intel and Broadcom graphic cards, while VDPAU is
+used for AMD/ATI and NVIDIA cards.
+
+VDPAU is not available on Intel graphics
+cards. Fortunately, there’s an open-source project called libvdpau-va-gl, which
+is a VDPAU driver that uses OpenGL under the hood to accelerate drawing and
+scaling, and VA-API (if available) to accelerate video decoding. You can use it
+on some Intel chips.
+
+Chromium youtube: force decoding to h264 from VP8/VP9:
+https://chrome.google.com/webstore/detail/h264ify/aleakchihdccplidncghkekgioiakgal
 
 mpv
 ---

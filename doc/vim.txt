@@ -84,6 +84,9 @@ vg_d
 Insert NUL byte (looks like ^@):
 C-v 000
 
+Reformat/re-indent a piece of text after selecting in visual mode:
+gq
+
 Moving around
 -------------
 

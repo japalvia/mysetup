@@ -1,0 +1,48 @@
+Writing to USB drive
+====================
+
+ISO images
+----------
+
+TODO
+
+Replace bootable ISO image from USB drive
+------------------------------------------
+
+Identify device:
+mount |grep "/media/xxx"
+/dev/sdb
+
+Unmount gracefully:
+devmon --unmount /media/xxx
+
+Remove existing partitions and create fat32:
+sudo fdisk /dev/sdb
+
+Delete per partition:
+Command (m for help): d
+
+Print current table:
+Command (m for help): p
+
+Create new:
+Command (m for help): n
+
+As primary with default number and sectors
+Select (default p): p
+
+Change paritition type:
+Command (m for help): t
+
+Select 'b' for FAT32:
+Hex code (type L to list all codes): b
+
+Write changes and quit:
+Command (m for help): w
+
+Create FAT32 file system:
+udo mkfs.vfat -F 32 /dev/sdb1
+
+Eject and reinsert USB drive.
+
+

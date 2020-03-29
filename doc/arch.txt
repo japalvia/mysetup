@@ -10,10 +10,10 @@ pacman -Sl multilib |grep libstdc++
 pacman -S lib32-libstdc++5
 
 Show 'Required by' aka reverse dependencies for a package:
-Note: doesn't work with yay
 pacman -Sii package
 
 List packages explicitly installed by me (excluding initial base installation):
+TODO: base is not group any more, it's meta package
 pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'
 
 Query package which provides specified filename:
@@ -28,6 +28,20 @@ pacman -Rs
 Remove package and cascade removal down the dependers:
 pacman -Rsc
 
+Mark package to be installed as dependency in the local database:
+pacman -D --asdeps
+
+Show dependencies in a tree structure:
+pactree <package>
+
+Show reverse dependencies in a tree structure:
+pactree -r <package>
+
+Show query results only for native Arch packages:
+pacman -Qn
+Show query results only for foreign (AUR/local builds) packages:
+pacman -Qm
+
 Sync signing keys: pacman-key --refresh-keys
 
 Synchronize database when a download fails, optionally also install a package:
@@ -40,6 +54,22 @@ Find all 32bit multilib packages:
 yay  -Ss | grep multilib | grep Installed | cut -d" " -f1 | cut -d"/" -f2
 Then remove them one by one using "pacman -Rsc"
 
+Testing
+-------
+
+Using testing repositories:
+https://joshtronic.com/2019/08/19/how-to-install-packages-from-testing-on-arch-linux/
+
+Uncomment section in /etc/pacman.conf
+pacman -Sy
+pacman -S community-testing/
+
+Disable testing:
+Revert changes in /etc/pacman.conf
+"rollback" your updates from these repositories:
+pacman -Syuu
+
+
 AUR
 ---
 
@@ -50,6 +80,9 @@ yaourt -S -a -u
 
 Import missing GPG key:
 gpg --recv-keys <id>
+
+Parallel complication:
+MAKEFLAGS="-j$(nproc)" yay -S
 
 AUR: yay
 --------
@@ -180,13 +213,23 @@ $ grep -Ir "127.0.0.1" /run/resolvconf/
 /run/resolvconf/interfaces/enp60s0u1u3:nameserver 127.0.0.1
 --> removing the extra address and generating resolv.conf seems to help.
 
-TODO: should 'netctl disable/enable ix-dhcp' be run to reload systemd?
+Kernel
+------
 
-NOTE: interface can get seemingly stuck, no changes using netctl.
-Then do the following to stop interface:
-ip link set enp0s31f6 down
+Updating grub menu entries after installing new kernel version:
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-Renaming files
---------------
+Applications
+------------
 
-perl-rename -v -n "s/ /_/g" *
+Enable Chromecast discovery in Chromium:
+chrome://flags/#load-media-router-component-extension
+
+System
+------
+
+Print performance BIAS setting:
+sudo x86_energy_perf_policy
+
+CPU frequency scaling:
+cpupower frequency-info

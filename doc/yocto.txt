@@ -1,0 +1,37 @@
+Yocto Linux on Arch host
+========================
+
+Install docker package.
+NOTE: daemon reload is required to get bridge default gateway:
+sudo systemctl daemon-reload
+
+TODO: test docker experimental support running without root permission.
+
+sudo systemctl start docker.service
+
+Note: firewalld may block docker0 interface, allow traffic:
+sudo firewall-cmd --permanent --zone=trusted --change-interface=docker0
+sudo firewall-cmd --reload
+
+Follow instructions in https://github.com/crops/poky-container/blob/master/README.md
+
+mkdir ~/docker
+
+sudo docker run --rm -it -v $HOME/docker:/workdir crops/poky --workdir=/workdir
+
+Option -v maps the current working directory on the host computer to the
+directory /workdir inside the container. This option makes the tree rooted at
+the working directory visible both in the container and on the host
+computer.
+
+Omit --rm option to preserve previously run container.
+
+Note: build commands must be run inside docker, especially the first time:
+cd poky
+source oe-init-build-env
+
+If IDE needs to be run inside container, consider:
+https://github.com/mviereck/x11docker
+
+CROPS/poky interactive root shell:
+https://github.com/crops/poky-container/issues/26#issuecomment-543383944

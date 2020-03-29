@@ -1,11 +1,31 @@
 Intel NUC7i7DNHE
 ================
 
+https://en.wikipedia.org/wiki/Kaby_Lake#List_of_8th_generation_Kaby_Lake_R_processors
+https://ark.intel.com/content/www/us/en/ark/products/124968/intel-core-i7-8650u-processor-8m-cache-up-to-4-20-ghz.html
+https://en.wikichip.org/wiki/intel/core_i7/i7-8650u
+https://en.wikichip.org/wiki/intel/uhd_graphics/620
+
+Print system info and BIOS version:
+nuc-info
+
 Look for BIOS Update:
 https://downloadcenter.intel.com/product/130393/Intel-NUC-Kit-NUC7i7DNHE
 
 Select download for .BIO file.
 
-Copy to USB flash drive.
+Copy to USB flash drive. See usb.txt for preparing USB drive.
 
 Reboot and select F2.
+
+Disable GPU power management
+----------------------------
+
+Causes random reboots when computer goes to idle:
+https://linuxreviews.org/Intel_graphics
+
+Some Intel systems, like Kaby Lake Refresh chips, require both intel_idle.max_cstate=1 and i915.enable_dc=0 to ensure a hang-free experience.
+
+https://wiki.archlinux.org/index.php/kernel_parameters#GRUB
+
+See etc/default/grub.
