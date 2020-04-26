@@ -210,6 +210,8 @@ bindsym $mod+F1 exec --no-startup-id ~/bin/i3-load-layout
 bindsym Mod4+Left exec --no-startup-id ~/bin/vt-prev
 bindsym Mod4+Right exec --no-startup-id ~/bin/vt-next
 
+bindsym section exec --no-startup-id xsel -o -p | xsel -i -b
+
 mode "moveit" {
     bindsym Up move up 20px
     bindsym Left move left 20px
