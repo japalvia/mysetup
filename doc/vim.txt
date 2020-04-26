@@ -233,3 +233,26 @@ example: paste git commit message with preceding whitespaces
 Ctrl-v to enter mode
 Select section with normal navigation
 Press 'd' to delete
+
+Macros
+------
+
+Swap words in the following line:
+{0x42,  66},    //  B
+
+Start recording: q1
+
+go to start of line: 0
+go to next word: w
+cut word: dw
+move to start of next word: w
+paste in the front: P
+move cursor past paste: l
+cut second item: dw
+move to open brace: 0
+paste: p
+down: j
+
+Stop recording: q
+Run macro: @1
+Repeat last macro: @@

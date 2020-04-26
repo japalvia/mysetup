@@ -233,3 +233,11 @@ sudo x86_energy_perf_policy
 
 CPU frequency scaling:
 cpupower frequency-info
+
+Logind / power management
+-------------------------
+
+/etc/systemd/logind.conf
+
+Reload config after editing:
+kill -s HUP $(systemctl show --property MainPID systemd-logind | cut -d= -f2)

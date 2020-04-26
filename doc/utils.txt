@@ -12,7 +12,7 @@ renameutils
 Rename or copy files quickly, editing the file names in a text editor.
 
 Show list of files in vim a single column with destination names only:
-qmv -fd some_dir/some_file*png
+qmv -fdo some_dir/some_file*png
 vim regex command: %s/foo/bar/g
 
 
