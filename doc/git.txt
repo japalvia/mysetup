@@ -83,3 +83,9 @@ Show a graph of commit history
 ------------------------------
 
 $ git log --oneline --graph --decorate --all
+
+Stash
+-----
+
+Stash per file:
+git stash push -n "message" -- [path]
