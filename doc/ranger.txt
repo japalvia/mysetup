@@ -18,3 +18,9 @@ m<key>  bookmark durrent directory to <key>
         bookmark file is ~/.local/share/ranger/bookmarks
         and can be edited on-the-fly
 
+Extract archive
+---------------
+
+There is a vim binding builtin functionality:
+Navigate to the file and press:
+1l
