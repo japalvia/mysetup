@@ -88,4 +88,4 @@ Stash
 -----
 
 Stash per file:
-git stash push -n "message" -- [path]
+git stash push -m "message" -- [path]

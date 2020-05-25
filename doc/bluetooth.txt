@@ -17,6 +17,11 @@ Connecting headset
 If connect fails, kill pulseaudio:
 $ pulseaudio -k
 
+"No default controller available"
+sudo rfkill block bluetooth
+sudo rfkill unblock bluetooth
+sudo systemctl restart bluetooth
+
 Capture traffic
 ---------------
 

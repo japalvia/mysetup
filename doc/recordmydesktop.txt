@@ -1,0 +1,14 @@
+Screencasting for demos
+=======================
+
+Install recordmydesktop and xorg-xwininfo
+
+Default is to record full screen.
+Find window ID by running command:
+    xwininfo | awk '/Window id:/ {print $4}'
+and clicking the wanted X window.
+
+Record selected window without audio to current directory:
+recordmydesktop --no-sound --windowid 0x7600009
+
+recordmydesktop --no-sound --windowid $(xwininfo | awk '/Window id:/ {print $4}')
