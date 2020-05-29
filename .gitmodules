@@ -45,3 +45,6 @@
 [submodule "dotfiles/.vim/bundle/vim-eunuch"]
 	path = dotfiles/.vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "dotfiles/.vim/bundle/vim-bitbake"]
+	path = dotfiles/.vim/bundle/vim-bitbake
+	url = https://github.com/kergoth/vim-bitbake.git
