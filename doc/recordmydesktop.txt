@@ -12,3 +12,20 @@ Record selected window without audio to current directory:
 recordmydesktop --no-sound --windowid 0x7600009
 
 recordmydesktop --no-sound --windowid $(xwininfo | awk '/Window id:/ {print $4}')
+
+With sound using pulseaudio:
+recordmydesktop --device pulse
+
+Concatenate to a single video
+-----------------------------
+
+Notes:
+- paths must be absolute
+- make sure the globbing order is correct; rename first file to out-0.ogv
+
+ffmpeg -f concat -safe 0 -i <(for f in out*.ogv; do echo "file '$PWD/$f'"; done) -c copy demo.ogv
+
+Convert ogv to mp4
+------------------
+
+ogg2mp4.sh out.ogv demo.mp4
