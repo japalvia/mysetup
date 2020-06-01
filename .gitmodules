@@ -48,3 +48,6 @@
 [submodule "dotfiles/.vim/bundle/vim-bitbake"]
 	path = dotfiles/.vim/bundle/vim-bitbake
 	url = https://github.com/kergoth/vim-bitbake.git
+[submodule "dotfiles/.urxvt/ext/urxvt-font-size"]
+	path = dotfiles/.urxvt/ext/urxvt-font-size
+	url = https://github.com/majutsushi/urxvt-font-size.git

@@ -6,3 +6,11 @@ Input unicode glyph:
 - Press Ctrl+Shift and hold
 - Type glyph keycode 2665
 - Release modifier keys
+
+Font size
+---------
+
+https://github.com/majutsushi/urxvt-font-size
+
+Note: font-size script must be executable
+TODO: add git submodule? or just commit the file to mysetup?

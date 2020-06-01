@@ -1,3 +1,5 @@
+URxvt.perl-ext-common: urxvt-font-size/font-size
+
 URxvt.font:     xft:DejaVu Sans Mono:size=10:antialias=true
 URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=10:antialias=true
 
@@ -22,6 +24,11 @@ URxvt.keysym.Control-Up:   \033[1;5A
 URxvt.keysym.Control-Down:    \033[1;5B
 URxvt.keysym.Control-Left:    \033[1;5D
 URxvt.keysym.Control-Right:    \033[1;5C
+
+URxvt.keysym.C-asciicircum: font-size:increase
+URxvt.keysym.C-aring:       font-size:decrease
+URxvt.keysym.C-equal:       font-size:reset
+URxvt.keysym.C-slash:       font-size:show
 
 ! Old colorcheme:
 ! URxvt.background: lightyellow
