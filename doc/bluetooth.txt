@@ -13,6 +13,7 @@ Connecting headset
 [bluetooth]# pair <remote_device>
 [bluetooth]# trust <remote_device>
 [bluetooth]# connect <remote_device>
+[bluetooth]# set-alias <shortname>
 
 If connect fails, kill pulseaudio:
 $ pulseaudio -k
@@ -21,6 +22,15 @@ $ pulseaudio -k
 sudo rfkill block bluetooth
 sudo rfkill unblock bluetooth
 sudo systemctl restart bluetooth
+
+Re-connecting after system reboot
+---------------------------------
+
+If bluetoothctl isn't picking paired devices automatically, do:
+power on
+scan on
+paired-devices
+connect <alias or mac>
 
 Capture traffic
 ---------------

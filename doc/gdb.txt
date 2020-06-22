@@ -75,3 +75,12 @@ command: x/5dw &list1
 
 Examine direct memory location:
 x/dw 0x600d44
+
+Inspect quickly all threads:
+set pagination off
+set logging file ~/temp/some.log
+set logging on
+tread apply all bt 1
+
+Show only the first frames that are not suspended in libc:
+egrep -v "poll|cancelable|More stack frames|nanosleep|LWP|^$" ~/dev/bt_frame0.txt |less
