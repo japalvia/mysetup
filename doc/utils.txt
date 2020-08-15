@@ -15,6 +15,10 @@ Show list of files in vim a single column with destination names only:
 qmv -fdo some_dir/some_file*png
 vim regex command: %s/foo/bar/g
 
+convert
+-------
+Convert, resize, rotate etc. images
 
+convert IMG_20200721_131459.jpg -rotate 90 -strip -resize 50% new_pic.jpg
 
 
