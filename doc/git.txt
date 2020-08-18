@@ -89,3 +89,9 @@ Stash
 
 Stash per file:
 git stash push -m "message" -- [path]
+
+Backport commits to renamed files
+---------------------------------
+
+git config merge.renameLimit 999999
+git cherry-pick -X rename-threshold=25%
