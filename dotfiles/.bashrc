@@ -52,6 +52,10 @@ if which keychain >/dev/null 2>&1 ; then
     eval $(keychain --eval --quiet id_rsa)
 fi
 
+# fzf for system installed package
+test -r /usr/share/fzf/key-bindings.bash && source /usr/share/fzf/key-bindings.bash
+test -r /usr/share/fzf/completion.bash && source /usr/share/fzf/completion.bash
+
 shopt -s histappend
 shopt -s cmdhist
 
