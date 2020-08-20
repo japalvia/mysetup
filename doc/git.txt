@@ -89,3 +89,12 @@ Stash
 
 Stash per file:
 git stash push -n "message" -- [path]
+
+Submodules
+----------
+
+Remove a submodule:
+git submodule deinit dotfiles/.vim/bundle/ragel
+git rm --cached dotfiles/.vim/bundle/ragel
+rm -rf .git/modules/dotfiles/.vim/bundle/ragel
+.gitmodules still needs manually removing the submodules
