@@ -15,6 +15,16 @@ Show list of files in vim a single column with destination names only:
 qmv -fdo some_dir/some_file*png
 vim regex command: %s/foo/bar/g
 
+External display brightness
+---------------------------
 
+as root:
+ddcutil capabilities | grep "Feature: 10"
+ddcutil getvcp 10
+ddcutil setvcp 10 65
+
+TODO:
+    values get reset on suspend/resume?
+    https://wiki.archlinux.org/index.php/backlight#External_monitors
 
 
