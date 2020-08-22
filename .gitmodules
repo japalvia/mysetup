@@ -51,3 +51,6 @@
 [submodule "dotfiles/.urxvt/ext/urxvt-font-size"]
 	path = dotfiles/.urxvt/ext/urxvt-font-size
 	url = https://github.com/majutsushi/urxvt-font-size.git
+[submodule "dotfiles/.vim/bundle/vim-orgmode"]
+	path = dotfiles/.vim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
