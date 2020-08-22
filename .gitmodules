@@ -13,15 +13,9 @@
 [submodule "dotfiles/.vim/bundle/supertab"]
 	path = dotfiles/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "dotfiles/.vim/bundle/rust"]
-	path = dotfiles/.vim/bundle/rust
-	url = https://github.com/rust-lang/rust.vim.git
 [submodule "dotfiles/.vim/bundle/cscope_dynamic"]
 	path = dotfiles/.vim/bundle/cscope_dynamic
 	url = https://github.com/erig0/cscope_dynamic.git
-[submodule "dotfiles/.vim/bundle/ragel"]
-	path = dotfiles/.vim/bundle/ragel
-	url = https://github.com/msteinert/vim-ragel.git
 [submodule "dotfiles/.vim/bundle/rename"]
 	path = dotfiles/.vim/bundle/rename
 	url = https://github.com/danro/rename.vim
@@ -45,6 +39,12 @@
 [submodule "dotfiles/.vim/bundle/vim-eunuch"]
 	path = dotfiles/.vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+[submodule "dotfiles/.vim/bundle/fzf"]
+	path = dotfiles/.vim/bundle/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "dotfiles/.vim/bundle/vim-polyglot"]
+	path = dotfiles/.vim/bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
 [submodule "dotfiles/.vim/bundle/vim-bitbake"]
 	path = dotfiles/.vim/bundle/vim-bitbake
 	url = https://github.com/kergoth/vim-bitbake.git

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+options=
+stop=false
+
+while true; do
+   case $1 in
+       --) # the rest of arguments are positional
+           shift
+           break
+           ;;
+       *)
+           options="$options $1"
+           ;;
+   esac
+   shift
+done
+
+input="$@"
+
+echo "options=$options"
+# echo "input=$input"
+
+for i in $input; do
+    # echo "input file=$i"
+    new_i="${i}.new"
+    convert "$i" $options "$new_i"
+    mv "$new_i" "$i"
+done
+
+exit 0
+
+
+convert IMG_20200721_131459.jpg -rotate 90 -strip -resize 50% new_pic.jpg
