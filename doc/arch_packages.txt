@@ -43,6 +43,7 @@ intel-ucode
 iw
 jq
 jre-openjdk
+hdparm
 keychain
 libreoffice-fresh
 libreoffice-fresh-fi
