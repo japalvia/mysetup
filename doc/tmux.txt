@@ -31,3 +31,8 @@ Long running sessions might get their DISPLAY variable
 out of sync when local machine is restarted etc.
 
 export DISPLAY="`tmux show-env | sed -n 's/^DISPLAY=//p'`"
+
+Sesssions
+---------
+Attach session here and detach others:
+tmux attach-session -d
