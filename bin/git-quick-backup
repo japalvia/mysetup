@@ -14,7 +14,8 @@ if [ -z "$latest_bak" ] ; then
     echo "First backup"
     count=0
 else
-    count=$(sed -n "s/\([[:space:]]*$branch-bak\)\([[:digit:]]*\)/\2/p" <<< "$latest_bak")
+    escaped_branch=$(sed 's|/|\\/|g' <<< $branch)
+    count=$(sed -n "s/\([[:space:]]*$escaped_branch-bak\)\([[:digit:]]*\)/\2/p" <<< "$latest_bak")
 fi
 
 count=$((count + 1))
