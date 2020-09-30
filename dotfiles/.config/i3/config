@@ -11,7 +11,7 @@
 
 # Mod4: Apple Cmd
 set $mod Mod1
-# set $sup Mod4
+set $sup Mod4
 
 
 
@@ -179,6 +179,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Control+l mode "$mode_system"
+bindsym $sup+l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
 
 # Volume controls
 bindsym XF86AudioRaiseVolume \
