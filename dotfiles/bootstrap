@@ -22,11 +22,21 @@ mkdir -p "$config_out"
 # dotfiles and -directories in user $HOME, excluding starting-point,
 # README and so forth
 find "$dotfiles" -mindepth 1 -maxdepth 1 \
-    \( -name ".config" -o -name "bootstrap" -o -name "README" \) -prune \
+    \(  -name ".config" -o \
+        -name ".ssh" -o \
+        -name "bootstrap" -o \
+        -name "README" \) \
+    -prune \
     -o -exec ln -v -s {} "$HOME" \;
 
-# RC files in .config/, don't recurse to sub-dirs.
+# RC dirs/files in .config/, don't recurse to sub-dirs.
 find "$config_in" -maxdepth 1 -type f -exec ln -v -s {} "$config_out" \;
+
+# configuration files in .ssh, dont recurse.
+ssh_in="$dotfiles"/.ssh
+ssh_out="$XDG_CONFIG_HOME"/.ssh
+mkdir -p "$ssh_out"
+find "$ssh_in" -maxdepth 1 -type f -exec ln -v -s {} "$ssh_out" \;
 
 # Application-specific sub-directories, excluding .config itself.
 # Filter out generated directories (python runtime).
