@@ -9,12 +9,20 @@ qemu
 edk2-ovmf   # UEFI firmware
 virt-manager
 virt-viewer # remote-viewer spice client
+ebtables # required by virsh networking
+dnsmasq
+
+Network setup:
+virsh net-autostart default
+virsh net-start default
+virsh net-list --all
 
 systemctl start libvirt
 systemctl enable libvirt
 
 Add kvm and libvirt groups to user:
-sudo gpasswd -a $USER kvm libvirt
+sudo gpasswd -a $USER kvm
+sudo gpasswd -a $USER libvirt
 
 https://www.spice-space.org/download.html
 Windows guest tools - spice-guest-tools

@@ -87,6 +87,9 @@ C-v 000
 Reformat/re-indent a piece of text after selecting in visual mode:
 gq
 
+Show unsaved changes:
+:w !diff % -
+
 Moving around
 -------------
 

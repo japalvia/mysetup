@@ -10,6 +10,7 @@ bind-tools
 binutils
 bluez
 bluez-utils
+chromium
 clang
 clipmenu
 cmake
@@ -49,7 +50,6 @@ libreoffice-fresh-fi
 libtool
 linux
 linux-firmware
-linux-lts
 logrotate
 lshw
 lsof
@@ -101,7 +101,7 @@ usbutils
 valgrind
 vim
 vulkan-intel
-vulkan-mesa-layer
+vulkan-mesa-layers
 w3m
 wget
 which
@@ -114,6 +114,7 @@ xorg-xev
 xorg-xinit
 xorg-xprop
 xorg-xrandr
+xorg-xsetroot
 yasm
 youtube-dl
 zenity
