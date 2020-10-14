@@ -1,12 +1,44 @@
 Arch Linux installation following
 https://gist.github.com/HardenedArray/31915e3d73a4ae45adc0efa9ba458b07
-- CHANGES:
-    No swap
-    No encrypted /boot partition
-    timedatectl set-timezone Europe/Helsinki
-
 Forked copy:
-https://gist.github.com/japalvia/cb928935a8ca31bd2399e4d5c594d115
+https://gist.github.com/japalvia/663e3d7d6104167c4970d84be7dcc553
+
+Disk partitioning:
+The system disk is likely /dev/nvme0n1 (partitions named with pX)
+and the usb stick is /dev/sda.
+
+https://wiki.archlinux.org/index.php/Parted#Partitioning
+
+# parted /dev/nvme0n1
+(parted) mklabel gpt
+Answer Yes.
+
+https://wiki.archlinux.org/index.php/Parted#UEFI/GPT_examples
+(parted) mkpart "EFI system partition" fat32 1MiB 261MiB
+(parted) set 1 esp on
+(parted) mkpart "boot partition" ext4 261MiB 512MiB
+(parted) mkpart "root partition" xfs 512MiB 100%
+(parted) print list
+(parted) quit
+
+Format the partitions:
+# mkfs.vfat -F32 /dev/nvme0n1p1
+# mkfs.ext4 /dev/nvme0n1p2
+
+Follow the guide from step:
+Encrypt and open your system partition
+- cryptsetup mapping name: luks
+
+TODO: additional packages to pacstrap command:
+vim
+xfsprogs # needed for initrd image when using xfs
+
+TODO: follow the UTC time zone setup for setting hw clock
+
+TODO: configure /etc/hosts according to
+https://wiki.archlinux.org/index.php/installation_guide#Network_configuration
+
+timedatectl set-timezone Europe/Helsinki
 
 TODO: dhcpd? Don't enable the service, 'netctl start' fails
 
