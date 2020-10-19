@@ -1,6 +1,8 @@
 Bluetooth devices
 =================
 
+systemctl enable --now bluetooth
+
 Connecting headset
 ------------------
 
@@ -22,6 +24,9 @@ $ pulseaudio -k
 sudo rfkill block bluetooth
 sudo rfkill unblock bluetooth
 sudo systemctl restart bluetooth
+
+Configuring Teams with bluetooth headset:
+Pavucontrol -> Configuration -> Select hands-free profile to allow the mic
 
 Re-connecting after system reboot
 ---------------------------------

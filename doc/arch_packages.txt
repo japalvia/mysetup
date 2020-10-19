@@ -33,6 +33,7 @@ git
 groff
 grub
 htop
+hsetroot
 hwinfo
 i3lock
 i3status
@@ -86,6 +87,7 @@ scrot
 signal-desktop
 smartmontools
 s-nail
+socat
 speedtest-cli
 strace
 sudo
