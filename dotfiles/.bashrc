@@ -68,4 +68,6 @@ export BC_ENV_ARGS=$HOME/.config/bcrc
 export EDITOR=vim
 
 export HISTCONTROL=ignorespace
+# Silence dbus errors about accessibility bus
+export NO_AT_BRIDGE=1
 
