@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Generate minimal C++ app and build it.
+
+tab="$(printf '\t')"
+
+cat > main.cpp << "EOF"
+#include <iostream>
+
+using namespace std;
+
+class Foo {
+public:
+    Foo()
+    {
+        cout << "Foo constructor" << endl;
+    };
+
+private:
+
+};
+
+int main(int argc, char **argv)
+{
+    cout << "hello, world!" << endl;
+    return 0;
+}
+EOF
+
+cat > Makefile << EOF
+all:
+$tab g++ main.cpp -std=c++14 -Wall -Wfatal-errors -o main
+
+clean:
+$tab rm -f foo
+EOF
+
+make
