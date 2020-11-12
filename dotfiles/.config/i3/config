@@ -155,7 +155,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    status_command i3status
+    font pango:DejaVu Sans Mono 10
 }
 
 workspace_auto_back_and_forth yes
@@ -240,3 +241,10 @@ for_window [title="Android Emulator*"] \
 # tiled to container size.
 for_window [class="Display"] \
     floating enable
+
+assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
+for_window [class="Microsoft Teams" title="Microsoft Teams Notification"] 8 # layout splith, floating enable
+
+# move workspace to left and right monitors
+bindsym $mod+Shift+minus move workspace to output left
+bindsym $mod+Shift+plus move workspace to output right
