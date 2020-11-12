@@ -104,3 +104,24 @@ Backport commits to renamed files
 
 git config merge.renameLimit 999999
 git cherry-pick -X rename-threshold=25%
+
+Merge tools
+-----------
+
+Resolving merge conflicts with external tools:
+git config --global merge.tool meld
+Disable prompt, open automatically default tool:
+git config --global mergetool.prompt false
+
+Invoke tool manually:
+git mergetool
+
+Meld:
+Left panel contains the HEAD before the conflicting commit
+Center panel contains the base that the new commit expect
+Right panel contains the changes on top of base
+
+LOCAL - the head for the file(s) from the current branch on the machine that you are using.
+REMOTE - the head for files(s) from a remote location that you are trying to merge into your LOCAL branch.
+BASE - the common ancestor(s) of LOCAL and REMOTE.
+MERGED - the tag / HEAD object after the merge - this is saved as a new commit.
