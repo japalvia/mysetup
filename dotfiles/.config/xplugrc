@@ -1,16 +1,27 @@
 #!/bin/bash
 
+exec &> >(tee -a ~/tmp/xplugd.txt)
+
+echo "*** START ***"
+
+date
+
+set -x
+
 TYPE=$1
 DEVICE=$2
 STATUS=$3
 DESC=$4
 
-# Handle keyboard, ignore device ID
 case "$TYPE,$STATUS,$DESC" in
-    keyboard,connected,*)
+    keyboard,*connected,*)
         cd ~/ws/mysetup/xkb/ &&
             ./apply_xkb.sh . 2>/dev/null
         ;;
+    # Assume duplicate notifications for the same display
+    # Assume integrate display is also connected with external display
+    # Therefore it's better to just rely on auto detection
+    display,*)
+        autorandr --change
 esac
 
-# TODO: Handle display with xrandr call
