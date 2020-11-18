@@ -1,0 +1,14 @@
+Google APIs and Services
+========================
+
+https://console.developers.google.com/
+
+Refresh token expiration
+------------------------
+
+https://developers.google.com/identity/protocols/oauth2#expiration
+
+Using python-pydrive:
+Delete cached credentials. The path is defined in
+pydrive_settings.yaml: save_credentials_file
+
