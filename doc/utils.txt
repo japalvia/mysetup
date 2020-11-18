@@ -35,3 +35,14 @@ TODO:
     values get reset on suspend/resume?
     https://wiki.archlinux.org/index.php/backlight#External_monitors
 
+
+Read barcode from bill
+----------------------
+
+package: zbar
+
+Crop barcode from bill:
+scrot -s barcode.png
+
+Detect code from image:
+zbarimg barcode.png

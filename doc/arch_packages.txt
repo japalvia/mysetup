@@ -120,5 +120,6 @@ xorg-xrandr
 xorg-xsetroot
 yasm
 youtube-dl
+zbar
 zenity
 zip
