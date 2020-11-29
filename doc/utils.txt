@@ -46,3 +46,18 @@ scrot -s barcode.png
 
 Detect code from image:
 zbarimg barcode.png
+
+
+Bash and shell
+--------------
+
+Inherit shell options for e.g. tracing all child processes or stopping on error:
+export SHELLOPTS
+set -ex
+
+
+Github
+------
+
+Find the most active fork for a project:
+https://techgaun.github.io/active-forks/index.html
