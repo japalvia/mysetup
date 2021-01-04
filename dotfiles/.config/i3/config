@@ -243,7 +243,6 @@ for_window [class="Display"] \
     floating enable
 
 assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
-for_window [class="Microsoft Teams" title="Microsoft Teams Notification"] 8 # layout splith, floating enable
 
 # move workspace to left and right monitors
 bindsym $mod+Shift+minus move workspace to output left
