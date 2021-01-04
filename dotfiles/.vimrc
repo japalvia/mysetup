@@ -209,3 +209,6 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
 " Allow block cursor to move outside text on current line
 set virtualedit+=block
+
+" unwrap paragraph under cursor
+noremap <F6> vipJ
