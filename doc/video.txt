@@ -49,3 +49,19 @@ mpv
 ---
 
 LIBVA_DRIVER_NAME=iHD mpv --hwdec=auto --vo=vaapi [video_file]
+
+
+Webcam
+------
+
+Ensure user is added to video groupd:
+$ groups
+
+Add:
+gpasswd -a $USER video
+
+Logout or use login shell:
+su - $USER
+
+Test webcam:
+$ mpv av://v4l2:/dev/video0 --profile=low-latency --untimed

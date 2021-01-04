@@ -15,6 +15,7 @@ t       Load position from stack
 m[0-9]  Save a position (bookmark)
 t[0-9]  Load a position (bookmark)
 C       Toggle full-page color tinting
+I       invert colors for dark mode
 
 Other vim-like controls:
 /       Search document

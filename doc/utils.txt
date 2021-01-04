@@ -35,3 +35,22 @@ TODO:
     values get reset on suspend/resume?
     https://wiki.archlinux.org/index.php/backlight#External_monitors
 
+Serial console
+--------------
+
+sudo picocom -b 115200 /dev/ttyUSB0
+
+Add user to dialout group for non-root access to serial port:
+sudo usermod -a -G dialout username
+
+exit: ctrl-a ctrl-x (or ctrl-a-x)
+
+
+Archives
+--------
+
+Compress:
+tar -zcvf archive.tar.gz <input files>
+
+List:
+tar -ztvf archive.tar.gz

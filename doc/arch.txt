@@ -54,6 +54,21 @@ Find all 32bit multilib packages:
 yay  -Ss | grep multilib | grep Installed | cut -d" " -f1 | cut -d"/" -f2
 Then remove them one by one using "pacman -Rsc"
 
+Downgrade
+---------
+
+Arch packages:
+install 'downgrade' and run:
+$ sudo downgrade <package>
+
+AUR:
+Downgrade from cache:
+$ yay -U ~/.cache/yay/icaclient/icaclient-20.09-1-x86_64.pkg.tar.zst
+
+Otherwise, it should be possible to clone the package repo from
+https://aur.archlinux.org/packages
+and checkout appropriate version for building using makepkg.
+
 Testing
 -------
 
@@ -241,3 +256,19 @@ Logind / power management
 
 Reload config after editing:
 kill -s HUP $(systemctl show --property MainPID systemd-logind | cut -d= -f2)
+
+Default applications without DE
+-------------------------------
+
+Find MIME for file type:
+$ xdg-mime query filetype "some_file.pdf"
+application/pdf
+
+Find current default app for this MIME:
+$ xdg-mime query default application/pdf
+chromium.desktop
+
+Set new default for this MIME:
+$ xdg-mime default mupdf application/pdf
+
+Note: ranger is configured separately in rifle.conf

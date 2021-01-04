@@ -3,6 +3,11 @@ Bluetooth devices
 
 systemctl enable --now bluetooth
 
+Auto power-on after boot:
+/etc/bluetooth/main.conf
+[Policy]
+AutoEnable=true
+
 Connecting headset
 ------------------
 

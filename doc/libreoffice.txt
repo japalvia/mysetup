@@ -3,3 +3,18 @@ Libreoffice
 
 Disable line numbering in margins:
 Tools / Numbering / checkbox
+
+Dark mode
+---------
+
+Environment:
+export GTK_THEME=Adwaita:dark
+
+Libreoffice:
+Tools / Options / View
+    Select Icon Style: Breeze (SVG + dark)
+
+Tools / Options / Application Colors
+    Select Document background: Dark Grey 2
+    Select Application background: Dark Grey 2
+

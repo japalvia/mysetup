@@ -125,3 +125,18 @@ LOCAL - the head for the file(s) from the current branch on the machine that you
 REMOTE - the head for files(s) from a remote location that you are trying to merge into your LOCAL branch.
 BASE - the common ancestor(s) of LOCAL and REMOTE.
 MERGED - the tag / HEAD object after the merge - this is saved as a new commit.
+
+proxy
+-----
+
+git:// url needs a separate tunneling for proxy connection, see bin/gitproxy
+Alternative if pushing is not required:
+git config --global url.https://github.com/.insteadOf git://github.com/
+
+Patching
+--------
+
+Apply format-patch (0001-commit-message-here.patch) using the original commit and signing off
+yourself:
+git am --whitespace=fix --signoff < 0001-commit-message-here.patch
+
