@@ -1,0 +1,33 @@
+Citrix Workspace
+================
+
+Install from aur:
+icaclient
+
+Note that the installer script gives and example command how to copy template configs to your user
+account.
+
+A store or "discovery" url is needed to connect the service. This url can be found from Windows by
+accessing the systray icon context menu preferences/settings. Note that the url is slightly
+different from the web site when launched through downloaded ica file.
+
+Run selfervice and enter the url:
+/opt/Citrix/ICAClient/selfservice
+
+Citrix behaves badly with (tiling) window manages such as i3. After running the receiver once there
+should be file
+~/.ICAClient/All_Regions.ini
+Modify this according to:
+https://wiki.archlinux.org/index.php/citrix#Troubleshooting
+
+Launching app directly
+/opt/Citrix/ICAClient/util/storebrowse --launch <app> --username <user> <url>
+
+At this point <url> can be also found by:
+/opt/Citrix/ICAClient/util/storebrowse --liststores
+
+Enumerate all apps:
+/opt/Citrix/ICAClient/util/storebrowse -E
+
+Map local directory to H drive in remote host:
+~/.ICAClient/wfclient.ini:DrivePathH=/some/path/citrix_share
