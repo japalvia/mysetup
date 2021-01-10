@@ -140,3 +140,13 @@ Apply format-patch (0001-commit-message-here.patch) using the original commit an
 yourself:
 git am --whitespace=fix --signoff < 0001-commit-message-here.patch
 
+
+Reuse commit message after soft reset
+-------------------------------------
+
+Use case: cleaning up a large WIP commit is sometimes easier with a reset to allow the IDE/editor to
+move through each change.
+
+git reset --soft HEAD^
+# fix code
+git commit --reuse-message=ORIG_HEAD

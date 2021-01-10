@@ -22,7 +22,7 @@ Windows
 Create new window: prefix-c
 Close current window: prefix-&
 Previous window: prefix-p
-Rename: prebix-,
+Rename: prefix-,
 
 X11
 ---
@@ -36,3 +36,6 @@ Sesssions
 ---------
 Attach session here and detach others:
 tmux attach-session -d
+
+Detach to close connection:
+prefix-d
