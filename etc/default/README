@@ -1,0 +1,4 @@
+Manually synced system files from /etc.
+
+Compare and sync changes:
+meld /etc/default/grub etc/default/grub
