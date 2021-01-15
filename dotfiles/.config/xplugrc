@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec &> >(tee -a ~/tmp/xplugd.txt)
+exec &> >(tee -a /tmp/xplugd.txt)
 
 echo "*** START ***"
 
