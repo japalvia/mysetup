@@ -17,14 +17,14 @@ clipmenud &
 devmon --ignore-label lacie_os --no-gui &
 xplugd
 
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
-
-# Run compositor with default settings from /etc/xdg/picom.conf
+# Compositor
 picom -b
 
 # Set workspace root window background to black
 hsetroot -solid "#000000"
+
+# urxvt daemon
+urxvtd -q -f -o
 
 exec i3
 
@@ -34,4 +34,3 @@ pkill redshift
 pkill clipmenud
 pkill devmon
 pkill xplugd
-pkill autocutsel
