@@ -54,6 +54,13 @@ Find all 32bit multilib packages:
 yay  -Ss | grep multilib | grep Installed | cut -d" " -f1 | cut -d"/" -f2
 Then remove them one by one using "pacman -Rsc"
 
+Package logs
+------------
+
+See the "apt changelog" equivalent information for arch packages:
+pacolog -l 3 sudo
+
+
 Downgrade
 ---------
 

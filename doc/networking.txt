@@ -14,3 +14,12 @@ Setup .link and .network files normally
 Generate initramfs because kernel sets the name very early:
 mkinitcpio -P
 Reboot
+
+
+Wireless using iwctl
+--------------------
+
+TODO: initial setup
+
+Connecting to a known network, do a scan:
+$ iwctl station wlan0 scan
