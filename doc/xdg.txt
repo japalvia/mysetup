@@ -1,0 +1,13 @@
+XDG Base Directory Specification
+================================
+
+Without desktop environment some xdg integration needs to be setup manually.
+
+.desktop file must be in the predefined location:
+cp /opt/f5/vpn/com.f5.f5vpn.desktop ~/.local/share/applications/
+
+Add custom protocol handler for "f5-vpn://..." uri
+xdg-mime default com.f5.f5vpn.desktop x-scheme-handler/f5-vpn
+See ~/.config/mimeapps.list the config file
+
+

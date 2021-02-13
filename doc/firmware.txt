@@ -1,0 +1,11 @@
+Updating device firmware with fwupdmgr
+======================================
+
+requires dependencies:
+udisks2
+
+Check for latest updates:
+fwupdmgr refresh
+
+Show updated devices and the old -> new fw versions:
+fwupdmgr get-devices --filter=supported

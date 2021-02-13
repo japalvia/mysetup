@@ -1,0 +1,26 @@
+Meson
+-----
+
+cd /path/to/source/root
+meson builddir && cd builddir
+meson compile
+meson test
+
+Install (run from root dir):
+meson install -C builddir
+
+policykit authentication failure workaround
+-------------------------------------------
+Find the parent PID from terminal 1:
+echo $$
+
+Open terminal 2 and run pkttyagent:
+pkttyagent --process PID_FROM_STEP_1
+TODO: polkit-dumb-agent-git might solve this problem?
+
+Install as normal user:
+meson install -C builddir
+
+Uninstall:
+Apparently, there is no meson target?
+sudo meson uninstall -C builddir

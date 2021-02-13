@@ -1,0 +1,48 @@
+Dell Precision 5550 fingerprint reader
+======================================
+
+https://wiki.archlinux.org/index.php/Fprint
+
+https://www.reddit.com/r/Dell/comments/hpzsd2/how_to_get_the_fingerprint_reader_working_on_dell/fyojr41?utm_source=share&utm_medium=web2x&context=3
+
+Get binary driver from Canonical:
+git clone https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix/+git/libfprint-2-tod1-goodix
+
+other binary blob location:
+http://dell.archive.canonical.com/updates/pool/public/libf/libfprint-2-tod1-goodix/
+This is debian package source.
+Install files:
+sudo cp -r ./usr/lib/x86_64-linux-gnu/libfprint-2 /usr/local/lib/
+sudo chmod -R a+x /usr/local/lib/libfprint-2
+
+sudo cp ./lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules /usr/lib/udev/rules.d/
+Remove GROUP='plugdev'
+
+Reload rules and trigger devices to be loaded as newly found:
+# udevadm control --reload-rules && udevadm trigger
+
+aur/libfprint-tod-git fails due to the build running tests that depend on
+already installed libs by this package. Use upstream directly:
+git clone https://gitlab.freedesktop.org/3v1n0/libfprint.git
+git checkout tod
+--> build and install (default prefix: /usr/local)
+    see also meson.txt
+
+Check if fprint libs load successfully:
+LD_LIBRARY_PATH=/usr/local/lib ldd /usr/local/lib/libfprint-2/tod-1/libfprint-tod-goodix-53xc-0.0.6.so
+
+systemctl edit fprintd.service
+--> add
+[Service]
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+
+polkit:
+Authentication agent must be running. At least gnome agent works:
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+pam:
+/etc/pam.d/system-local-login
+/etc/pam.d/sudo
+auth      sufficient pam_unix.so try_first_pass likeauth nullok
+auth      sufficient pam_fprintd.so
+
