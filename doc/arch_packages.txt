@@ -73,6 +73,7 @@ patch
 pavucontrol
 picom
 pkgconf
+polkit-gnome
 pulseaudio
 pulseaudio-bluetooth
 pwgen

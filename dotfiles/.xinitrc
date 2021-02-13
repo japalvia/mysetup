@@ -26,6 +26,9 @@ hsetroot -solid "#000000"
 # urxvt daemon
 urxvtd -q -f -o
 
+# Polkit authentication agent
+systemd-cat /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 exec i3
 
 # Cleanup on exit
@@ -34,3 +37,4 @@ pkill redshift
 pkill clipmenud
 pkill devmon
 pkill xplugd
+kill $(pidof polkit-gnome-authentication-agent-1)
