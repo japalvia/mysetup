@@ -65,3 +65,97 @@ su - $USER
 
 Test webcam:
 $ mpv av://v4l2:/dev/video0 --profile=low-latency --untimed
+
+Webcam background
+-----------------
+
+https://www.virtual-webcam.com/
+
+Install v4l2loopback-dkms
+
+Load the driver. Exclusive caps is required to make device available in chrome:
+modprobe v4l2loopback exclusive_caps=1
+
+Python 3.5-3.8 is required for compatibility with tensorflow.
+
+Manage multiple python3 versions:
+yay -S pyenv
+
+Isolate python (pip) dependencies for a project:
+yay -S virtualenv
+
+Install 3.8.7
+pyenv install 3.8.7
+
+# see "pyenv init" for instruction. we need to init the environment.
+eval "$(pyenv init -)"
+pyenv init
+
+pyenv shell 3.8.7
+
+Check the python runtime:
+python --version && which python
+
+Now, we can create the virtualenv for this project:
+virtualenv -p python3.8 ~/venvs/virtual_webcam
+
+Activate this environment:
+source ~/venvs/virtual_webcam/bin/activate
+
+Check if you are in virtualenv (deactivate command exists):
+command -v deactivate
+
+Logout from virtualenv:
+deactivate
+
+Clone repo from https://github.com/allo-/virtual_webcam_background
+
+cd ~/ws/virtual_webcam_background/
+pip install -r requirements.txt
+
+Run:
+./virtual_webcam.py
+
+Test virtual webcam device:
+mpv av://v4l2:/dev/video4 --profile=low-latency --untimed
+
+---
+
+Nvidia PRIME
+------------
+
+https://wiki.archlinux.org/index.php/PRIME
+
+DRI_PRIME=1 glxinfo | grep "OpenGL renderer"
+
+modesetting driver does not support CUDA. Install nvidia package. Note that the package should
+install additional controls to blacklist modesetting driver to allow nvidia driver to load on boot.
+yay -S nvidia
+reboot
+
+Install:
+cuda cuda-tools cudnn
+
+Run app:
+prime-run glxinfo | grep "OpenGL renderer"
+
+virtual_webcam_background dependency versioning locks tensorflow to 2.3 which support CUDA version 10.
+It appears that the latest tensorflow 2.4.2 is ok and all version locks can be removed from
+requirements.txt to allow tensorflow to update to the latest in pypi:
+pip install --upgrade -r requirements.txt
+
+Run virtual webcam:
+prime-run ./virtual_webcam.py
+
+misc testing:
+export XLA_FLAGS=--xla_gpu_cuda_data_dir=/opt/cuda
+export TF_XLA_FLAGS="--tf_xla_auto_jit=2"
+
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+Hack nvidia bug in cuda 11.2:
+cd /opt/cuda/targets/x86_64-linux/lib
+sudo -s ln libcusolver.so.11 libcusolver.so.10
+export  LD_LIBRARY_PATH=/opt/cuda/targets/x86_64-linux/lib
+Then the above python test will find a GPU

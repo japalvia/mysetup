@@ -18,6 +18,8 @@ m<key>  bookmark durrent directory to <key>
         bookmark file is ~/.local/share/ranger/bookmarks
         and can be edited on-the-fly
 
+:bulkrename Select items and press ":" followed by bulkrename
+
 Extract archive
 ---------------
 
