@@ -62,6 +62,7 @@ test -r /usr/share/fzf/completion.bash && source /usr/share/fzf/completion.bash
 
 shopt -s histappend
 shopt -s cmdhist
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export PATH=$HOME/bin:$PATH
 
