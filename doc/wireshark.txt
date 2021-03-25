@@ -1,0 +1,5 @@
+Wireshark dissectors
+--------------------
+
+Disable protocol (e.g. due to incorrect heuristic)
+Menu: Analyze / Enabled Protocols
