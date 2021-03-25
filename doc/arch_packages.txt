@@ -80,6 +80,7 @@ pwgen
 python-i3ipc
 python-pip
 python-pydrive
+qt5ct
 ranger
 redshift
 renameutils
