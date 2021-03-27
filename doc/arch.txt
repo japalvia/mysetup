@@ -279,3 +279,17 @@ Set new default for this MIME:
 $ xdg-mime default mupdf application/pdf
 
 Note: ranger is configured separately in rifle.conf
+
+Maintain mirrorlist
+-------------------
+
+https://wiki.archlinux.org/index.php/reflector
+
+sudo reflector --verbose --country Finland,Sweden --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+
+Watchdog
+--------
+
+https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
+Add nowatchdog to GRUB_CMDLINE_LINUX_DEFAULT
+grub-mkconfig -o /boot/grub/grub.cfg
