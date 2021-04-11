@@ -208,6 +208,9 @@ bindsym $mod+section exec --no-startup-id clipmenu
 # Try loading workspace layout from last saved
 bindsym $mod+F1 exec --no-startup-id ~/bin/i3-load-layout
 
+# Change to currently detected display
+bindsym Control+section exec --no-startup-id autorandr --change
+
 # Switch virtual terminal from Xorg
 bindsym Mod4+Left exec --no-startup-id ~/bin/vt-prev
 bindsym Mod4+Right exec --no-startup-id ~/bin/vt-next
