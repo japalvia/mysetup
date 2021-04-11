@@ -54,3 +54,6 @@
 [submodule "dotfiles/.vim/bundle/vim-orgmode"]
 	path = dotfiles/.vim/bundle/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
+[submodule "dotfiles/.vim/bundle/plugin"]
+	path = dotfiles/.vim/bundle/plugin
+	url = https://github.com/fidian/hexmode.git

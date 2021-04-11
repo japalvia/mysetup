@@ -273,3 +273,9 @@ sbtrkt	fuzzy-match					Items that match sbtrkt
 !fire	inverse-exact-match			Items that do not include fire
 !^music	inverse-prefix-exact-match	Items that do not start with music
 !.mp3$	inverse-suffix-exact-match	Items that do not end with .mp3
+
+Binary files
+------------
+
+Using hexmode plugin open any file in binary mode:
+vim -b file.bin
