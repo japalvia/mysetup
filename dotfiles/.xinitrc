@@ -1,3 +1,7 @@
+
+# Services like dunst displaying notifications etc need $DISPLAY
+systemctl --user import-environment DISPLAY
+
 # Setup all keyboard mappings.
 ~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb >/dev/null 2>&1
 
