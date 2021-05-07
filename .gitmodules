@@ -57,8 +57,8 @@
 [submodule "dotfiles/.tmux/plugins/tpm"]
 	path = dotfiles/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "dotfiles/.vim/bundle/plugin"]
-	path = dotfiles/.vim/bundle/plugin
+[submodule "dotfiles/.vim/bundle/hexmode"]
+	path = dotfiles/.vim/bundle/hexmode
 	url = https://github.com/fidian/hexmode.git
 [submodule "dotfiles/.vim/bundle/table-mode"]
 	path = dotfiles/.vim/bundle/table-mode
