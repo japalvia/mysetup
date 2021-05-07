@@ -26,3 +26,25 @@ TODO: initial setup
 
 Connecting to a known network, do a scan:
 $ iwctl station wlan0 scan
+
+
+Name resolution
+---------------
+
+Use systemd-resolved. Check that /etc/systemd/resolved.conf stub resolver is enabled and
+/etc/resolv.conf is a symlink to run-time generated conf by resolved.
+
+Status:
+resolvectl
+
+
+Proxy
+-----
+
+Chrome fails to connect services with F5 VPN connection and http proxy
+
+Try adding name servers to the VPN tunneling link:
+sudo resolvectl dns tun0 <nameserver> <nameserver>
+
+Try to flush name cache:
+chrome://net-internals/proxyservice.config#dns
