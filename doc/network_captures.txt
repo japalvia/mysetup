@@ -1,0 +1,68 @@
+Network captures
+================
+
+Example capture:
+tcpdump -i wlan0 -n udp and not broadcast
+
+Replay pcap, rewrite destination address:
+sudo tcpreplay-edit -i wlan0 --pnat=126.0.0.0/8:126.2.2.2/0 sample.pcap
+
+Replay UDP broadcast:
+https://github.com/rigtorp/udpreplay.git
+udpreplay -i wlan0 -b sample.pcap
+
+Replay capture on the same host
+-------------------------------
+
+Tcpreplay uses raw socket(?) to write the packets on low level interface, passing the kernel
+routing. Therefore a separate machine should be used to replay the capture. Alternatively,
+network namespace can be used to separate the sender environment including IP routing tables.
+
+http://netery.blogspot.com/2015/08/part-ii-send-packets-on-same-computer.html
+
+Two shells as root user
+C: container
+H: host
+
+C: unshare --net bash
+
+H: ip link add name ceth0 type veth peer name ceth1
+H: ip address add 172.100.0.1/24 dev ceth0
+
+Get PID of containe process:
+C: echo $$
+
+Set PID for network namespace:
+H: ip link set ceth1 netns PID
+H: ip link set dev ceth0 up
+
+C: ip a add 172.100.0.2/24 dev ceth1
+C: ip link set dev ceth1 up
+
+The replay requires rewriting destination IP and MAC addresses (ceth1). Checksums are rewritten in
+case the pcap has been manually edited.
+tcpreplay-edit \
+-C \
+-i ceth1 \
+-S 126.0.0.0/8:172.100.0.2 \
+-D 126.0.0.0/8:172.100.0.1 \
+--enet-dmac=76:b5:db:b7:c1:30 \
+captures/parameter_request.pcap
+
+Further refined version where the source port is set to 5533. Here, you must first inspect the
+original source port number. Note, that the portmap applies to all ports (source and destination):
+tcpreplay-edit \
+--fixcsum \
+--intf1=ceth1 \
+--srcipmap=126.0.0.0/8:172.100.0.2 \
+--dstipmap=126.0.0.0/8:172.100.0.1 \
+--portmap=3067:5533 \
+--enet-dmac=76:b5:db:b7:c1:30 \
+captures/parameter_request.pcap
+
+The receiving application is run on the host shell
+and uses ceth0 interface to receive the replay.
+Example test:
+tcpdump -n -i ceth0
+
+
