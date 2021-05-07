@@ -57,3 +57,6 @@
 [submodule "dotfiles/.vim/bundle/plugin"]
 	path = dotfiles/.vim/bundle/plugin
 	url = https://github.com/fidian/hexmode.git
+[submodule "dotfiles/.vim/bundle/table-mode"]
+	path = dotfiles/.vim/bundle/table-mode
+	url = git@github.com:dhruvasagar/vim-table-mode.git
