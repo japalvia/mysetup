@@ -48,7 +48,7 @@ Synchronize database when a download fails, optionally also install a package:
 pacman -Sy [package]
 
 Find package that provides a file:
-pacman -Fs [file]
+pacman -F [file]
 
 Find all 32bit multilib packages:
 yay  -Ss | grep multilib | grep Installed | cut -d" " -f1 | cut -d"/" -f2
@@ -71,6 +71,7 @@ $ sudo downgrade <package>
 AUR:
 Downgrade from cache:
 $ yay -U ~/.cache/yay/icaclient/icaclient-20.09-1-x86_64.pkg.tar.zst
+$ paru --pacman-cache .cache/yay/clio clion
 
 Otherwise, it should be possible to clone the package repo from
 https://aur.archlinux.org/packages
