@@ -1,0 +1,18 @@
+Raspberry Pi
+============
+
+Install OS on SD card using rpi-imager tool.
+
+Cross-compile rust application
+------------------------------
+
+Install rustup from Arch repository and setup default toolchain:
+paru -S rustup
+rustup install stable
+rustup default stable
+
+Install standard runtime for ARM V7:
+rustup target add armv7-unknown-linux-gnueabihf
+
+Build your project:
+cross build --target armv7-unknown-linux-gnueabihf
