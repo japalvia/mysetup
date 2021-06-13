@@ -1,0 +1,10 @@
+Dunst
+=====
+
+Run as systemd user service
+Static service, needs to be manually started and stopped (see ~/.xinitrc)
+
+Configuring font with unicode (emoji) support:
+https://www.jvt.me/posts/2018/02/28/emoji-dunst/
+font = Liberation Mono, Noto Emoji 12
+

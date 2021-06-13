@@ -1,0 +1,13 @@
+File system
+===========
+
+Check if partition is encrypted
+-------------------------------
+
+Use mount to list relevant file systems.
+Tab-completion works for blkid in /dev/.
+
+Show device attributes:
+blkid /dev/nvme0n1*
+blkid /dev/mmcblk0* /dev/mapper/*
+

@@ -1,0 +1,6 @@
+PyCharm
+=======
+
+Fix popup/hint background color:
+Settings / Editor / Color Scheme / General / General
+Select Documentation, on the right side unselect Background checkbox
