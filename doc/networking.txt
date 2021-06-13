@@ -15,6 +15,9 @@ Generate initramfs because kernel sets the name very early:
 mkinitcpio -P
 Reboot
 
+Remove all IP addresses from interface:
+ip addr flush dev <interface>
+
 
 Wireless using iwctl
 --------------------

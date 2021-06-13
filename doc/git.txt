@@ -150,3 +150,9 @@ move through each change.
 git reset --soft HEAD^
 # fix code
 git commit --reuse-message=ORIG_HEAD
+
+Gerrit
+------
+
+Install git-review package.
+

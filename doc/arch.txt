@@ -281,6 +281,16 @@ $ xdg-mime default mupdf application/pdf
 
 Note: ranger is configured separately in rifle.conf
 
+SysRq
+-----
+
+Check currently allowed operations:
+cat /proc/sys/kernel/sysrq
+sysctl kernel.sysrq
+
+Enable all operations permanently:
+sysctl kernel.sysrq=1
+
 Maintain mirrorlist
 -------------------
 

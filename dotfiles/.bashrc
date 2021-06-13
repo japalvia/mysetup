@@ -54,12 +54,15 @@ if which keychain >/dev/null 2>&1 ; then
     eval $(keychain --eval --quiet id_rsa)
 fi
 
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
 # fzf for system installed package
 test -r /usr/share/fzf/key-bindings.bash && source /usr/share/fzf/key-bindings.bash
 test -r /usr/share/fzf/completion.bash && source /usr/share/fzf/completion.bash
 
 shopt -s histappend
 shopt -s cmdhist
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
@@ -73,4 +76,10 @@ export EDITOR=vim
 export HISTCONTROL=ignorespace
 # Silence dbus errors about accessibility bus
 export NO_AT_BRIDGE=1
+
+# GTK dark theme
+export GTK_THEME=Adwaita:dark
+
+# QT5 theme configured by qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
 

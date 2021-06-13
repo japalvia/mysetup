@@ -43,6 +43,7 @@ Authentication agent must be running. At least gnome agent works:
 pam:
 /etc/pam.d/system-local-login
 /etc/pam.d/sudo
+/etc/pam.d/i3lock
 auth      sufficient pam_unix.so try_first_pass likeauth nullok
 auth      sufficient pam_fprintd.so
 
