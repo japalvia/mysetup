@@ -1,6 +1,7 @@
 
 # Services like dunst displaying notifications etc need $DISPLAY
 systemctl --user import-environment DISPLAY
+systemctl --user start dunst.service
 
 # Setup all keyboard mappings.
 ~/ws/mysetup/xkb/apply_xkb.sh ~/ws/mysetup/xkb >/dev/null 2>&1
@@ -42,3 +43,4 @@ pkill clipmenud
 pkill devmon
 pkill xplugd
 kill $(pidof polkit-gnome-authentication-agent-1)
+systemctl --user stop dunst.service
