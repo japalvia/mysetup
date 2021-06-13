@@ -60,6 +60,12 @@
 [submodule "dotfiles/.vim/bundle/hexmode"]
 	path = dotfiles/.vim/bundle/hexmode
 	url = https://github.com/fidian/hexmode.git
+[submodule "dotfiles/.vim/bundle/vim-slumlord"]
+	path = dotfiles/.vim/bundle/vim-slumlord
+	url = https://github.com/scrooloose/vim-slumlord.git
+[submodule "dotfiles/.vim/bundle/plantuml-syntax"]
+	path = dotfiles/.vim/bundle/plantuml-syntax
+	url = https://github.com/aklt/plantuml-syntax.git
 [submodule "dotfiles/.vim/bundle/table-mode"]
 	path = dotfiles/.vim/bundle/table-mode
 	url = git@github.com:dhruvasagar/vim-table-mode.git

@@ -189,6 +189,11 @@ nnoremap <F4> :b#<CR>
 " Refresh current file
 nnoremap <F5> :e<CR>
 
+" Save in all modes
+inoremap <F1> <C-O>:w<CR>
+nnoremap <F1> <C-O>:w<CR>
+vnoremap <F1> <C-O>:w<CR>
+
 " Store only the open file, ignore others. This helps to
 " drop configuration edits on run-time that are no longer valid.
 set sessionoptions=buffers

@@ -64,6 +64,7 @@ shopt -s cmdhist
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
