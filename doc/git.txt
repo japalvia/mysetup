@@ -126,6 +126,9 @@ REMOTE - the head for files(s) from a remote location that you are trying to mer
 BASE - the common ancestor(s) of LOCAL and REMOTE.
 MERGED - the tag / HEAD object after the merge - this is saved as a new commit.
 
+TODO: vimdiff as mergetool
+https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+
 proxy
 -----
 

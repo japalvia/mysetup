@@ -24,6 +24,20 @@ Wireless using iwctl
 
 TODO: initial setup
 
+Race condition with udev renaming active phy during boot:
+https://insanity.industries/post/racefree-iwd/
+https://iwd.wiki.kernel.org/interface_lifecycle
+
+Workaround:
+Find the interface name: wlan0
+$ systemctl list-units |grep wlan0
+  [..]
+  sys-subsystem-net-devices-wlan0.device
+
+Mark this unit as iwd's dependency:
+$ systemctl edit iwd.service
+
+
 Connecting to a known network, do a scan:
 $ iwctl station wlan0 scan
 

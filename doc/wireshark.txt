@@ -3,3 +3,10 @@ Wireshark dissectors
 
 Disable protocol (e.g. due to incorrect heuristic)
 Menu: Analyze / Enabled Protocols
+
+
+Filter packets by raw byte value. Here, headers are 42 bytes and we want match the 3rd payload byte:
+udp and frame[44] == c0
+
+Regex matching for payload:
+data.data matches sysinfo

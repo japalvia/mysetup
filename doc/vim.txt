@@ -81,6 +81,9 @@ C-u
 Delete from cursor position to end of line without new line:
 vg_d
 
+Delete non-matching lines:
+:v/foo/d
+
 Insert NUL byte (looks like ^@):
 C-v 000
 
@@ -279,3 +282,18 @@ Binary files
 
 Using hexmode plugin open any file in binary mode:
 vim -b file.bin
+
+
+Table mode
+----------
+https://github.com/dhruvasagar/vim-table-mode
+
+Table mode:
+<leader> tm
+
+Start the first line with '|' and enter each cell
+Start the next line with '||' to get horizontal line
+Continue entering cell content and closing cell with '|'
+Close the top (line) of the table similarly with '||'
+
+
