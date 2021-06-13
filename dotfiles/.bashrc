@@ -62,6 +62,7 @@ shopt -s histappend
 shopt -s cmdhist
 
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
