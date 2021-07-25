@@ -1,8 +1,7 @@
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
-" Use https://github.com/vim-scripts as primary source
-" Fallback to personal account otherwise
 Plug 'vim-scripts/Zenburn'
+Plug 'jremmen/vim-ripgrep'
 
 " Initialize plugin system
 call plug#end()

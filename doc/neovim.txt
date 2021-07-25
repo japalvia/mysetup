@@ -1,0 +1,13 @@
+Neovim from scratch
+===================
+
+Install neovim using distro package.
+
+Plugin manager:
+https://github.com/junegunn/vim-plug
+
+Installing a plugin:
+Add new Plug command in ~/.config/nvim/init.vim
+Run command :PlugInstall in nvim
+
+
