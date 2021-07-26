@@ -93,6 +93,9 @@ gq
 Show unsaved changes:
 :w !diff % -
 
+Reformat XML to human readable:
+:%!xmllint --format %
+
 Moving around
 -------------
 
