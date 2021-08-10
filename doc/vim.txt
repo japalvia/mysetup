@@ -96,6 +96,9 @@ Show unsaved changes:
 Reformat XML to human readable:
 :%!xmllint --format %
 
+Count matches:
+:%s/foobar//n
+
 Moving around
 -------------
 

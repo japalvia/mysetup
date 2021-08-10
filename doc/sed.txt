@@ -19,3 +19,9 @@ echo "10.77.65.67" | sed -n 's/\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}/xx/p'
 
 Do action only if regex matches on line first:
 sed -E -n "/${common_gw}/! s/.../.../p"
+
+
+Range expression
+----------------
+
+sed -n '/line1/,/line/p' file
