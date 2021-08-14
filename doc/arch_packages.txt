@@ -32,9 +32,11 @@ gdb
 git
 groff
 grub
-htop
+hdparm
 hsetroot
+htop
 hwinfo
+i3-layout-manager-git
 i3lock
 i3status
 i3-wm
@@ -45,7 +47,6 @@ intel-ucode
 iw
 jq
 jre-openjdk
-hdparm
 keychain
 libreoffice-fresh
 libreoffice-fresh-fi
@@ -69,6 +70,7 @@ netctl
 openssh
 p7zip
 pacman-contrib
+pacolog
 patch
 pavucontrol
 picom
@@ -93,6 +95,7 @@ smartmontools
 s-nail
 socat
 speedtest-cli
+spotify
 strace
 sudo
 sysfsutils
@@ -121,6 +124,7 @@ xorg-xinit
 xorg-xprop
 xorg-xrandr
 xorg-xsetroot
+xplugd-git
 yasm
 youtube-dl
 zbar

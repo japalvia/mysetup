@@ -1,4 +1,0 @@
-i3-layout-manager-git
-pacolog
-spotify
-xplugd-git
