@@ -73,3 +73,14 @@ Sync time
 
 systemctl start systemd-timesyncd.service
 systemctl enable systemd-timesyncd.service
+
+Packages
+--------
+
+Enable AUR:
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+paru -S --needed - < mysetup/doc/arch_packages.txt
