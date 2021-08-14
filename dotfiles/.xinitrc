@@ -29,6 +29,7 @@ picom -b
 hsetroot -solid "#000000"
 
 # urxvt daemon
+# TODO: remove the daemon once transition to alacritty is complete
 urxvtd -q -f -o
 
 # Polkit authentication agent

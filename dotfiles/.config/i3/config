@@ -31,9 +31,10 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec urxvtc
 # start a terminal in the same directory as active window (urxvt specific)
-bindsym $mod+Shift+Return exec urxvt -cd "$(xcwd)"
+# bindsym $mod+Shift+Return exec urxvt -cd "$(xcwd)"
 
 # kill focused window
 bindsym $mod+Shift+q kill
