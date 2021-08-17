@@ -7,7 +7,7 @@ case "$1" in
 	logout)
 		swaymsg exit
 		;;
-	sleep)
+	suspend)
 		systemctl suspend
 		;;
 	reboot)
