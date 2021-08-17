@@ -76,7 +76,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 export BC_ENV_ARGS=$HOME/.config/bcrc
 
-export EDITOR=vim
+export EDITOR=nvim
 
 export HISTCONTROL=ignorespace
 # Silence dbus errors about accessibility bus
@@ -88,3 +88,8 @@ export GTK_THEME=Adwaita:dark
 # QT5 theme configured by qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# Wayland env variables for apps and frameworks
+if [[ $XDG_SESSION_TYPE == wayland ]] ; then
+    export XDG_SESSION_TYPE=wayland
+    export GDK_BACKEND=wayland
+fi
