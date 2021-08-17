@@ -249,5 +249,10 @@ exec swayidle -w \
 
 # Clipboard manager
 # exec wl-paste -t text --watch clipman store
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
-bindsym $mod+section exec clipman pick -t bemenu --histpath="~/.local/share/clipman-primary.json"
+exec wl-paste -p -t text --watch \
+    clipman store -P --max-items=1000 --histpath="~/.local/share/clipman-primary.json"
+
+exec clipman restore
+
+bindsym $mod+section exec clipman \
+    --primary pick -t bemenu --histpath="~/.local/share/clipman-primary.json"
