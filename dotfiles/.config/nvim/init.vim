@@ -30,3 +30,5 @@ set ignorecase              " ignore case in search pattern
 set smartcase               " override ignorecase option when pattern contains upper case characters
 
 set formatoptions-=cro      " do no insert comment leaders automatically
+
+autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces on buffer save
