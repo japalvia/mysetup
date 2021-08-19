@@ -256,3 +256,6 @@ exec clipman restore
 
 bindsym $mod+section exec clipman \
     --primary pick -t bemenu --histpath="~/.local/share/clipman-primary.json"
+
+# Screen color temperature
+exec gammastep
