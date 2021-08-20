@@ -241,14 +241,13 @@ input "type:keyboard" {
 
 # Idle configuration
 exec swayidle -w \
-    timeout 900 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    timeout 5 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"' \
-    timeout 1800 'swaylock -f -c 000000' \
+    timeout 900 'swaylock -f -c 000000' \
     before-sleep 'playerctl pause' \
     before-sleep 'swaylock -f -c 000000'
 
 # Clipboard manager
-# exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch \
     clipman store -P --max-items=1000 --histpath="~/.local/share/clipman-primary.json"
 
