@@ -170,12 +170,14 @@ bindsym $mod+Control+l mode "$mode_system"
 bindsym $sup+l exec --no-startup-id $sway_exit lock, mode "default"
 
 # Idle configuration
+set $locker 'swaylock -f -c 000000'
 exec swayidle -w \
-    timeout 5 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    timeout 900 $locker \
+    timeout 915 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    timeout 900 'swaylock -f -c 000000' \
-    before-sleep 'playerctl pause' \
-    before-sleep 'swaylock -f -c 000000'
+    timeout 15 'if pgrep swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
+    before-sleep $locker
 
 # Volume controls
 bindsym XF86AudioRaiseVolume \
