@@ -234,9 +234,10 @@ assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
 bindsym $mod+Shift+minus move workspace to output left
 bindsym $mod+Shift+plus move workspace to output right
 
-
+# https://github.com/swaywm/sway/wiki
+# https://www.charvolant.org/doug/xkb/html/node5.html
 input "type:keyboard" {
-  xkb_file ~/.config/xkb/custom.xkb
+  xkb_layout "fi_linux_dev"
 }
 
 # Idle configuration
