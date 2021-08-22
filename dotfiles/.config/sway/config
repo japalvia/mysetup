@@ -168,6 +168,14 @@ mode "$mode_system" {
 bindsym $mod+Control+l mode "$mode_system"
 bindsym $sup+l exec --no-startup-id $sway_exit lock, mode "default"
 
+# Idle configuration
+exec swayidle -w \
+    timeout 5 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 900 'swaylock -f -c 000000' \
+    before-sleep 'playerctl pause' \
+    before-sleep 'swaylock -f -c 000000'
+
 # Volume controls
 bindsym XF86AudioRaiseVolume \
     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -239,14 +247,6 @@ bindsym $mod+Shift+plus move workspace to output right
 input "type:keyboard" {
   xkb_layout "fi_linux_dev"
 }
-
-# Idle configuration
-exec swayidle -w \
-    timeout 5 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
-    resume 'swaymsg "output * dpms on"' \
-    timeout 900 'swaylock -f -c 000000' \
-    before-sleep 'playerctl pause' \
-    before-sleep 'swaylock -f -c 000000'
 
 # Clipboard manager
 exec wl-paste -p -t text --watch \
