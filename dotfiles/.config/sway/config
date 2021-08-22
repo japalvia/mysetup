@@ -249,13 +249,19 @@ input "type:keyboard" {
 }
 
 # Clipboard manager
+set $primary_hist "~/.local/share/clipman-primary.json"
+set $bemenu_args "--ignorecase --fn Noto Emoji 12, Liberation Mono 12"
 exec wl-paste -p -t text --watch \
-    clipman store -P --max-items=1000 --histpath="~/.local/share/clipman-primary.json"
+    clipman store -P --max-items=1000 --histpath=$primary_hist
 
 exec clipman restore
-
 bindsym $mod+section exec clipman \
-    --primary pick -t bemenu --histpath="~/.local/share/clipman-primary.json"
+    --primary pick --histpath=$primary_hist \
+    --tool bemenu --tool-args=$bemenu_args
+
+bindsym $mod+shift+section exec clipman \
+    --primary clear --histpath=$primary_hist \
+    --tool bemenu --tool-args=$bemenu_args
 
 # Screen color temperature
 exec gammastep
