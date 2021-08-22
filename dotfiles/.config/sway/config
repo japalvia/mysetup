@@ -36,7 +36,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # start application launcher
-bindsym $mod+d exec bemenu-run
+set $bemenu_args --ignorecase --fn Liberation Mono 12
+bindsym $mod+d exec bemenu-run $bemenu_args
 
 # change focus
 bindsym $mod+j focus down
@@ -250,18 +251,17 @@ input "type:keyboard" {
 
 # Clipboard manager
 set $primary_hist "~/.local/share/clipman-primary.json"
-set $bemenu_args "--ignorecase --fn Noto Emoji 12, Liberation Mono 12"
 exec wl-paste -p -t text --watch \
     clipman store -P --max-items=1000 --histpath=$primary_hist
 
 exec clipman restore
 bindsym $mod+section exec clipman \
     --primary pick --histpath=$primary_hist \
-    --tool bemenu --tool-args=$bemenu_args
+    --tool bemenu --tool-args="$bemenu_args"
 
 bindsym $mod+shift+section exec clipman \
     --primary clear --histpath=$primary_hist \
-    --tool bemenu --tool-args=$bemenu_args
+    --tool bemenu --tool-args="$bemenu_args"
 
 # Screen color temperature
 exec gammastep
