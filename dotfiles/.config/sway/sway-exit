@@ -2,7 +2,12 @@
 
 case "$1" in
     lock)
-        swaylock -f -c 000000
+        # let swayidle turn off display, otherwise just lock
+        if pgrep -x swayidle ; then
+            pkill -USR1 swayidle
+        else
+            swaylock -f -c 000000
+        fi
         ;;
 	logout)
 		swaymsg exit
