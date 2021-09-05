@@ -1,0 +1,5 @@
+Chromium debugging
+==================
+
+Run with temporary profile:
+google-chrome-stable --user-data-dir=/tmp/chrome --no-first-run
