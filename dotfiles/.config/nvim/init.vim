@@ -4,8 +4,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'vim-scripts/Zenburn'
 Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
-Plug 'junegunn/fzf'
 
 call plug#end()             " Initialize plugin system
 
@@ -31,4 +31,20 @@ set smartcase               " override ignorecase option when pattern contains u
 
 set formatoptions-=cro      " do no insert comment leaders automatically
 
-autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces on buffer save
+" remove trailing whitespaces on buffer save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Source config and install plugins
+nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+
+" Fzf open buffers
+nnoremap <silent><leader>l :Buffers<CR>
+
+" fzf on git-tracked files
+nnoremap <C-p> :GFiles<Cr>
+
+" Disable arrow key navigation
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
