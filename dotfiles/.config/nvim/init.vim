@@ -13,26 +13,78 @@ colors zenburn
 
 let mapleader=","
 
-set tabstop=4               " number of columns occupied by a tab
-set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab               " converts tabs to white space
-set shiftwidth=4            " width for autoindents
-set autoindent              " indent a new line the same amount as the line just typed
-set breakindent             " indent long lines when inserting
+""" Options """
 
-set hidden                  " switch buffer without promting to save
+" number of columns occupied by a tab
+set tabstop=4
 
-set cursorline              " highlight cursor line
-set textwidth=79            " wrap longer text on white space
+" see multiple spaces as tabstops so <BS> does the right thing
+set softtabstop=4
 
-set incsearch               " show matches while typing pattern
-set ignorecase              " ignore case in search pattern
-set smartcase               " override ignorecase option when pattern contains upper case characters
+" converts tabs to white space
+set expandtab
 
-set formatoptions-=cro      " do no insert comment leaders automatically
+" width for autoindents
+set shiftwidth=4
 
-" remove trailing whitespaces on buffer save
-autocmd BufWritePre * :%s/\s\+$//e
+" indent a new line the same amount as the line just typed
+set autoindent
+
+" indent long lines when inserting
+set breakindent
+
+" switch buffer without promting to save
+set hidden
+
+" highlight cursor line
+set cursorline
+
+" wrap longer text on white space
+set textwidth=79
+
+" show matches while typing pattern
+set incsearch
+
+" ignore case in search pattern
+set ignorecase
+
+" override ignorecase option when pattern contains upper case characters
+set smartcase
+
+" do no insert comment leaders automatically
+set formatoptions-=cro
+
+" Indent function parameters on opening parenthesis level
+set cino+=(0
+
+" Long lines are indented to the beginning of the line
+set breakindent
+
+" Highlight cursor line
+set cursorline
+
+" Allow switching out of buffer without saving file
+set hidden
+
+" Spell check added words
+set spellfile=~/.vim/spell/en.utf-8.add
+
+" Allow block cursor to move outside text on current line
+set virtualedit+=block
+
+" Use paste (insert) mode for pasting unformatted text
+set pastetoggle=<F2>
+
+""" Key mapping """
+
+" Switch to the most recent buffer
+noremap <F4> :b#<CR>
+
+" unwrap paragraph under cursor
+noremap <F6> vipJ
+
+" format and return the same line where you were
+nnoremap <F7> mzgg=G`z<CR>
 
 " Source config and install plugins
 nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
@@ -48,3 +100,42 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+" Move focus to window without pressing 'w'
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Black hole register to delete without yanking
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+" Show current C function in status line
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
+nnoremap f :call ShowFuncName() <CR>
+
+""" Autocommand """
+
+" Keep the cursor centered in view when possible
+if exists("##WinNew")
+    augroup VCenterCursor
+      au!
+      au BufEnter,WinEnter,WinNew,VimResized *,*.*
+            \ let &scrolloff=winheight(win_getid())/2
+    augroup END
+endif
+
+" Always start on first line of git commit message
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
+" remove trailing whitespaces on buffer save
+autocmd BufWritePre * :%s/\s\+$//e
