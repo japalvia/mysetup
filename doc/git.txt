@@ -159,3 +159,5 @@ Gerrit
 
 Install git-review package.
 
+submit a new review or update existing:
+git review

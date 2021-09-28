@@ -1,0 +1,33 @@
+MTA using external SMTP server
+==============================
+
+sendEmail
+---------
+
+sendEmail -f "me@mail.com" -u "mySubject" -t "someone@mail.org" -s "my.smtp.com" -m "body"
+
+
+nullmailer
+----------
+
+Configure:
+/etc/nullmailer/remotes
+Modify the example remote, remove auth for anonymous SMTP on port 25
+
+/etc/nullmailer/defaultdomain
+Create this file with your mail domain, "mail.com"
+
+/etc/nullmailer/me
+Contains the hostname used when connecting SMTP server
+
+Start service and check status:
+sudo systemctl enable --now nullmailer.service
+sudo systemctl status nullmailer.service
+
+Send email:
+echo "Subject: sendmail test" | sendmail -v recipient@mail.org
+
+Note: emails will be queued for retry if sending has failed
+
+Nullmailer provides sendmail that can be used for git-send-email
+
