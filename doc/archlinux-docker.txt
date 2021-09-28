@@ -1,0 +1,52 @@
+Setup Arch Linux Docker container for testing
+=============================================
+
+docker pull archlinux
+
+Disposable instance:
+docker run -it archlinux
+
+Create and start:
+docker create --interactive --tty --volume ~/dotfiles:/home/jarkko/dotfiles --hostname arch-docker --name archlinux1 archlinux
+
+docker start <ID>
+
+docker exec -it arch-docker /bin/bash
+
+From root terminal:
+
+pacman -Sy --noconfirm reflector rsync python-pip
+reflector --country Finland --latest 5  --save "/etc/pacman.d/mirrorlist"
+
+# /home/jarkko gets created by the --volume option
+useradd jarkko
+passwd jarkko
+
+--> log out as root
+
+docker exec -u jarkko -it archlinux1 /bin/bash
+
+---
+
+Build from Dockerfile:
+
+Clean up:
+docker images
+docker image rm <ID>
+
+Build:
+docker build -t arch1 ~/ws/archlinux-docker/
+
+Build clean:
+docker container rm arch1 && docker image rm -f arch1:latest && docker build -t arch1 ~/ws/archlinux-docker/
+
+Run:
+docker run -i -t -v  ~/dotfiles:/home/jarkko/dotfiles --hostname arch-docker --name arch1 arch1
+
+Shell as root:
+
+---
+
+Test dotfiles repo:
+git clone file:///home/jarkko/upstream/ ~/dotfiles
+Follow README.md instructions

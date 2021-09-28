@@ -5,23 +5,15 @@
 
 rootdir=$(dirname $(readlink -f $0))
 
-list_doc=$(mktemp)
 list_explicit=$(mktemp)
 list_base_depends_on=$(mktemp)
 list_explicit_minus_base=$(mktemp)
 
 trap "{ rm -f \
-    $list_doc \
     $list_explicit \
     $list_base_depends_on \
     $list_explicit_minus_base \
 ; }" EXIT
-
-
-# List documented Arch and AUR packages
-cat "$rootdir/arch_packages.txt" "$rootdir/aur_packages.txt" \
-    | cut -f1 -d" " \
-    | sort > "$list_doc"
 
 # List base package dependencies (i.e. always installed)
 pacman -Sii base \
@@ -31,11 +23,12 @@ pacman -Sii base \
     | tr -s '[:blank:]' '\n' > "$list_base_depends_on"
 
 # List explicitly installed packages including AUR
-yay -a -Qe | cut -d" " -f1 > "$list_explicit"
+paru -a -Qe | cut -d" " -f1 > "$list_explicit"
 
 # List user-installed packages without base package dependencies.
-grep -Fvxf \
-    "$list_base_depends_on" "$list_explicit" \
+grep --fixed-strings --invert-match --line-regexp \
+    --file="$list_base_depends_on" \
+    "$list_explicit" \
     > "$list_explicit_minus_base"
 
-meld "$list_doc" "$list_explicit_minus_base"
+meld "$rootdir/arch_packages.txt" "$list_explicit_minus_base"

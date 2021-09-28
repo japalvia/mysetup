@@ -59,6 +59,12 @@ command -v pyenv >/dev/null && eval "$(pyenv init -)"
 test -r /usr/share/fzf/key-bindings.bash && source /usr/share/fzf/key-bindings.bash
 test -r /usr/share/fzf/completion.bash && source /usr/share/fzf/completion.bash
 
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Search dotfiles excluding .git directories
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+
 shopt -s histappend
 shopt -s cmdhist
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
@@ -70,7 +76,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 export BC_ENV_ARGS=$HOME/.config/bcrc
 
-export EDITOR=vim
+export EDITOR=nvim
 
 export HISTCONTROL=ignorespace
 # Silence dbus errors about accessibility bus
@@ -82,3 +88,8 @@ export GTK_THEME=Adwaita:dark
 # QT5 theme configured by qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# Wayland env variables for apps and frameworks
+if [[ $XDG_SESSION_TYPE == wayland ]] ; then
+    export XDG_SESSION_TYPE=wayland
+    export GDK_BACKEND=wayland
+fi

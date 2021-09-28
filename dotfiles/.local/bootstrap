@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+[ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME=$HOME
+
+localfiles_in=$(dirname $(readlink -f $0))
+localfiles_out="$XDG_CONFIG_HOME"/.local
+
+# .local file contains mostly application runtime data.
+# However, some apps like nvim want some specific things there.
+# Add to targets only directories that are user created.
+targets=(
+"share/nvim/site/autoload/"
+)
+
+for i in "${targets[@]}"; do
+    (
+    out_parent=$(dirname "$localfiles_out/$i")
+    mkdir -p "$out_parent"
+    ln -s "$localfiles_in/$i" "$out_parent/"
+    )
+done
+
+

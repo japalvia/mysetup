@@ -1,10 +1,141 @@
-call plug#begin('~/.config/nvim/plugged')
+set nocompatible            " declare nocompatible before loading any plugins
 
-" Use https://github.com/vim-scripts as primary source
-" Fallback to personal account otherwise
+call plug#begin(stdpath('data') . '/plugged')
+
 Plug 'vim-scripts/Zenburn'
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-sensible'
 
-" Initialize plugin system
-call plug#end()
+call plug#end()             " Initialize plugin system
 
 colors zenburn
+
+let mapleader=","
+
+""" Options """
+
+" number of columns occupied by a tab
+set tabstop=4
+
+" see multiple spaces as tabstops so <BS> does the right thing
+set softtabstop=4
+
+" converts tabs to white space
+set expandtab
+
+" width for autoindents
+set shiftwidth=4
+
+" indent a new line the same amount as the line just typed
+set autoindent
+
+" indent long lines when inserting
+set breakindent
+
+" switch buffer without promting to save
+set hidden
+
+" highlight cursor line
+set cursorline
+
+" wrap longer text on white space
+set textwidth=79
+
+" show matches while typing pattern
+set incsearch
+
+" ignore case in search pattern
+set ignorecase
+
+" override ignorecase option when pattern contains upper case characters
+set smartcase
+
+" do no insert comment leaders automatically
+set formatoptions-=cro
+
+" Indent function parameters on opening parenthesis level
+set cino+=(0
+
+" Long lines are indented to the beginning of the line
+set breakindent
+
+" Highlight cursor line
+set cursorline
+
+" Allow switching out of buffer without saving file
+set hidden
+
+" Spell check added words
+set spellfile=~/.vim/spell/en.utf-8.add
+
+" Allow block cursor to move outside text on current line
+set virtualedit+=block
+
+" Use paste (insert) mode for pasting unformatted text
+set pastetoggle=<F2>
+
+""" Key mapping """
+
+" Switch to the most recent buffer
+noremap <F4> :b#<CR>
+
+" unwrap paragraph under cursor
+noremap <F6> vipJ
+
+" format and return the same line where you were
+nnoremap <F7> mzgg=G`z<CR>
+
+" Source config and install plugins
+nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+
+" Fzf open buffers
+nnoremap <silent><leader>l :Buffers<CR>
+
+" fzf on git-tracked files
+nnoremap <C-p> :GFiles<Cr>
+
+" Disable arrow key navigation
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" Move focus to window without pressing 'w'
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Black hole register to delete without yanking
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+" Show current C function in status line
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
+nnoremap f :call ShowFuncName() <CR>
+
+""" Autocommand """
+
+" Keep the cursor centered in view when possible
+if exists("##WinNew")
+    augroup VCenterCursor
+      au!
+      au BufEnter,WinEnter,WinNew,VimResized *,*.*
+            \ let &scrolloff=winheight(win_getid())/2
+    augroup END
+endif
+
+" Always start on first line of git commit message
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
+" remove trailing whitespaces on buffer save
+autocmd BufWritePre * :%s/\s\+$//e

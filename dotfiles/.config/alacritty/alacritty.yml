@@ -1,0 +1,38 @@
+font:
+  size: 12
+
+# Colorscheme: vim-scripts/Zenburn
+draw_bold_text_with_bright_colors: true
+
+colors:
+  # Default colors
+  primary:
+    background: '0x3f3f3f'
+    foreground: '0xdcdccc'
+
+  # Normal colors
+  normal:
+    black:   '0x3f3f3f'
+    red:     '0xcc9393'
+    green:   '0x7f9f7f'
+    yellow:  '0xd0bf8f'
+    blue:    '0x6ca0a3'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xdcdccc'
+
+  # Bright colors
+  bright:
+    black:   '0x000000'
+    red:     '0xdca3a3'
+    green:   '0xbfebbf'
+    yellow:  '0xf0dfaf'
+    blue:    '0x8cd0d3'
+    magenta: '0xdc8cc3'
+    cyan:    '0x93e0e3'
+    white:   '0xffffff'
+
+#selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
