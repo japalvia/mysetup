@@ -245,6 +245,8 @@ for_window [title="Android Emulator*"] \
 for_window [class="Display"] \
     floating enable
 
+for_window [floating] move position center
+
 assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
 
 # move workspace to left and right monitors
