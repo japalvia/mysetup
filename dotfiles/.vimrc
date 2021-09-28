@@ -38,6 +38,13 @@ set smartcase       " Override the 'ignorecase' option if the search pattern
 
 set textwidth=79    " Maximum width of text that is being inserted. A longer
                     " line will be broken after white space to get this width.
+                    "
+autocmd bufreadpre *.patch setlocal textwidth=79
+
+" TODO: might be better with vim-fugitive
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal colorcolumn=73
+autocmd FileType mail setlocal textwidth=79
 
 "set formatoptions=c,q,r,t " This is a sequence of letters which describes how
                     " automatic formatting is to be done.
