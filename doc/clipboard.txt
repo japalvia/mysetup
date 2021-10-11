@@ -25,5 +25,8 @@ the runtime storage directory:
   same directory so the name itself is not issue. Does systemd cleanup inode
   etc?
 
+Copy file to clipboard
+======================
 
+xclip < file
 

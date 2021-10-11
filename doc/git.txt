@@ -161,3 +161,17 @@ Install git-review package.
 
 submit a new review or update existing:
 git review
+
+
+Signing
+-------
+
+Create GPG key:
+gpg --full-gen-key
+
+Note:
+git commit -s
+Adds the signed-off-by trailer to the commit message
+
+git commit -S
+actually signs the commit with existing gpg key
