@@ -139,3 +139,10 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
 " remove trailing whitespaces on buffer save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Column width for various known file types
+autocmd FileType gitcommit set textwidth=72
+autocmd FileType gitcommit set colorcolumn=73
+
+" Other file types detected by file name
+autocmd bufreadpre *.patch setlocal textwidth=79
