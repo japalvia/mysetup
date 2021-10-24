@@ -1,0 +1,5 @@
+Python
+======
+
+Convert in-place, no backup in a repo:
+fd '.*\.py' | xargs 2to3 -wn
