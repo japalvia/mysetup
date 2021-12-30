@@ -105,7 +105,8 @@ noremap <Right> <Nop>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" FIXME: moving to right conflicts with clearing search highlights
+" nnoremap <C-l> <C-w>l
 
 " Black hole register to delete without yanking
 nnoremap <leader>d "_d
