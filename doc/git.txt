@@ -4,6 +4,11 @@ Git less commonly needed tricks
 Search for a file in all branches:
 git log --all -- '**/some_file'
 
+Search for commits excluding file path:
+git log -- . ':(exclude)subdir/*file'
+Example: ignore XML files in current directory:
+git log --stat -- . ':(exclude)*xml'
+
 View file from another local branch without switching to it:
 git show <branch>:<file path>
 
