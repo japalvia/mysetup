@@ -99,6 +99,13 @@ Reformat XML to human readable:
 Count matches:
 :%s/foobar//n
 
+Unwrap parapgraph in normal mode:
+vipJ
+Bind to F6
+
+Pass current buffer to external command/script:
+:%! my-script
+
 Moving around
 -------------
 

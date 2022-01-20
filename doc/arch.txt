@@ -308,3 +308,20 @@ Watchdog
 https://wiki.archlinux.org/index.php/Improving_performance#Watchdogs
 Add nowatchdog to GRUB_CMDLINE_LINUX_DEFAULT
 grub-mkconfig -o /boot/grub/grub.cfg
+
+pipewire
+--------
+
+systemctl --user disable --now pulseaudio.service
+systemctl --user stop pulseaudio.socket
+
+Install: use default dependency pipewire-media-session,
+wireplumber might be feasible replacement in the future.
+paru -S pipewire pipewire-pulse pipewire-alsa
+
+Config: default configs from /usr/share should be sufficient, otherwise
+copy to ~/.config/pipewire/pipewire.conf and see man pipewire.conf
+
+# vendor preset is enabled
+systemctl --user start pipewire-media-session
+systemctl --user start pipewire
