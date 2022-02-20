@@ -7,6 +7,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fidian/hexmode'
 
 call plug#end()             " Initialize plugin system
 
