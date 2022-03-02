@@ -1,0 +1,27 @@
+Qt
+==
+
+QtCreator
+---------
+
+Enable QML console logging:
+Add QT_LOGGING_TO_CONSOLE=1 to environment
+
+Shortcuts:
+Locator: ctrl-k
+search string: ctrl-shift-f
+copy line and add below: ctrl-alt-down
+
+TODO:
+editing equinox.qrc
+is it completely manual?
+
+clang-format
+------------
+
+QtCreator -> Help -> About Plugins -> Search for 'Beautifier', enable it and restart
+Configure through Options -> Beautifier:
+-> Enable on save
+-> Select Tool: ClangFormat
+-> Tab: Clang Format:
+   -> Options: Use predefined style: select 'File', select fallback to 'None'
