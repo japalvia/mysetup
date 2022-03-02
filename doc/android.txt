@@ -1,0 +1,5 @@
+Android
+=======
+
+Display and control device over USB:
+$ scrcpy
