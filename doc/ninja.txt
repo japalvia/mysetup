@@ -1,0 +1,14 @@
+ninja
+=====
+
+Generate:
+cd <repo>
+mkdir build
+cd build
+cmake .. -G Ninja
+
+Build target, e.g. localization:
+ninja localization
+
+Clean target:
+ninja -t clean localization
