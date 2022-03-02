@@ -1,0 +1,10 @@
+WLAN
+====
+
+
+Scan access points:
+iwlist wlan0 scan
+
+Show station info
+If wpa_supplicant is running and scanning, it needs to be stoppped
+wpa_cli scan_results
