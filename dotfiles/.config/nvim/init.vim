@@ -147,3 +147,6 @@ autocmd FileType gitcommit set colorcolumn=73
 
 " Other file types detected by file name
 autocmd bufreadpre *.patch setlocal textwidth=79
+
+" JSON formatting
+autocmd Filetype json setlocal ts=2 sw=2
