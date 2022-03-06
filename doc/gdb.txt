@@ -6,12 +6,16 @@ end
 set history save on
 set history size 5000
 
+Dump core for a running process
+-------------------------------
+
+gcore $(pidof foo)
 
 Starting a session
 ------------------
 
 Pass program arguments on command line:
-gdb --args
+gdb --args <prog> <arg1> <arg2>
 
 Start pgrogram from command line:
 gdb -ex=run
@@ -22,6 +26,13 @@ Log session with full backtrace
 set pagination off
 set logging file mylog.txt
 set logging on
+
+Remote debugger
+---------------
+
+Run server on target machine:
+gdbserver --attach localhost:8888 $(pidof foo)
+
 
 TUI
 ---

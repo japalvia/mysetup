@@ -81,3 +81,11 @@ Github
 
 Find the most active fork for a project:
 https://techgaun.github.io/active-forks/index.html
+
+
+Extract debian/openembbed ipk package
+-------------------------------------
+
+ar x <pkg>
+xz -d data.tar.xz
+tar xf data.tar

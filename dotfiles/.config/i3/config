@@ -249,6 +249,9 @@ for_window [class="Display"] \
 for_window [floating] move position center
 
 assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
+for_window [class="Microsoft Teams"] \
+    move right \
+    resize set 75 ppt
 
 # move workspace to left and right monitors
 bindsym $mod+Shift+minus move workspace to output left

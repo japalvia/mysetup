@@ -9,6 +9,9 @@ git log -- . ':(exclude)subdir/*file'
 Example: ignore XML files in current directory:
 git log --stat -- . ':(exclude)*xml'
 
+Search when a string was first added to repo:
+git log -S "hello world" --source --all
+
 View file from another local branch without switching to it:
 git show <branch>:<file path>
 

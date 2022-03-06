@@ -93,6 +93,9 @@ else
 fi
 
 export PATH=$HOME/bin:$PATH
+# pip packages for user
+export PATH=$HOME/.local/bin:$PATH
+# rust cargo installed sw for user
 export PATH=$HOME/.cargo/bin:$PATH
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
