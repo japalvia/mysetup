@@ -10,4 +10,19 @@ Installing a plugin:
 Add new Plug command in ~/.config/nvim/init.vim
 Run command :PlugInstall in nvim
 
+Commands
+--------
+
+Ripgrep:
+Rg foobar
+
+
+Mappings
+--------
+
+List and preview open files:
+<leader>-l
+
+Clear highlights:
+ctrl-l
 
