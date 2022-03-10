@@ -10,4 +10,9 @@ Installing a plugin:
 Add new Plug command in ~/.config/nvim/init.vim
 Run command :PlugInstall in nvim
 
+Useful plugin usage
+-------------------
 
+vim-dispatch:
+:Make
+move between panes, select error, press Enter to jump into the source code
