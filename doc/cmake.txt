@@ -1,0 +1,14 @@
+CMake
+=====
+
+debug printing:
+message("foobar ${variable}")
+
+If find_package fails, search for the call in the provider project, file
+Findxxx-cxxtest.cmake:
+find_package(CxxTest QUIET)
+and replace with:
+find_package(CxxTest REQUIRED)
+to print the actual reason why package search failed.
+
+
