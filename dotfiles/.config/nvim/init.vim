@@ -92,7 +92,7 @@ noremap <F6> vipJ
 nnoremap <F7> mzgg=G`z<CR>
 
 " Source config and install plugins
-nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+nnoremap <silent><leader>1 :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
 
 " Fzf open buffers
 nnoremap <silent><leader>l :Buffers<CR>
