@@ -8,6 +8,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fidian/hexmode'
+Plug 'peterhoeg/vim-qml'
+Plug 'fedorenchik/qt-support.vim'
+Plug 'tpope/vim-dispatch'
 
 call plug#end()             " Initialize plugin system
 
