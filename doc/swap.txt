@@ -1,0 +1,39 @@
+Swap
+====
+
+Swap file
+---------
+
+sudo fallocate -l 16G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+sudoedit /etc/fstab
+/swapfile swap swap defaults 0 0
+
+zram
+----
+
+Create swap on zram device:
+https://github.com/systemd/zram-generator/blob/main/README.md
+
+Install zram-generator package
+
+Configure:
+cat /etc/systemd/zram-generator.conf
+[zram0]
+zram-size = ram / 2
+
+systemctl daemon-reload
+
+systemctl start /dev/zram0
+
+Check status:
+free -h
+zramctl
+
+
+
+
+

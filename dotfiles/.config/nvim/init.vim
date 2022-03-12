@@ -8,6 +8,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fidian/hexmode'
+Plug 'peterhoeg/vim-qml'
+Plug 'fedorenchik/qt-support.vim'
+Plug 'tpope/vim-dispatch'
 
 call plug#end()             " Initialize plugin system
 
@@ -89,7 +92,7 @@ noremap <F6> vipJ
 nnoremap <F7> mzgg=G`z<CR>
 
 " Source config and install plugins
-nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+nnoremap <silent><leader>1 :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
 
 " Fzf open buffers
 nnoremap <silent><leader>l :Buffers<CR>

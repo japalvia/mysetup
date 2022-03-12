@@ -256,3 +256,5 @@ for_window [class="Microsoft Teams"] \
 # move workspace to left and right monitors
 bindsym $mod+Shift+minus move workspace to output left
 bindsym $mod+Shift+plus move workspace to output right
+
+bindsym ctrl+shift+space exec --no-startup-id dunstctl close-all
