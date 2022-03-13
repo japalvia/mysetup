@@ -118,4 +118,5 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 if [[ $XDG_SESSION_TYPE == wayland ]] ; then
     export XDG_SESSION_TYPE=wayland
     export GDK_BACKEND=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
 fi
