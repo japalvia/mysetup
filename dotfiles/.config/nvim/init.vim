@@ -11,6 +11,8 @@ Plug 'fidian/hexmode'
 Plug 'peterhoeg/vim-qml'
 Plug 'fedorenchik/qt-support.vim'
 Plug 'tpope/vim-dispatch'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()             " Initialize plugin system
 
@@ -305,6 +307,8 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
+"
+" Suggested in https://github.com/neoclide/coc.nvim#example-vim-configuration
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
@@ -324,3 +328,17 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+""""""""""""""""
+" Airline plugin
+""""""""""""""""
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+" let g:airline_symbols_ascii = 1
+let g:airline_symbols.colnr = ' col: '
+let g:airline_symbols.linenr = ' line: '
+let g:airline_symbols.maxlinenr = ''
+
+let g:airline_theme='zenburn'
