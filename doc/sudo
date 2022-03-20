@@ -1,0 +1,8 @@
+Sudo
+====
+
+Run (GUI) application with user environment:
+
+sudo -E meld /etc/default/grub /etc/default/grub.pacnew
+
+sudo -E nvim /etc/default/grub
