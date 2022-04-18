@@ -296,7 +296,8 @@ Maintain mirrorlist
 
 https://wiki.archlinux.org/index.php/reflector
 
-sudo reflector --verbose --country Finland,Sweden --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --download-timeout 30 --country Finland,Sweden \
+	--latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 Setup automatic mirror refresh:
 Configure /etc/xdg/reflector/reflector.conf

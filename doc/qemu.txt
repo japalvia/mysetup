@@ -4,18 +4,8 @@ QEMU with KVM
 Setup
 -----
 
-Install:
-qemu
-edk2-ovmf   # UEFI firmware
-virt-manager
-virt-viewer # remote-viewer spice client
-ebtables # required by virsh networking
-dnsmasq
-
-Network setup:
-virsh net-autostart default
-virsh net-start default
-virsh net-list --all
+Follow steps to configure:
+https://wiki.archlinux.org/title/Virt-Manager
 
 systemctl start libvirt
 systemctl enable libvirt
@@ -23,6 +13,9 @@ systemctl enable libvirt
 Add kvm and libvirt groups to user:
 sudo gpasswd -a $USER kvm
 sudo gpasswd -a $USER libvirt
+
+Install spice guest tools for windows 10:
+paru spice-guest-tools-windows
 
 https://www.spice-space.org/download.html
 Windows guest tools - spice-guest-tools
@@ -51,4 +44,20 @@ Start machine:
 qemu-system-x86_64 -enable-kvm -m 2048 \
 	-drive file=/home/palvja/virtual-machines/ubuntu-18.04,format=raw
 
+---
 
+Resize disk:
+- Stop VM
+- Remove all snapshots
+- Add 110G space to virtual disk:
+    sudo qemu-img resize /var/lib/libvirt/images/vm.qcow2 +110G
+
+---
+
+Configure system serial number:
+
+Get serial number from host:
+sudo dmidecode -s system-serial-number
+
+Add <sysinfo> block to XML:
+sudo virt-xml win10 --add-device --sysinfo system.serial=123456 --confirm
