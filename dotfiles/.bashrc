@@ -27,6 +27,7 @@ alias gri='git rebase -i'
 alias gria='git rebase -i --autosquash'
 alias gs='git status'
 alias gss='git status --short'
+alias gru='git remote update'
 
 alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - \
