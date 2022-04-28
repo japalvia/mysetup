@@ -137,6 +137,11 @@ MERGED - the tag / HEAD object after the merge - this is saved as a new commit.
 TODO: vimdiff as mergetool
 https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 
+Recreate accidentially resolved conflict:
+git restore --staged dotfiles/.config/sway/config
+git checkout --conflict=merge dotfiles/.config/sway/config
+Recreated 1 merge conflict
+
 proxy
 -----
 
