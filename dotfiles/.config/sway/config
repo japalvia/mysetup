@@ -270,3 +270,6 @@ exec_always pkill kanshi; exec systemd-cat kanshi
 
 # dunst requires access to display
 exec systemctl --user import-environment WAYLAND_DISPLAY
+
+# Find app_id field in in command output:
+# waymsg -t get_tree
