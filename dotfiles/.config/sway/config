@@ -251,19 +251,16 @@ input "type:keyboard" {
   xkb_layout "fi_linux_dev"
 }
 
-# Clipboard manager
-set $primary_hist "~/.local/share/clipman-primary.json"
-exec wl-paste -p -t text --watch \
-    clipman store -P --max-items=1000 --histpath=$primary_hist
+# store PRIMARY selection
+exec_always pkill wl-paste ; exec wl-paste -n -t text -p -w clipman --notify store -P --max-items=1000
 
-exec clipman restore
-bindsym $mod+section exec clipman \
-    --primary pick --histpath=$primary_hist \
-    --tool bemenu --tool-args="$bemenu_args"
+# Pick an item from storage and put to CLIPBOARD
+bindsym $mod+p exec clipman --notify pick --tool bemenu --tool-args="$bemenu_args"
 
-bindsym $mod+shift+section exec clipman \
-    --primary clear --histpath=$primary_hist \
-    --tool bemenu --tool-args="$bemenu_args"
+# Clear selected item from history
+bindsym $sup+p exec clipman --notify clear --tool bemenu --tool-args="$bemenu_args"
+# Clear all
+bindsym $sup+shift+p exec clipman --notify clear -a
 
 # Screen color temperature
 exec gammastep
