@@ -267,3 +267,6 @@ exec gammastep
 
 # Restart kanshi when reloading sway
 exec_always pkill kanshi; exec systemd-cat kanshi
+
+# dunst requires access to display
+exec systemctl --user import-environment WAYLAND_DISPLAY
