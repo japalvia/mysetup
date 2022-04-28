@@ -264,3 +264,6 @@ bindsym $sup+shift+p exec clipman --notify clear -a
 
 # Screen color temperature
 exec gammastep
+
+# Restart kanshi when reloading sway
+exec_always pkill kanshi; exec systemd-cat kanshi
