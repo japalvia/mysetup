@@ -36,7 +36,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # start application launcher
-set $bemenu_args --ignorecase --fn Liberation Mono 12
+set $bemenu_args --ignorecase --fn Liberation Mono 12 --no-overlap
 bindsym $mod+d exec bemenu-run $bemenu_args
 
 # change focus
