@@ -29,8 +29,8 @@ find "$dotfiles" -mindepth 1 -maxdepth 1 \
     -prune \
     -o -exec ln -v -s {} "$HOME" \;
 
-# RC dirs/files in .config/, don't recurse to sub-dirs.
-find "$config_in" -maxdepth 1 -type f -exec ln -v -s {} "$config_out" \;
+# RC files in .config/, don't recurse to sub-dirs.
+find "$config_in" -maxdepth 1 -type f,l -exec ln -v -s {} "$config_out" \;
 
 # configuration files in .ssh, dont recurse.
 ssh_in="$dotfiles"/.ssh
