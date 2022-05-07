@@ -251,6 +251,20 @@ bindsym $sup+shift+p exec clipman --notify clear -a
 # Copy primary selection to clipboard
 bindsym section exec wl-paste -p -n | wl-copy
 
+# Fill current workspace with 3x2 terminal grid
+bindsym $mod+F1 exec \
+    'swaymsg "splith" && \
+    swaymsg "exec $term; exec $term; exec $term" && \
+    sleep 0.3 && \
+    swaymsg "focus left; focus left; splitv" && \
+    swaymsg "exec $term" && \
+    sleep 0.3 && \
+    swaymsg "focus right; splitv" && \
+    swaymsg "exec $term" && \
+    sleep 0.3 && \
+    swaymsg "focus right; splitv" && \
+    swaymsg "exec $term"'
+
 # Screen color temperature
 exec gammastep
 
