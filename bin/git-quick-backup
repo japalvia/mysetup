@@ -9,7 +9,7 @@ set -e
 branch=$(git symbolic-ref --short HEAD)
 
 # NOTE: colors from git output causes escape char in output
-latest_bak=$(git branch --no-color --list --sort=-committerdate "$branch-bak*"  | head -1)
+latest_bak=$(git branch --no-color --list --sort=authordate "$branch-bak*" | tail -1)
 if [ -z "$latest_bak" ] ; then
     echo "First backup"
     count=0
