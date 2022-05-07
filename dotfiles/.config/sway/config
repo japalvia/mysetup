@@ -248,6 +248,9 @@ bindsym $sup+p exec clipman --notify clear --tool bemenu --tool-args="$bemenu_ar
 # Clear all
 bindsym $sup+shift+p exec clipman --notify clear -a
 
+# Copy primary selection to clipboard
+bindsym section exec wl-paste -p -n | wl-copy
+
 # Screen color temperature
 exec gammastep
 
