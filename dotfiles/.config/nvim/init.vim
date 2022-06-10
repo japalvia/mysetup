@@ -84,6 +84,9 @@ set virtualedit+=block
 " Use paste (insert) mode for pasting unformatted text
 set pastetoggle=<F2>
 
+" Disable cursor highlight on matching parent
+au VimEnter * execute "NoMatchParen"
+
 """ Key mapping """
 
 " Switch to the most recent buffer
