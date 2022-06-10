@@ -62,10 +62,8 @@ test -r /usr/share/fzf/key-bindings.bash && source /usr/share/fzf/key-bindings.b
 test -r /usr/share/fzf/completion.bash && source /usr/share/fzf/completion.bash
 
 # Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# Search dotfiles excluding .git directories
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export HISTTIMEFORMAT="%F %T  "
 log_bash_persistent_history()
@@ -121,3 +119,7 @@ if [[ $XDG_SESSION_TYPE == wayland ]] ; then
     export GDK_BACKEND=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
 fi
+
+# Screenshot destination
+export GRIM_DEFAULT_DIR=$HOME/temp/grim
+[[ -d $GRIM_DEFAULT_DIR ]] && mkdir -p "$GRIM_DEFAULT_DIR"
