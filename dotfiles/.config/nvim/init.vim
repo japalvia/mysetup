@@ -11,6 +11,10 @@ Plug 'peterhoeg/vim-qml'
 Plug 'fedorenchik/qt-support.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'ackyshake/VimCompletesMe'
+Plug 'Rykka/riv.vim'
+Plug 'Rykka/InstantRst'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn install' }
+
 
 call plug#end()             " Initialize plugin system
 
