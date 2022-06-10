@@ -168,6 +168,7 @@ mode "$mode_system" {
 }
 bindsym $mod+Control+l mode "$mode_system"
 bindsym $sup+l exec $sway_exit lock, mode "default"
+bindsym --locked $sup+s exec $sway_exit suspend, mode "default"
 
 # Idle configuration
 set $locker 'swaylock -f -c 000000'
