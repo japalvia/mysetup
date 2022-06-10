@@ -201,8 +201,11 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Switch virtual terminal from Xorg
-bindsym Mod4+Left exec ~/bin/vt-prev
-bindsym Mod4+Right exec ~/bin/vt-next
+bindsym $sup+Left exec ~/bin/vt-prev
+bindsym $sup+Right exec ~/bin/vt-next
+
+# Screenshot to $GRIM_DEFAULT_DIR
+bindsym $mod+Print exec grim -g "$(slurp -d)"
 
 mode "moveit" {
     bindsym Up move up 20px
@@ -245,7 +248,7 @@ input "type:keyboard" {
 }
 
 # store PRIMARY selection
-exec_always pkill wl-paste ; exec wl-paste -n -t text -p -w clipman --notify store -P --max-items=1000
+exec_always "pkill wl-paste ; wl-paste -n -t text -p -w clipman --notify store -P --max-items=1000"
 
 # Pick an item from storage and put to CLIPBOARD
 bindsym $mod+p exec clipman --notify pick --tool bemenu --tool-args="$bemenu_args"
@@ -273,16 +276,21 @@ bindsym $mod+F1 exec \
     swaymsg "exec $term"'
 
 # Screen color temperature
-exec gammastep
+exec systemd-cat gammastep
 
-# Restart kanshi when reloading sway
-exec_always pkill kanshi; exec systemd-cat kanshi
+# Sway and kanshi appear to have a race condition when accessing output
+# https://github.com/swaywm/sway/issues/6863
+# FIXME: once kanshi disable an output, sway log contains error:
+# [ERROR] [sway/config/output.c:501] Failed to commit output eDP-1
+exec_always "pkill kanshi ; sleep 3 ; systemd-cat kanshi"
 
 # dunst requires access to display
 exec systemctl --user import-environment WAYLAND_DISPLAY
 
+exec devmon
+
 # Find app_id field in in command output:
-# waymsg -t get_tree
+# swaymsg -t get_tree
 
 assign [app_id="equinox"] workspace 5
 assign [class="jetbrains-clion"] workspace 10
