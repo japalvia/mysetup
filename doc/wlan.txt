@@ -8,3 +8,21 @@ iwlist wlan0 scan
 Show station info
 If wpa_supplicant is running and scanning, it needs to be stoppped
 wpa_cli scan_results
+
+
+Debugging connection problems
+-----------------------------
+
+Stop service
+systemctl stop iwd
+
+Debug log daemon itself:
+sudo /usr/lib/iwd/iwd -d
+
+Debug TLS handshake:
+sudo IWD_TLS_DEBUG=1 /usr/lib/iwd/iwd
+
+More env variables in man iwd.debug
+
+Connect wpa_supplicant manually:
+sudo wpa_supplicant -c ~/temp/wpa_supplicant_bluesso.conf -i wlan0
