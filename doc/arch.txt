@@ -1,8 +1,23 @@
 Arch Linux howtos
 =================
 
-Pacman
-------
+Note: most optional package managers supporting AUR provide the same set of
+commands and options that pacman does.
+
+System update
+-------------
+
+Sync metadata, ensure up-to-date keyring and install:
+paru -Sy && paru -S --needed archlinux-keyring && paru
+
+Resolve new package configs:
+pacdiff -s -3
+
+Remove orphaned dependencies:
+paru -Rns $(paru -Qtdq)
+
+Pacman package operations
+-------------------------
 
 Multilib:
 Find 32-bit packages:
