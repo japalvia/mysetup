@@ -10,3 +10,22 @@ udp and frame[44] == c0
 
 Regex matching for payload:
 data.data matches sysinfo
+
+
+Build and run
+-------------
+
+Do not try to run wireshark as root.
+
+WIRESHARK_RUN_FROM_BUILD_DIRECTORY=1 run/wireshark
+
+Add CMake option and install:
+-DDUMPCAP_INSTALL_OPTION=capabilities
+
+cd wireshark-ninja
+sudo ninja install
+
+Workaround without installation:
+sudo setcap cap_net_raw,cap_net_admin+ep run/dumpcap
+
+

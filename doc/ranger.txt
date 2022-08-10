@@ -33,3 +33,6 @@ Wayland
 Alacritty does not have image preview support. Use kitty:
 $ kitty ranger
 Available through bin/kitty-ranger
+
+Clipboard:
+yanking name/path/etc goes to clipboard, not in primary
