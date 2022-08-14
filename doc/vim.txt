@@ -106,6 +106,9 @@ Bind to F6
 Pass current buffer to external command/script:
 :%! my-script
 
+Replace one or more spaces with a newline:
+:%s/ \+/\r/g
+
 Moving around
 -------------
 
@@ -310,3 +313,8 @@ Continue entering cell content and closing cell with '|'
 Close the top (line) of the table similarly with '||'
 
 
+Regex
+-----
+
+Delete all empty lines:
+:g/^$/d

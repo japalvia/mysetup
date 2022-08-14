@@ -26,3 +26,13 @@ Extract archive
 There is a vim binding builtin functionality:
 Navigate to the file and press:
 1l
+
+Wayland
+-------
+
+Alacritty does not have image preview support. Use kitty:
+$ kitty ranger
+Available through bin/kitty-ranger
+
+Clipboard:
+yanking name/path/etc goes to clipboard, not in primary

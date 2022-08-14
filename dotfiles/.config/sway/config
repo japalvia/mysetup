@@ -36,7 +36,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # start application launcher
-set $bemenu_args --ignorecase --fn Liberation Mono 12
+set $bemenu_args --ignorecase --fn Liberation Mono 12 --no-overlap
 bindsym $mod+d exec bemenu-run $bemenu_args
 
 # change focus
@@ -146,7 +146,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-    font pango:DejaVu Sans Mono 10
+    font pango:DejaVu Sans Mono 12
 }
 
 workspace_auto_back_and_forth yes
@@ -160,7 +160,7 @@ mode "$mode_system" {
     bindsym s exec $sway_exit suspend, mode "default"
     bindsym h exec $sway_exit hibernate, mode "default"
     bindsym r exec $sway_exit reboot, mode "default"
-    bindsym Shift+s exec ~/.config/sway/sway-exit shutdown, mode "default"
+    bindsym Shift+s exec $sway_exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -168,15 +168,22 @@ mode "$mode_system" {
 }
 bindsym $mod+Control+l mode "$mode_system"
 bindsym $sup+l exec $sway_exit lock, mode "default"
+bindsym --locked $sup+s exec $sway_exit suspend, mode "default"
 
 # Idle configuration
-set $locker 'swaylock -f -c 000000'
-exec swayidle -w \
-    timeout 900 $locker \
-    timeout 915 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    timeout 15 'if pgrep swaylock; then swaymsg "output * dpms off"; fi' \
-    resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
+# 3 idle timeouts:
+#  - lock screen after 5 minutes
+#  - turn off outputs after 10 minutes
+#  - after 30 seconds, turn off outputs if screen is locked
+# For debugging, add -d to swayidle command line
+set $locker ~/.config/sway/mylock
+exec \
+    systemd-cat swayidle -w \
+    timeout 600 $locker \
+    timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    timeout 30 'if pgrep swaylock; then swaymsg "output * dpms off"; fi' \
+        resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
     before-sleep $locker
 
 # Volume controls
@@ -193,23 +200,12 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Toggle wireless headphones connection
-bindsym shift+F11 exec ~/bin/toggle-bt-headphones
-
-# Toggle active display between laptop and external monitor
-bindsym shift+F12 exec ~/bin/toggle-display.sh
-
-# Try loading workspace layout from last saved
-bindsym $mod+F1 exec ~/bin/i3-load-layout
-
-# Change to currently detected display
-bindsym Control+section exec autorandr --change
-
 # Switch virtual terminal from Xorg
-bindsym Mod4+Left exec ~/bin/vt-prev
-bindsym Mod4+Right exec ~/bin/vt-next
+bindsym $sup+Left exec ~/bin/vt-prev
+bindsym $sup+Right exec ~/bin/vt-next
 
-bindsym section exec xsel -o -p | xsel -i -b
+# Screenshot to $GRIM_DEFAULT_DIR
+bindsym $mod+Print exec grim -g "$(slurp -d)"
 
 mode "moveit" {
     bindsym Up move up 20px
@@ -251,19 +247,51 @@ input "type:keyboard" {
   xkb_layout "fi_linux_dev"
 }
 
-# Clipboard manager
-set $primary_hist "~/.local/share/clipman-primary.json"
-exec wl-paste -p -t text --watch \
-    clipman store -P --max-items=1000 --histpath=$primary_hist
+# store PRIMARY selection
+exec_always "pkill wl-paste ; wl-paste -n -t text -p -w clipman --notify store -P --max-items=1000"
 
-exec clipman restore
-bindsym $mod+section exec clipman \
-    --primary pick --histpath=$primary_hist \
-    --tool bemenu --tool-args="$bemenu_args"
+# Pick an item from storage and put to CLIPBOARD
+bindsym $mod+p exec clipman --notify pick --tool bemenu --tool-args="$bemenu_args"
 
-bindsym $mod+shift+section exec clipman \
-    --primary clear --histpath=$primary_hist \
-    --tool bemenu --tool-args="$bemenu_args"
+# Clear selected item from history
+bindsym $sup+p exec clipman --notify clear --tool bemenu --tool-args="$bemenu_args"
+# Clear all
+bindsym $sup+shift+p exec clipman --notify clear -a
+
+# Copy primary selection to clipboard
+bindsym section exec wl-paste -p -n | wl-copy
+
+# Fill current workspace with 3x2 terminal grid
+bindsym $mod+F1 exec \
+    'swaymsg "splith" && \
+    swaymsg "exec $term; exec $term; exec $term" && \
+    sleep 0.3 && \
+    swaymsg "focus left; focus left; splitv" && \
+    swaymsg "exec $term" && \
+    sleep 0.3 && \
+    swaymsg "focus right; splitv" && \
+    swaymsg "exec $term" && \
+    sleep 0.3 && \
+    swaymsg "focus right; splitv" && \
+    swaymsg "exec $term"'
 
 # Screen color temperature
-exec gammastep
+exec systemd-cat gammastep
+
+# Sway and kanshi appear to have a race condition when accessing output
+# https://github.com/swaywm/sway/issues/6863
+# FIXME: once kanshi disable an output, sway log contains error:
+# [ERROR] [sway/config/output.c:501] Failed to commit output eDP-1
+exec_always "pkill kanshi ; sleep 3 ; systemd-cat kanshi"
+
+# dunst requires access to display
+exec systemctl --user import-environment WAYLAND_DISPLAY
+
+exec devmon
+
+# Find app_id field in in command output:
+# swaymsg -t get_tree
+
+assign [app_id="equinox"] workspace 5
+assign [class="jetbrains-clion"] workspace 10
+assign [class="F5 VPN"] workspace 11
