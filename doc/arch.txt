@@ -65,9 +65,15 @@ pacman -Sy [package]
 Find package that provides a file:
 pacman -F [file]
 
+List files in non-installed package:
+pacman -Fl [package]
+
 Find all 32bit multilib packages:
 yay  -Ss | grep multilib | grep Installed | cut -d" " -f1 | cut -d"/" -f2
 Then remove them one by one using "pacman -Rsc"
+
+Handle .pacnew configs:
+sudo pacdiff
 
 Package logs
 ------------
