@@ -278,6 +278,9 @@ bindsym $mod+F1 exec \
     swaymsg "focus right; splitv" && \
     swaymsg "exec $term"'
 
+# Export environment before starting applications
+exec systemctl --user import-environment
+
 # Screen color temperature
 exec systemd-cat gammastep
 
