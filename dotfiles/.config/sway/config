@@ -205,7 +205,10 @@ bindsym $sup+Left exec ~/bin/vt-prev
 bindsym $sup+Right exec ~/bin/vt-next
 
 # Screenshot to $GRIM_DEFAULT_DIR
-bindsym $mod+Print exec grim -g "$(slurp -d)"
+# Select region with mouse
+bindsym $mod+Shift+Print exec grim -g "$(slurp -d)"
+# Select window with mouse
+bindsym $mod+Print exec grim -g "$(~/bin/select-window)"
 
 mode "moveit" {
     bindsym Up move up 20px
