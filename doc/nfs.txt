@@ -1,0 +1,6 @@
+NFS
+===
+
+$ showmount -e 192.168.121.92
+Export list for 192.168.121.92:
+/volume1/XXX *

@@ -1,0 +1,36 @@
+Wayland/Sway setup
+==================
+
+Packages:
+sway
+xorg-xwayland
+swayidle
+bemenu -> bemenu-wayland
+wl-clipboard
+clipman
+swayidle
+swaylock
+gammastep
+playerctl
+xorg-xlsclients
+
+Identify apps using xwayland:
+$ xlsclients
+
+Qt5 and wayland:
+Install package: qt5-wayland
+
+
+Screen sharing in chrome
+------------------------
+
+Install:
+xdg-desktop-portal-wlr
+wofi
+slurp
+
+Enable
+chrome://flags/#enable-webrtc-pipewire-capturer
+
+Screenshot:
+grim -g "$(slurp -d)" output_file

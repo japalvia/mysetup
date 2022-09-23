@@ -1,0 +1,19 @@
+Docker
+======
+
+Bootstrap Chrome browser environment:
+docker run --net=host --name=chrome_test3 -d -v /dev/shm:/dev/shm selenium/standalone-chrome:89.0.4389.90
+
+docker cp root_ca.crt  chrome_test3:/home/seluser/
+docker cp proxy_env chrome_test3:/home/seluser/
+
+Debug builds
+------------
+
+Identify the failing step, e.g.
+Step 1/25 : FROM centos:8
+ ---> 5d0da3dc9764
+
+Run the intermediate container manually:
+docker run -it 5d0da3dc9764
+
