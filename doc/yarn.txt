@@ -1,0 +1,14 @@
+Yarn
+====
+
+Config:
+yarn config list
+
+Proxy:
+
+yarn config set proxy <url>
+yarn config set https-proxy <url>
+
+yarn doesn't seem to be using system-installed root CA's, it is necessary to
+specify it manually:
+yarn config set cafile /etc/ca-certificates/trust-source/anchors/Some_Corp_CA.crt

@@ -110,12 +110,15 @@ export NO_AT_BRIDGE=1
 # GTK dark theme
 export GTK_THEME=Adwaita:dark
 
-# QT5 theme configured by qt5ct
+# Qt5 theme configured by qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Applications using non-system Qt
+export QT_QPA_PLATFORM="wayland;xcb"
 
 # Wayland env variables for apps and frameworks
 if [[ $XDG_SESSION_TYPE == wayland ]] ; then
-    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
     export GDK_BACKEND=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
 fi
