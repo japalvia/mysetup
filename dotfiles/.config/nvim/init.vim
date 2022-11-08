@@ -14,6 +14,8 @@ Plug 'ackyshake/VimCompletesMe'
 Plug 'Rykka/riv.vim'
 Plug 'Rykka/InstantRst'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn install' }
+Plug 'dkarter/bullets.vim'
+Plug 'dhruvasagar/vim-table-mode'
 
 
 call plug#end()             " Initialize plugin system
