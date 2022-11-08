@@ -26,6 +26,9 @@ let mapleader=","
 
 """ Options """
 
+" Disable all mouse actions
+set mouse=
+
 " number of columns occupied by a tab
 set tabstop=4
 
