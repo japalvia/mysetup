@@ -10,6 +10,12 @@ Installing a plugin:
 Add new Plug command in ~/.config/nvim/init.vim
 Run command :PlugInstall in nvim
 
+Vim-plug
+--------
+
+Show current plugins:
+:PlugStatus
+
 
 Useful plugin usage
 -------------------
@@ -19,7 +25,11 @@ Make
 move between panes, select error, press Enter to jump into the source code
 
 Ripgrep:
-Rg foobar
+:Rg foobar
+
+bullets:
+Renumbering:
+gN
 
 
 Mappings

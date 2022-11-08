@@ -318,3 +318,6 @@ Regex
 
 Delete all empty lines:
 :g/^$/d
+
+Replace starting from current line using range:
+:,$s/BEFORE/AFTER/gc
