@@ -109,6 +109,9 @@ Pass current buffer to external command/script:
 Replace one or more spaces with a newline:
 :%s/ \+/\r/g
 
+Open path under the cursor:
+gf
+
 Moving around
 -------------
 

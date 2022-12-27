@@ -42,7 +42,10 @@ pacman -Qn
 Show query results only for foreign (AUR/local builds) packages:
 pacman -Qm
 
-Sync signing keys: pacman-key --refresh-keys
+checking package integrity
+error: binutils [...] is unknown trust
+Install keyring package first:
+sudo pacman -S archlinux-keyring
 
 Synchronize database when a download fails, optionally also install a package:
 pacman -Sy [package]

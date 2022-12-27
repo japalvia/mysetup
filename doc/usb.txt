@@ -16,6 +16,9 @@ mount |grep "/media/xxx"
 Unmount gracefully:
 devmon --unmount /media/xxx
 
+Remove ISO 9660 filesystem signature:
+wipefs --all /dev/sdb
+
 Remove existing partitions and create fat32:
 sudo fdisk /dev/sdb
 
