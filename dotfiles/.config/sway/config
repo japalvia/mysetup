@@ -38,6 +38,7 @@ bindsym $mod+Shift+q kill
 # start application launcher
 set $bemenu_args --ignorecase --fn Liberation Mono 12 --no-overlap
 bindsym $mod+d exec bemenu-run $bemenu_args
+bindsym $mod+shift+d exec j4-dmenu-desktop --dmenu="bemenu $bemenu_args"
 
 # change focus
 bindsym $mod+j focus down
