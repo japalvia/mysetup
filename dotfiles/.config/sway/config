@@ -181,7 +181,7 @@ set $locker ~/.config/sway/mylock
 exec \
     systemd-cat swayidle -w \
     timeout 600 $locker \
-    timeout 600 'swaymsg "output * dpms off"' \
+    timeout 605 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
     before-sleep $locker
 
