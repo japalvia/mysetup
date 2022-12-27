@@ -16,6 +16,7 @@ Plug 'Rykka/InstantRst'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn install' }
 Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'AndrewRadev/linediff.vim'
 
 
 call plug#end()             " Initialize plugin system

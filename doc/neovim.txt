@@ -31,6 +31,11 @@ bullets:
 Renumbering:
 gN
 
+Linediff:
+select block in visual mode, then
+:Linediff
+select another block in visual mode, then
+:Linediff
 
 Mappings
 --------
