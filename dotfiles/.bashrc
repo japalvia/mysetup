@@ -12,6 +12,7 @@ alias la='ls -la'
 alias grep='grep --color=auto'
 alias v='vim'
 alias nv='nvim'
+alias nvf='nvim $(fzf)'
 alias c='cd'
 
 alias ga='git add'
