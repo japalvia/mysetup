@@ -14,6 +14,9 @@ Plug 'ackyshake/VimCompletesMe'
 Plug 'Rykka/riv.vim'
 Plug 'Rykka/InstantRst'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn install' }
+Plug 'dkarter/bullets.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'AndrewRadev/linediff.vim'
 
 
 call plug#end()             " Initialize plugin system
@@ -23,6 +26,9 @@ colors zenburn
 let mapleader=","
 
 """ Options """
+
+" Disable all mouse actions
+set mouse=
 
 " number of columns occupied by a tab
 set tabstop=4

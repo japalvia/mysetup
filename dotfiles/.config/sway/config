@@ -38,6 +38,7 @@ bindsym $mod+Shift+q kill
 # start application launcher
 set $bemenu_args --ignorecase --fn Liberation Mono 12 --no-overlap
 bindsym $mod+d exec bemenu-run $bemenu_args
+bindsym $mod+shift+d exec j4-dmenu-desktop --dmenu="bemenu $bemenu_args"
 
 # change focus
 bindsym $mod+j focus down
@@ -180,10 +181,8 @@ set $locker ~/.config/sway/mylock
 exec \
     systemd-cat swayidle -w \
     timeout 600 $locker \
-    timeout 600 'swaymsg "output * dpms off"' \
+    timeout 605 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-    timeout 30 'if pgrep swaylock; then swaymsg "output * dpms off"; fi' \
-        resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
     before-sleep $locker
 
 # Volume controls

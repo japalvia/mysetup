@@ -12,6 +12,7 @@ alias la='ls -la'
 alias grep='grep --color=auto'
 alias v='vim'
 alias nv='nvim'
+alias nvf='nvim $(fzf)'
 alias c='cd'
 
 alias ga='git add'
@@ -126,3 +127,5 @@ fi
 # Screenshot destination
 export GRIM_DEFAULT_DIR=$HOME/temp/grim
 [[ -d $GRIM_DEFAULT_DIR ]] && mkdir -p "$GRIM_DEFAULT_DIR"
+
+export RIPGREP_CONFIG_PATH=~/.config/ripgreprc

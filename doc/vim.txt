@@ -109,6 +109,9 @@ Pass current buffer to external command/script:
 Replace one or more spaces with a newline:
 :%s/ \+/\r/g
 
+Open path under the cursor:
+gf
+
 Moving around
 -------------
 
@@ -318,3 +321,6 @@ Regex
 
 Delete all empty lines:
 :g/^$/d
+
+Replace starting from current line using range:
+:,$s/BEFORE/AFTER/gc
