@@ -142,6 +142,10 @@ git restore --staged dotfiles/.config/sway/config
 git checkout --conflict=merge dotfiles/.config/sway/config
 Recreated 1 merge conflict
 
+Reset current commit during rebase conflict resolution:
+git reset --hard HEAD
+git cherry-pick -n $(git rev-parse REBASE_HEAD)
+
 proxy
 -----
 

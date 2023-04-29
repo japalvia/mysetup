@@ -84,3 +84,8 @@ cd paru
 makepkg -si
 
 paru -S --needed - < mysetup/doc/arch_packages.txt
+
+Default apps
+------------
+
+xdg-settings set default-web-browser google-chrome-stable.desktop

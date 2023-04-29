@@ -46,3 +46,16 @@ List and preview open files:
 Clear highlights:
 ctrl-l
 
+
+Markdown
+--------
+
+:MarkdownPreviewToggle
+
+Misc
+----
+
+Remove newlines in a selection:
+ctrl-v
+command with ':'
+s/\n//g
