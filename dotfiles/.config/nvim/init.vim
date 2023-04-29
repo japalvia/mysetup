@@ -169,3 +169,5 @@ autocmd bufreadpre *.patch setlocal textwidth=79
 " JSON formatting
 autocmd Filetype json setlocal ts=2 sw=2
 
+" Markdown settings
+let g:mkdp_browser = 'google-chrome-stable'
