@@ -1,0 +1,76 @@
+Convert BIOS to UEFI
+====================
+
+Reference:
+http://blog.getreu.net/projects/legacy-to-uefi-boot/
+
+Boot system to UEFI live CD environment
+
+Identify the partition used for booting that contains /boot:
+# fdisk -l /dev/sdx
+
+Transform partition table from MBR to GPT:
+# gdisk /dev/sdx
+--> select:
+    r       recovery and transformation options (experts only)
+    f       load MBR and build fresh GPT from it
+
+Create EFI partition:
+- Use gparted or other tool to shrink /boot partition from the beginning, at
+  least 50 MB, but multi OS setup, etc might require up to 500 MB
+- Create new vfat partition to the unallocated space
+- Change the partition type to ef00, using gdisk:
+--> select:
+    t       change type
+    #       EFI partition number (dev/sdx#)
+    ef00    partition type code
+    w       write changes
+
+The running kernel does not yet see the modified partition table. Reboot
+live CD or run:
+# partprobe
+
+Next, the operating system on disk needs to be updated for booting to UEFI.
+This will be done using chroot after mounting necessary filesystems:
+
+Map LUKS device, requires decrypting:
+# cryptsetup open --type luks /dev/sdx# map_name
+
+Activate logical volume:
+# vgchange -a y
+
+Mount the volume:
+# mount /dev/mapper/<name> /mnt
+
+Mount rest of the filesystems under the root:
+# mount /dev/sdbx1 /mnt/boot
+
+EFI partition goes under /boot
+# mkdir /mnt/boot/efi
+# mount /dev/sdx# /mnt/boot/efi
+
+Bind mounts:
+for i in /dev/ /dev/pts /proc /sys ; do mount -B $i /mnt/$i ; done
+
+efivars is required to create the EFI partition:
+# mount -t efivarfs efivarfs /mnt/sys/firmware/efi/efivars
+
+Name resolution is needed for installing efibootmgr within chroot:
+# cp /etc/resolv.conf /mnt/etc/resolv.conf
+
+Enter chroot environment:
+# chroot /mnt
+
+Find EFI partition UUID using:
+# ls -l /dev/disk/by-uuid
+Or fdisk, etc.
+
+Add fstab entry for EFI partition:
+# echo "UUID=XXXX-XXXX /boot/efi vfat defaults 0 2" >> /etc/fstab
+
+Install Grub bootloader for EFI:
+# grub-install /dev/sdx
+
+Check what's now available in UEFI boot manager:
+# efibootmgr
+

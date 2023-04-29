@@ -4,3 +4,4 @@ end
 
 set history save on
 set history size 5000
+set debuginfod enabled on

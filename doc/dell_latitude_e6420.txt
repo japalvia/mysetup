@@ -1,0 +1,27 @@
+Update BIOS
+===========
+
+Dell documentation for Linux:
+https://www.dell.com/support/kbdoc/en-us/000131486/update-the-dell-bios-in-a-linux-or-ubuntu-environment
+That stopped working after A12 update.
+
+Running BIOS update from Windows 8 installation media with recovery/command
+prompt:
+
+Install woeusb-ng package on Linux host
+
+Download 32-bit Windows 8.1 from Microsoft
+
+Create bootable (both bios and uefi) usb drive:
+sudo woeusb --device Downloads/Win8.1_SingleLang_EnglishInternational_x64.iso /dev/sda
+
+Modify the installer to include bios update:
+
+# mkdir /media/win
+# wimmountrw /media/sda1-usb-SanDisk_Ultra_03/sources/boot.wim 2 /media/wim
+# cp Latitude_E6420_E6420ATG_A25.exe /media/wim/source/A25.exe
+# wimunmount /media/wim --commit
+# sync
+
+Boot Windows installation media, navigate to recovery, command prompt and run
+the installer.

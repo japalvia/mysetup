@@ -4,6 +4,9 @@ QEMU with KVM
 Setup
 -----
 
+Install QEMU simulator for target architecture(s), e.g.
+qemu-system-x86
+
 Follow steps to configure:
 https://wiki.archlinux.org/title/Virt-Manager
 
