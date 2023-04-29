@@ -189,18 +189,16 @@ exec \
     before-sleep $locker
 
 # Volume controls
-bindsym XF86AudioRaiseVolume \
+bindsym shift+F10 \
     exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume \
+bindsym shift+F9 \
     exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute \
+bindsym shift+F8 \
     exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym shift+F11 \
+    exec playerctl play-pause
 
 # Switch virtual terminal from Xorg
 bindsym $sup+Left exec ~/bin/vt-prev
