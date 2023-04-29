@@ -84,6 +84,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# Make easier to grab the edge of floating window for resizing
+default_floating_border pixel 10
+
 # focus the parent container
 bindsym $mod+a focus parent
 
