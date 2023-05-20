@@ -2,5 +2,7 @@
 
 # Use --debug for additional logging
 swaylock \
+    --indicator-caps-lock \
+    --indicator-idle-visible \
     --daemonize \
     --color 000000
