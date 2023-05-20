@@ -192,3 +192,10 @@ Adds the signed-off-by trailer to the commit message
 
 git commit -S
 actually signs the commit with existing gpg key
+
+
+Windows newlines and merge conflicts
+------------------------------------
+
+When remote already contains CRLF newlines, ignore them:
+git cherry-pick -X ignore-all-space <hash>
