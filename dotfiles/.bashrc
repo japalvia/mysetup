@@ -99,3 +99,9 @@ if [[ $XDG_SESSION_TYPE == wayland ]] ; then
     export GDK_BACKEND=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
 fi
+
+# Docker containers can have unlimited number of open files
+# causing slowdowns on some applications:
+# https://github.com/docker/for-linux/issues/502
+# https://github.com/containerd/containerd/pull/7566
+[[ -f  /.dockerenv ]] && ulimit -S -n 1024
