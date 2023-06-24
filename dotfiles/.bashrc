@@ -92,3 +92,10 @@ if [ "$PROMPT_COMMAND" = "" ] ; then
 else
     PROMPT_COMMAND="run_on_prompt_command; ""$PROMPT_COMMAND"
 fi
+
+# Runtime dependant Wayland env variables
+if [[ $XDG_SESSION_TYPE == wayland ]] ; then
+    export XDG_CURRENT_DESKTOP=sway
+    export GDK_BACKEND=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
+fi
