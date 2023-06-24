@@ -56,9 +56,6 @@ set autoindent
 " indent long lines when inserting
 set breakindent
 
-" switch buffer without promting to save
-set hidden
-
 " highlight cursor line
 set cursorline
 
