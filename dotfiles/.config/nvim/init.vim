@@ -10,7 +10,7 @@ Plug 'fidian/hexmode'
 Plug 'peterhoeg/vim-qml'
 Plug 'fedorenchik/qt-support.vim'
 Plug 'tpope/vim-dispatch'
-Plug 'ackyshake/VimCompletesMe'
+Plug 'https://git.sr.ht/~ackyshake/VimCompletesMe.vim'
 Plug 'Rykka/riv.vim'
 Plug 'Rykka/InstantRst'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn install' }
