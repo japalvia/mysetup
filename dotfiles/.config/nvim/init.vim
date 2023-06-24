@@ -18,8 +18,16 @@ Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/linediff.vim'
 
+" LSP
+Plug 'williamboman/mason.nvim',  { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
 
 call plug#end()             " Initialize plugin system
+
+" Load lua/lsp.lua
+lua require('lsp')
 
 colors zenburn
 
