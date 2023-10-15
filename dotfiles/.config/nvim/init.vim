@@ -17,6 +17,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn in
 Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/linediff.vim'
+Plug 'bergercookie/vim-deb-preview'
 
 " LSP
 Plug 'williamboman/mason.nvim',  { 'do': ':MasonUpdate' }
