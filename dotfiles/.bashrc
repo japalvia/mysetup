@@ -31,6 +31,8 @@ alias gria='git rebase -i --autosquash'
 alias gs='git status'
 alias gss='git status --short'
 alias gru='git remote update'
+# Debian systems
+command -v fdfind &>/dev/null && alias fd='fdfind'
 
 alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - \
