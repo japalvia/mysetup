@@ -137,6 +137,11 @@ nnoremap <leader>d "_d
 xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 
+" Yank selection to CLIPBOARD
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>yy  "+yy
+
 " Show current C function in status line
 fun! ShowFuncName()
   let lnum = line(".")
