@@ -18,7 +18,7 @@ Pass program arguments on command line:
 gdb --args <prog> <arg1> <arg2>
 
 Start pgrogram from command line:
-gdb -ex=run
+gdb -ex=start --args /bin/echo "test"
 
 Log session with full backtrace
 -------------------------------

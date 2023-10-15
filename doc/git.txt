@@ -171,6 +171,9 @@ git reset --soft HEAD^
 # fix code
 git commit --reuse-message=ORIG_HEAD
 
+Show deleted file contents from the past history:
+git show $(git rev-list --max-count=1 --all -- foo)^:foo
+
 Gerrit
 ------
 

@@ -116,6 +116,10 @@ Open a buffer in new window:
 Useful as a scratch pad
 :enew
 
+Split long compiler command line to multiple lines (argument per line):
+:%s/\s\+/\r/g
+Selection should work the same way
+
 Moving around
 -------------
 
