@@ -196,6 +196,10 @@ Adds the signed-off-by trailer to the commit message
 git commit -S
 actually signs the commit with existing gpg key
 
+Auto-signoff commits:
+printf "\nSigned-off-by: $(git config --global user.name) <$(git config --global user.email)>\n" ~/.gitmessage.txt
+git config --global commit.template ~/.gitmessage.txt
+
 
 Windows newlines and merge conflicts
 ------------------------------------
