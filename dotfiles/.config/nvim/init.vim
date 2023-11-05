@@ -18,6 +18,7 @@ Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'bergercookie/vim-deb-preview'
+Plug 'funcodeio/lz4.vim'
 
 " LSP
 Plug 'williamboman/mason.nvim',  { 'do': ':MasonUpdate' }
