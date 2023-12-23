@@ -1,6 +1,3 @@
 #!/bin/bash
 
-export _JAVA_AWT_WM_NONREPARENTING=1
-export STUDIO_JDK=/usr/lib/jvm/java-18-openjdk
-
-pycharm
+~/dev/pycharm-community-2023.2.3/bin/pycharm.sh
