@@ -298,6 +298,8 @@ exec systemctl --user import-environment WAYLAND_DISPLAY
 
 exec devmon
 
+exec poweralertd
+
 # Find app_id field in in command output:
 # swaymsg -t get_tree
 
