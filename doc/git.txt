@@ -206,3 +206,11 @@ Windows newlines and merge conflicts
 
 When remote already contains CRLF newlines, ignore them:
 git cherry-pick -X ignore-all-space <hash>
+
+mu-repo
+-------
+
+Configuration is written to .mu_repo to CWD initially
+
+Remove all repos:
+mu unregister --all

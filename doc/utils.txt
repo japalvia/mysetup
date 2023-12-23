@@ -89,3 +89,15 @@ Extract debian/openembbed ipk package
 ar x <pkg>
 xz -d data.tar.xz
 tar xf data.tar
+
+
+date
+----
+
+Output: add seconds to current time
+date --date "5 seconds"
+date --date "-5 seconds"
+
+
+Loop over directories:
+or i in ls -d /tmp/dev/*/ ; do ( cd $i ; echo "$(basename $i): $(git branch --show-current)" ) ; done
