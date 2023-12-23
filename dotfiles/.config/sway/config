@@ -280,7 +280,9 @@ bindsym $mod+F1 exec \
     swaymsg "exec $term"'
 
 # Export environment before starting applications
-exec systemctl --user import-environment
+exec systemctl --user import-environment \
+    XDG_CURRENT_DESKTOP \
+    WAYLAND_DISPLAY
 
 # Screen color temperature
 exec systemd-cat gammastep
