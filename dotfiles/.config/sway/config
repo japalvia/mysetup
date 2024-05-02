@@ -255,6 +255,11 @@ input "type:keyboard" {
   xkb_layout "fi_linux_dev"
 }
 
+input "12951:6519:ZSA_Technology_Labs_Voyager" {
+    xkb_layout "fi"
+    xkb_variant "nodeadkeys"
+}
+
 # store PRIMARY selection
 exec_always "pkill wl-paste ; wl-paste -n -t text -p -w clipman --notify store -P --max-items=1000"
 
