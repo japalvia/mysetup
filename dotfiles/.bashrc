@@ -53,7 +53,7 @@ else
 fi
 
 if which keychain >/dev/null 2>&1 ; then
-    eval $(keychain --eval --quiet id_rsa)
+    eval $(keychain --eval --quiet)
 fi
 
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
