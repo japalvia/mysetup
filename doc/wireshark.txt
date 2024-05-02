@@ -25,6 +25,9 @@ Add CMake option and install:
 cd wireshark-ninja
 sudo ninja install
 
+Check installation prefix:
+rg CMAKE_INSTALL_PREFIX CMakeCache.txt
+
 Workaround without installation:
 sudo setcap cap_net_raw,cap_net_admin+ep run/dumpcap
 

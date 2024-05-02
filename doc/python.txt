@@ -10,3 +10,20 @@ Setuptools
 
 python setup.py install
 pip uninstall <package>
+
+pip/pypi
+--------
+
+Modern pip versions reject installing directly to managed environments.
+Create dedicated venv:
+python3 -m venv ~/dev/sphinx-venv
+
+Install needed packages:
+~/dev/sphinx-venv/bin/pip3 install \
+    sphinxcontrib-blockdiag \
+    sphinxcontrib-plantuml \
+    sphinxcontrib.spelling \
+    sphinx_rtd_theme
+
+Enter the venv:
+source ~/dev/sphinx-venv/bin/activate

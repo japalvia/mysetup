@@ -13,12 +13,23 @@ swaylock
 gammastep
 playerctl
 xorg-xlsclients
+imv
 
 Identify apps using xwayland:
 $ xlsclients
 
 Qt5 and wayland:
 Install package: qt5-wayland
+
+Sway config
+-----------
+
+for_window:
+Criteria 'title' is 'name' in swaymsg -t get_tree
+
+
+Capture input events:
+wev
 
 
 Screen sharing in chrome
@@ -40,11 +51,6 @@ Environment variables
 
 https://gitlab.freedesktop.org/wlroots/wlroots/-/blob/master/docs/env_vars.md
 
-Sway config
------------
-
-for_window:
-Criteria 'title' is 'name' in swaymsg -t get_tree
 
 Shortcut keys in apps
 ---------------------

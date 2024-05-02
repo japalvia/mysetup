@@ -142,6 +142,10 @@ git restore --staged dotfiles/.config/sway/config
 git checkout --conflict=merge dotfiles/.config/sway/config
 Recreated 1 merge conflict
 
+Reset current commit during rebase conflict resolution:
+git reset --hard HEAD
+git cherry-pick -n $(git rev-parse REBASE_HEAD)
+
 proxy
 -----
 
@@ -167,6 +171,9 @@ git reset --soft HEAD^
 # fix code
 git commit --reuse-message=ORIG_HEAD
 
+Show deleted file contents from the past history:
+git show $(git rev-list --max-count=1 --all -- foo)^:foo
+
 Gerrit
 ------
 
@@ -188,3 +195,22 @@ Adds the signed-off-by trailer to the commit message
 
 git commit -S
 actually signs the commit with existing gpg key
+
+Auto-signoff commits:
+printf "\nSigned-off-by: $(git config --global user.name) <$(git config --global user.email)>\n" ~/.gitmessage.txt
+git config --global commit.template ~/.gitmessage.txt
+
+
+Windows newlines and merge conflicts
+------------------------------------
+
+When remote already contains CRLF newlines, ignore them:
+git cherry-pick -X ignore-all-space <hash>
+
+mu-repo
+-------
+
+Configuration is written to .mu_repo to CWD initially
+
+Remove all repos:
+mu unregister --all

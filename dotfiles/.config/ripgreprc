@@ -1,2 +1,3 @@
+# Each line is a single argument, no quotes
 --hidden
---no-ignore
+--glob=!.git/

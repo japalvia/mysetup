@@ -17,3 +17,13 @@ Step 1/25 : FROM centos:8
 Run the intermediate container manually:
 docker run -it 5d0da3dc9764
 
+Cleanup
+-------
+
+Remove dangling volumes:
+docker volume ls -qf dangling=true
+docker volume rm $(docker volume ls -qf dangling=true)
+
+Remove dangling images:
+docker images -f dangling=true
+docker rmi $(docker images -f dangling=true -q)

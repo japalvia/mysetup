@@ -1,3 +1,8 @@
 #!/bin/bash
 
-rg $@ ~/.persistent_history
+hist_file=~/.persistent_history
+
+# '26991:2022-12-27 17:39:11 944 | '
+pattern="[0-9]+:[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+ [0-9]+ \| "
+
+read -e -p "$" -i "$(fzf < $hist_file | cut -d '|' -f2)" && eval $REPLY

@@ -10,7 +10,7 @@ alias ll='ls -l'
 alias lt='ls -lt'
 alias la='ls -la'
 alias grep='grep --color=auto'
-alias v='vim'
+alias v='nvim'
 alias nv='nvim'
 alias nvf='nvim $(fzf)'
 alias c='cd'
@@ -21,7 +21,9 @@ alias gc='git commit'
 alias gcf='git commit --fixup'
 alias gco='git checkout'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gl='git log'
+alias glo='git log --oneline'
 alias gr='git rebase'
 alias gra='git rebase --abort'
 alias gri='git rebase -i'
@@ -29,6 +31,8 @@ alias gria='git rebase -i --autosquash'
 alias gs='git status'
 alias gss='git status --short'
 alias gru='git remote update'
+# Debian systems
+command -v fdfind &>/dev/null && alias fd='fdfind'
 
 alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - \
@@ -92,40 +96,15 @@ else
     PROMPT_COMMAND="run_on_prompt_command; ""$PROMPT_COMMAND"
 fi
 
-export PATH=$HOME/bin:$PATH
-# pip packages for user
-export PATH=$HOME/.local/bin:$PATH
-# rust cargo installed sw for user
-export PATH=$HOME/.cargo/bin:$PATH
-
-export RANGER_LOAD_DEFAULT_RC=FALSE
-
-export BC_ENV_ARGS=$HOME/.config/bcrc
-
-export EDITOR=nvim
-
-export HISTCONTROL=ignorespace
-# Silence dbus errors about accessibility bus
-export NO_AT_BRIDGE=1
-
-# GTK dark theme
-export GTK_THEME=Adwaita:dark
-
-# Qt5 theme configured by qt5ct
-export QT_QPA_PLATFORMTHEME=qt5ct
-
-# Applications using non-system Qt
-export QT_QPA_PLATFORM="wayland;xcb"
-
-# Wayland env variables for apps and frameworks
+# Runtime dependant Wayland env variables
 if [[ $XDG_SESSION_TYPE == wayland ]] ; then
     export XDG_CURRENT_DESKTOP=sway
     export GDK_BACKEND=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
 fi
 
-# Screenshot destination
-export GRIM_DEFAULT_DIR=$HOME/temp/grim
-[[ -d $GRIM_DEFAULT_DIR ]] && mkdir -p "$GRIM_DEFAULT_DIR"
-
-export RIPGREP_CONFIG_PATH=~/.config/ripgreprc
+# Docker containers can have unlimited number of open files
+# causing slowdowns on some applications:
+# https://github.com/docker/for-linux/issues/502
+# https://github.com/containerd/containerd/pull/7566
+[[ -f  /.dockerenv ]] && ulimit -S -n 1024

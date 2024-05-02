@@ -10,16 +10,26 @@ Plug 'fidian/hexmode'
 Plug 'peterhoeg/vim-qml'
 Plug 'fedorenchik/qt-support.vim'
 Plug 'tpope/vim-dispatch'
-Plug 'ackyshake/VimCompletesMe'
+Plug 'https://git.sr.ht/~ackyshake/VimCompletesMe.vim'
 Plug 'Rykka/riv.vim'
 Plug 'Rykka/InstantRst'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'pwd && set -x && cd app && yarn install' }
 Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/linediff.vim'
+Plug 'bergercookie/vim-deb-preview'
+Plug 'funcodeio/lz4.vim'
 
+" LSP
+Plug 'williamboman/mason.nvim',  { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
 
 call plug#end()             " Initialize plugin system
+
+" Load lua/lsp.lua
+lua require('lsp')
 
 colors zenburn
 
@@ -47,9 +57,6 @@ set autoindent
 
 " indent long lines when inserting
 set breakindent
-
-" switch buffer without promting to save
-set hidden
 
 " highlight cursor line
 set cursorline
@@ -131,6 +138,11 @@ nnoremap <leader>d "_d
 xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 
+" Yank selection to CLIPBOARD
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>yy  "+yy
+
 " Show current C function in status line
 fun! ShowFuncName()
   let lnum = line(".")
@@ -169,3 +181,5 @@ autocmd bufreadpre *.patch setlocal textwidth=79
 " JSON formatting
 autocmd Filetype json setlocal ts=2 sw=2
 
+" Markdown settings
+let g:mkdp_browser = 'google-chrome-stable'

@@ -62,3 +62,9 @@ sudo resolvectl dns tun0 <nameserver> <nameserver>
 
 Try to flush name cache:
 chrome://net-internals/proxyservice.config#dns
+
+Resolve mac address from IP
+---------------------------
+
+ping 192.168.121.2
+ip neighbor | 192.168.121.2
