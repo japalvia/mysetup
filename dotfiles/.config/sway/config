@@ -232,6 +232,12 @@ for_window [title="Android Emulator*"] \
     resize shrink height 300 px; \
     move position 3082 px 10 px
 
+for_window [app_id="keymapp"] \
+    floating enable, \
+    sticky enable, \
+    resize set width 200 px height 150 px, \
+    move position 0 px px
+
 # Viewing images with display works better when picture is not
 # tiled to container size.
 for_window [class="Display"] \
