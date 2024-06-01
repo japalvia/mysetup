@@ -1,0 +1,16 @@
+return focus to Editor:
+Esc Esc
+
+move to split:
+ctrl-w-hjkl
+
+go to declaration:
+gd
+
+comment/uncomment line:
+gcc
+
+todo:
+https://kietcthe.medium.com/unleash-the-power-of-ideavimrc-enhance-your-intellij-idea-experience-with-advanced-features-5531c3c0641e
+
+https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md

@@ -1,0 +1,6 @@
+SSH
+===
+
+Removing outdated remote host fingerprint:
+ssh-keygen -R <host>
+Use tab to complete if not found

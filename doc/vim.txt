@@ -204,6 +204,18 @@ val     select whole line
 
 TODO: does clipmenu need configuration to sync primary and clipboard?
 
+Using registers:
+https://www.brianstorti.com/vim-registers/
+
+Example: registers q and w
+copy line to q:
+V"qy
+copy another line to w:
+V"wy
+
+paste lines elsewhere:
+"qp
+"wp
 
 Sessions
 --------

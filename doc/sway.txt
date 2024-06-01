@@ -56,3 +56,13 @@ Shortcut keys in apps
 ---------------------
 
 https://artemis.sh/2022/09/15/stop-chrome-stealing-hotkeys-sway.html
+
+
+Recover swaylock crash
+----------------------
+
+Open another TTY or login from another host and run
+WAYLAND_DISPLAY=wayland-1 swaylock
+
+Wrapper script has display set:
+~/.config/sway/mylock

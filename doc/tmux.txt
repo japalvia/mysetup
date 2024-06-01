@@ -5,6 +5,9 @@ Config file
 -----------
 ~/.tmux.conf
 
+Start without user configuration (start another server):
+tmux -L foobar -f /dev/null
+
 Global prefix key is C-a
 
 Reload config directly from command line:

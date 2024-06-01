@@ -350,3 +350,46 @@ copy to ~/.config/pipewire/pipewire.conf and see man pipewire.conf
 # vendor preset is enabled
 systemctl --user start pipewire-media-session
 systemctl --user start pipewire
+
+Arch build system
+-----------------
+
+https://wiki.archlinux.org/title/Kernel/Arch_build_system
+
+cd build
+pkgctl repo clone --protocol=https linux
+
+disable building doc
+
+makepkg -s
+
+Install missing pgp keys to user keyring:
+gpg2 --locate-keys torvalds@kernel.org gregkh@kernel.org
+
+Check keys/ directory in the build:
+gpg2  keys/pgp/83BC8889351B5DEBBB68416EB8AC08600F108CDF.asc
+
+Import:
+gpg2 --import  keys/pgp/83BC8889351B5DEBBB68416EB8AC08600F108CDF.asc
+
+Build:
+MAKEFLAGS="-j$(nproc)" makepkg -s
+
+
+Virtual console font
+--------------------
+
+Useful for:
+- fix very small and bad looking font on 4k display
+- customize keyboard bindinds
+- set layout (significant for luks encryption unlocking)
+
+cat /etc/vconsole.conf
+KEYMAP=jarkko
+FONT=ter-128b
+
+Keymap located in /usr/share/kbd/keymaps/i386/qwerty/jarkko.map
+Copy existing layout and modify keycodes (how to identify the code?)
+
+Install package: terminus-font
+
