@@ -1,3 +1,4 @@
 # Each line is a single argument, no quotes
+# --pretty can break output for apps like vim-ripgrep plugin
 --hidden
 --glob=!.git/
