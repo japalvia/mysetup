@@ -130,8 +130,10 @@ noremap <Right> <Nop>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-" FIXME: moving to right conflicts with clearing search highlights
-" nnoremap <C-l> <C-w>l
+nnoremap <C-l> <C-w>l
+
+" Redraw with <leader>-l to remove search hits
+nnoremap <silent> <leader>, :nohls<cr><leader>l
 
 " Black hole register to delete without yanking
 nnoremap <leader>d "_d
@@ -142,6 +144,9 @@ xnoremap <leader>p "_dP
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>yy  "+yy
+
+" Hide the quickfix window
+nnoremap <leader><CR> <CR>:cclose<CR>
 
 " Show current C function in status line
 fun! ShowFuncName()
