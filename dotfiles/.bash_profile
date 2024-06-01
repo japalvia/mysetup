@@ -30,6 +30,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # Applications using non-system Qt
 export QT_QPA_PLATFORM="wayland;xcb"
 
+export Qt6_DIR="/usr/lib/qt6"
+
 # Screenshot destination
 export GRIM_DEFAULT_DIR=$HOME/temp/grim
 [[ -d $GRIM_DEFAULT_DIR ]] || mkdir -p "$GRIM_DEFAULT_DIR"
