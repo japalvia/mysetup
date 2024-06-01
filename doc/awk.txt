@@ -1,0 +1,4 @@
+
+TODO:
+https://stackoverflow.com/questions/31531484/grep-for-a-dynamic-pattern-in-a-file-and-print-the-other-lines-having-former-pat
+awk '/Matched Line/{id=$4;next;} id==$4' file.log
