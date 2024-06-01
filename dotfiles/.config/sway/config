@@ -175,18 +175,16 @@ bindsym $mod+Control+l mode "$mode_system"
 bindsym $sup+l exec $sway_exit lock, mode "default"
 # bindsym --locked $sup+s exec $sway_exit suspend, mode "default"
 
-# Idle configuration
-# 3 idle timeouts:
-#  - lock screen after 5 minutes
-#  - turn off outputs after 10 minutes
-#  - after 30 seconds, turn off outputs if screen is locked
-# For debugging, add -d to swayidle command line
 set $locker ~/.config/sway/mylock
+
+# Enable temporilary to launch on config reload:
+# exec_always
+
 exec \
-    systemd-cat swayidle -w \
-    timeout 600 $locker \
-    timeout 605 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
+    swayidle -w \
+    timeout 605 $locker \
+    timeout 600 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
     before-sleep $locker
 
 # Volume controls
@@ -223,6 +221,9 @@ mode "moveit" {
 }
 bindsym $mod+m focus floating; mode "moveit"
 
+# Find app_id field in in command output:
+# swaymsg -t get_tree
+
 # Android Emulator flickers when focus changes in other windows.
 # Fix by changing to floating mode and moving it in a hardcoded
 # position for 3840x160 monitor (upper right corner).
@@ -239,16 +240,35 @@ for_window [title="Android Emulator*"] \
 for_window [class="Display"] \
     floating enable
 
-assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
+# Qt Creator dialog when re-running app
+for_window [title="Waiting for Applications to Stop — Qt Creator"] floating enable
 
-# move workspace to left and right monitors
-bindsym $mod+Shift+minus move workspace to output left
-bindsym $mod+Shift+plus move workspace to output right
+for_window [app_id="keymapp"] \
+    floating enable, \
+    sticky enable, \
+    resize set width 200 px height 150 px, \
+    move position 85 ppt 75 ppt
+
+assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
 
 # https://github.com/swaywm/sway/wiki
 # https://www.charvolant.org/doug/xkb/html/node5.html
-input "type:keyboard" {
-  xkb_layout "fi_linux_dev"
+# swaymsg -t get_inputs
+input "1423:37904:KINESIS_FREESTYLE_KB800_KB800_Kinesis_Freestyle" {
+    xkb_layout "fi_linux_dev"
+}
+
+input "12951:6519:ZSA_Technology_Labs_Voyager" {
+    xkb_layout "fi"
+    xkb_variant "nodeadkeys"
+}
+
+input "1133:16534:Logitech_ERGO_M575" {
+    pointer_accel 0.7
+}
+
+input "20547:7851:Ploopy_Corporation_Trackball_Nano" {
+    pointer_accel '-0.6'
 }
 
 # store PRIMARY selection
@@ -279,30 +299,49 @@ bindsym $mod+F1 exec \
     swaymsg "focus right; splitv" && \
     swaymsg "exec $term"'
 
-# Export environment before starting applications
-exec systemctl --user import-environment \
-    XDG_CURRENT_DESKTOP \
-    WAYLAND_DISPLAY
+# Needed for xdg-desktop-portal
+exec dbus-update-activation-environment \
+    --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Screen color temperature
-exec systemd-cat gammastep
+exec gammastep
 
 # Sway and kanshi appear to have a race condition when accessing output
 # https://github.com/swaywm/sway/issues/6863
 # FIXME: once kanshi disable an output, sway log contains error:
 # [ERROR] [sway/config/output.c:501] Failed to commit output eDP-1
-exec_always "pkill kanshi ; sleep 3 ; systemd-cat kanshi"
+exec_always "pkill kanshi ; sleep 2 ; kanshi"
 
-# dunst requires access to display
-exec systemctl --user import-environment WAYLAND_DISPLAY
+exec dunst
 
 exec devmon
 
 exec poweralertd
 
-# Find app_id field in in command output:
-# swaymsg -t get_tree
+mode Mouse {
+    bindsym a mode default, exec 'wl-kbptr-sway-active-win; swaymsg mode Mouse'
+    bindsym Shift+a mode default, exec 'wl-kbptr; swaymsg mode Mouse'
 
-assign [app_id="equinox"] workspace 5
-assign [class="jetbrains-clion"] workspace 10
-assign [class="F5 VPN"] workspace 11
+    # Mouse move
+    bindsym h seat seat0 cursor move -15 0
+    bindsym j seat seat0 cursor move 0 15
+    bindsym k seat seat0 cursor move 0 -15
+    bindsym l seat seat0 cursor move 15 0
+
+    # Left button
+    bindsym s seat seat0 cursor press button1
+    bindsym --release s seat seat0 cursor release button1
+
+    # Middle button
+    bindsym d seat seat0 cursor press button2
+    bindsym --release d seat seat0 cursor release button2
+
+    # Right button
+    bindsym f seat seat0 cursor press button3
+    bindsym --release f seat seat0 cursor release button3
+
+    bindsym Escape mode default
+}
+
+bindsym $mod+g mode Mouse
+
