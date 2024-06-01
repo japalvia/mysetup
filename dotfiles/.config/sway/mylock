@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# Make a guess when running outside current session
+[[ -z $WAYLAND_DISPLAY ]] && export WAYLAND_DISPLAY=wayland-1
+
 # Use --debug for additional logging
+# chayang for dimming - not in use, had problems
 swaylock \
     --indicator-caps-lock \
     --indicator-idle-visible \
