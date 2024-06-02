@@ -10,6 +10,9 @@ Print system info and BIOS version:
 nuc-info
 
 Look for BIOS Update:
+Now in ASUS:
+https://www.asus.com/supportonly/nuc7i7dnh/helpdesk_bios/
+
 https://downloadcenter.intel.com/product/130393/Intel-NUC-Kit-NUC7i7DNHE
 
 Select download for .BIO file.
