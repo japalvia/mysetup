@@ -135,10 +135,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym $left resize shrink width 10 px or 10 ppt
+        bindsym $down resize grow height 10 px or 10 ppt
+        bindsym $up resize shrink height 10 px or 10 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -266,7 +266,7 @@ for_window [title="Waiting for Applications to Stop — Qt Creator"] floating en
 for_window [app_id="keymapp"] \
     floating enable, \
     sticky enable, \
-    resize set width 200 px height 150 px, \
+    resize set width 250 px height 150 px, \
     move position 85 ppt 75 ppt
 
 assign [class="Microsoft Teams" title="^(?!Microsoft Teams Notification)"] 8
@@ -283,12 +283,17 @@ input "12951:6519:ZSA_Technology_Labs_Voyager" {
     xkb_variant "nodeadkeys"
 }
 
+# wifi
 input "1133:16534:Logitech_ERGO_M575" {
+    pointer_accel 0.7
+}
+# bluetooth
+input "1133:45095:ERGO_M575_Mouse" {
     pointer_accel 0.7
 }
 
 input "20547:7851:Ploopy_Corporation_Trackball_Nano" {
-    pointer_accel '-0.6'
+    pointer_accel '-0.8'
 }
 
 # store PRIMARY selection
