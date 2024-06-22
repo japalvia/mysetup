@@ -14,3 +14,8 @@ todo:
 https://kietcthe.medium.com/unleash-the-power-of-ideavimrc-enhance-your-intellij-idea-experience-with-advanced-features-5531c3c0641e
 
 https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+
+check:
+https://danidiaz.medium.com/configuring-ideavimrc-de16a4da0715
+https://github.com/danidiaz/miscellany/blob/master/windows/.ideavimrc
+
