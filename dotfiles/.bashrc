@@ -71,6 +71,10 @@ test -r /usr/share/fzf/completion.bash && source /usr/share/fzf/completion.bash
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# qmk bash completion
+qmk_compl=$HOME/dev/qmk/util/qmk_tab_complete.sh
+test -r "$qmk_compl" && source "$qmk_compl"
+
 export HISTTIMEFORMAT="%F %T  "
 log_bash_persistent_history()
 {
