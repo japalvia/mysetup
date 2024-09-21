@@ -1,0 +1,45 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x000000"
+blue = "0x8cd0d3"
+cyan = "0x93e0e3"
+green = "0xbfebbf"
+magenta = "0xdc8cc3"
+red = "0xdca3a3"
+white = "0xffffff"
+yellow = "0xf0dfaf"
+
+[colors.normal]
+black = "0x3f3f3f"
+blue = "0x6ca0a3"
+cyan = "0x93e0e3"
+green = "0x7f9f7f"
+magenta = "0xdc8cc3"
+red = "0xcc9393"
+white = "0xdcdccc"
+yellow = "0xd0bf8f"
+
+[colors.primary]
+background = "0x3f3f3f"
+foreground = "0xdcdccc"
+
+[font]
+size = 12
+
+[font.bold]
+family = "DejaVu Sans Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "DejaVu Sans Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "DejaVu Sans Mono"
+style = "Italic"
+
+[font.normal]
+family = "DejaVu Sans Mono"
+style = "Regular"

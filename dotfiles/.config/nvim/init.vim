@@ -126,7 +126,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Redraw with <leader>-l to remove search hits
+" Redraw with <leader>-, to remove search hits
 nnoremap <silent> <leader>, :nohls<cr><leader>l
 
 " Black hole register to delete without yanking
@@ -179,6 +179,9 @@ autocmd bufreadpre *.patch setlocal textwidth=79
 
 " JSON formatting
 autocmd Filetype json setlocal ts=2 sw=2
+
+" commentary filetypes
+autocmd FileType dts setlocal commentstring=//\ %s
 
 " Markdown settings
 let g:mkdp_browser = 'google-chrome-stable'
