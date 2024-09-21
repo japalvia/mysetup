@@ -20,6 +20,9 @@ Split horizontally: prefix-"
 Move focus to pane with vim bindigs: prefix-hjkl
 Close current pane: prefix-x
 
+Re-balance pane sizes:
+tmux select-layout tiled
+
 Windows
 -------
 Create new window: prefix-c
