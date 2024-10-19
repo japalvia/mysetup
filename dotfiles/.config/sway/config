@@ -278,6 +278,10 @@ input "1423:37904:KINESIS_FREESTYLE_KB800_KB800_Kinesis_Freestyle" {
     xkb_layout "fi_linux_dev"
 }
 
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout "fi_linux_dev"
+}
+
 input "12951:6519:ZSA_Technology_Labs_Voyager" {
     xkb_layout "us"
     xkb_variant "altgr-intl"

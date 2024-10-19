@@ -120,12 +120,6 @@ nnoremap <silent><leader>l :Buffers<CR>
 " fzf on git-tracked files
 nnoremap <C-p> :GFiles<Cr>
 
-" Disable arrow key navigation
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
 " Move focus to window without pressing 'w'
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

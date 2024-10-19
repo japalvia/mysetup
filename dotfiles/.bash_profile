@@ -38,4 +38,7 @@ export GRIM_DEFAULT_DIR=$HOME/temp/grim
 
 export RIPGREP_CONFIG_PATH=~/.config/ripgreprc
 
+# authentication for podman registry
+export REGISTRY_AUTH_FILE=${HOME}/.config/containers/auth.json
+
 [[ -r ~/.bashrc ]] && . ~/.bashrc
