@@ -6,6 +6,14 @@ https://ark.intel.com/content/www/us/en/ark/products/124968/intel-core-i7-8650u-
 https://en.wikichip.org/wiki/intel/core_i7/i7-8650u
 https://en.wikichip.org/wiki/intel/uhd_graphics/620
 
+Intel CPU and GPU architecture generation number do not match.
+i7-8650U Kaby Lake R is gen 8 or
+HD Graphics 620 is gen 9.5
+
+lspci output may refer to CPU gen or just misleading:
+$ lspci | grep -i VGA
+00:02.0 VGA compatible controller: Intel Corporation UHD Graphics 620 (rev 07)
+
 Print system info and BIOS version:
 nuc-info
 
@@ -32,3 +40,6 @@ Some Intel systems, like Kaby Lake Refresh chips, require both intel_idle.max_cs
 https://wiki.archlinux.org/index.php/kernel_parameters#GRUB
 
 See etc/default/grub.
+
+kernel: WARNING: CPU: 5 PID: 3194 at drivers/gpu/drm/i915/display/intel_cdclk.c:889 skl_get_cdclk+0x24c/0x2a0 [i915]
+https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/5700
