@@ -327,7 +327,10 @@ bindsym $sup+p exec clipman --notify clear --tool bemenu --tool-args="$bemenu_ar
 bindsym $sup+shift+p exec clipman --notify clear -a
 
 # Copy primary selection to clipboard
+# rectangular keyboard
 bindsym section exec wl-paste -p -n | wl-copy
+# miryoku split keyboard
+bindsym Scroll_Lock exec wl-paste -p -n | wl-copy
 
 # Fill current workspace with 3x2 terminal grid
 bindsym $mod+F1 exec \
