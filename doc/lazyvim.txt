@@ -1,0 +1,16 @@
+Lazyvim
+=======
+
+Differences compared to standard neovim:
+
+text width:
+- soft wrap gq cannot be used (due to LSP formatting?)
+- use hard wrap gw
+
+find text in files:
+<leader> /
+
+switch to previous buffer:
+ctrl-6
+
+
