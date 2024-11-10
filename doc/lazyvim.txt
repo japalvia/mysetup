@@ -7,10 +7,35 @@ text width:
 - soft wrap gq cannot be used (due to LSP formatting?)
 - use hard wrap gw
 
-find text in files:
+find text in files under CWD:
 <leader> /
 
 switch to previous buffer:
-ctrl-6
+C-6
 
+save file in any mode(?):
+C-s
 
+Plugins
+-------
+
+noice: manage messages
+- <leader> sn
+
+LSP
+---
+
+Hover tooltip:
+- open: K
+- enter the window for navigating: again K
+
+Code actions:
+- move cursor to variable / statement
+- <leader> ca
+
+LSP errors:
+~/.local/state/nvim/lsp.log
+
+rust-analyzer error: "Invalid offset LineCol { ... }"
+- triggered at least by deleting all content in file
+- workaround: :LspRestart

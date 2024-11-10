@@ -22,6 +22,8 @@ return {
   -- Configure QML LSP
   { require("lspconfig").qmlls.setup({}) },
 
+  { require("lspconfig").rust_analyzer.setup({}) },
+
   -- manage whitespaces
-  { "ntpeters/vim-better-whitespace" },
+  -- { "ntpeters/vim-better-whitespace" },
 }
