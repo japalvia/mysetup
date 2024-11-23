@@ -16,6 +16,10 @@ pacdiff -s -3
 Remove orphaned dependencies:
 paru -Rns $(paru -Qtdq)
 
+Remove old packages from cache, keep only one old version:
+paccache -rk1
+Note: pacdiff needs old versions for merge, clear after handling .pacnew files!
+
 Pacman package operations
 -------------------------
 
