@@ -1,0 +1,38 @@
+Skree custom keyboard
+=====================
+
+Setup container for easy toolchain:
+podman run -it --userns=keep-id --volume ~/dev/ --workdir ~/dev/ --name zmk docker.io/zmkfirmware/zmk-dev-arm:3.5 /bin/bash
+
+Start container from image:
+podman start --attach zmk
+
+Setup repositories:
+1. zmk (upstream or fork)
+    a. used for building
+2. miryoku_zmk
+    a. used for zmk_config
+3. zmk-config-xiao-flex-v2dot2
+    a. used for the custom shield configuration
+
+Create symlink to the shield directory in miryoku_zmk:
+$ cd ~/dev/miryoku_zmk/
+$ tree config/boards/
+config/boards/
+└── shields
+    └── xiao_flex_v2 -> /home/ubuntu/dev/zmk-config-xiao-flex-v2dot2/config/boards/shields/xiao_flex_v2
+
+Build inside the container:
+cd ~/dev/zmk/app/
+
+west build -d build/right -b seeeduino_xiao_ble -- -DSHIELD=xiao_flex_v2_right -DZMK_CONFIG="/home/ubuntu/dev/miryoku_zmk/config" -DZMK_EXTRA_MODULES="/home/ubuntu/dev/zmk-pmw3610-driver" -DCONFIG_ZMK_POINTING=y
+
+west build -p -d build/left -b seeeduino_xiao_ble -- -DSHIELD=xiao_flex_v2_left -DZMK_CONFIG="/home/ubuntu/dev/miryoku_zmk/config"
+
+Flashing:
+- Connect the target half using data cable (not the split cable for peripheral side)
+- Double press the reset button on the target half
+
+cp app/build/left/zephyr/zmk.uf2 /media/XIAO-SENSE/
+cp app/build/right/zephyr/zmk.uf2 /media/XIAO-SENSE/
+

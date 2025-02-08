@@ -40,6 +40,7 @@ pacman -Qo
 
 Remove orphaned packages (dependencies not required anymore):
 pacman -Rns $(pacman -Qtdq)
+paru -Rns $(paru -Qtdq)
 
 Remove package and dependencies that are not needed after the removal:
 pacman -Rs

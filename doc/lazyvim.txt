@@ -16,6 +16,20 @@ C-6
 save file in any mode(?):
 C-s
 
+scroll autocompletion tooltip window (nvim-cmp plugin):
+C-f
+C-b
+
+Same as neovim but useful:
+
+create new file:
+:e %<tab>
+:e %:h<tab> 
+
+replace visual selection:
+c 
+type new text
+
 Plugins
 -------
 
@@ -24,6 +38,11 @@ noice: manage messages
 
 LSP
 ---
+
+Keymaps:
+https://www.lazyvim.org/keymaps#lsp
+example: rename symbol under cursor:
+<leader> cr
 
 Hover tooltip:
 - open: K
