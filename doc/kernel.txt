@@ -1,0 +1,37 @@
+Linux kernel
+============
+
+Apple magic trackpad 2 with host click mode for Arch Linux
+
+
+Vanilla kernel build from scratch
+---------------------------------
+
+- Create build directory
+- Configure kernel with minimum config
+make O=~/build/kernel allnoconfig
+- Enable necessary options:
+make O=~/build/kernel nconfig
+    * CONFIG_64BIT=y
+    * CONFIG_MODULES=y
+    * USB HID support 
+    * CONFIG_HID_SUPPORT=y
+    * CONFIG_HID_MAGICMOUSE=m
+- Build kernel:
+make "-j$(nproc)" O=~/build/kernel
+
+- Unload current module:
+sudo modprobe -r hid_magicmouse
+
+- Load new module with reduced tap sensitivity (pressure to trigger tap):
+insmod src/linux-6.12.13/drivers/hid/hid-magicmouse.ko host_click=on button_down_param=0x20170606 button_up_param=0x16140000
+
+The vanilla kernel build requires matching running kernel. Instead, use the linux-lts kernel for Arch Linux.
+
+Patch for linux-lts 6.12 in https://github.com/japalvia/linux-lts
+
+Run first build with:
+MAKEFLAGS="-j$(nproc)" makepkg -s
+
+Iterate without extracting source:
+Build: MAKEFLAGS="-j$(nproc)" makepkg --noextract 

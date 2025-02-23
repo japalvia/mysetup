@@ -33,6 +33,7 @@ Flashing:
 - Connect the target half using data cable (not the split cable for peripheral side)
 - Double press the reset button on the target half
 
+cp ~/dev/zmk
 cp app/build/left/zephyr/zmk.uf2 /media/XIAO-SENSE/
 cp app/build/right/zephyr/zmk.uf2 /media/XIAO-SENSE/
 
