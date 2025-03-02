@@ -287,8 +287,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
 input "7504:24926:ZMK_Project_Skree_Custom_Keyboard" {
     xkb_layout "us"
-    xkb_variant "altgr-intl"
-    xkb_options "compose:ralt"
+    xkb_variant "altgr-weur"
+# type ralt-a for ä
+# type ralt-o for ö
 }
 
 # wifi
