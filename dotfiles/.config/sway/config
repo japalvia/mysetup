@@ -387,3 +387,4 @@ mode Mouse {
 
 bindsym $mod+g mode Mouse
 
+swaymsg seat seat0 hide_cursor when-typing enable
