@@ -305,11 +305,6 @@ input "20547:7851:Ploopy_Corporation_Trackball_Nano" {
     pointer_accel '-0.8'
 }
 
-input "7504:24926:ZMK_Project_Skree_Custom_Mouse" {
-    pointer_accel '-0.7'
-}
-
-
 # store PRIMARY selection
 exec_always "pkill wl-paste ; wl-paste -n -t text -p -w clipman --notify store -P --max-items=1000"
 
