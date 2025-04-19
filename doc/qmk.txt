@@ -1,0 +1,14 @@
+QMK
+===
+
+ZSA Voyager with miryoku based custom layout
+--------------------------------------------
+
+qmk flash -kb zsa/voyager -km bugroger -e MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS_PINKIE_STAGGER
+
+
+Ferris sweep with miryoku_qmk:
+
+qmk flash --env CONVERT_TO=promicro_rp2040 --keyboard ferris/sweep --keymap manna-harbour_miryoku --bootloader uf2-split-left
+
+

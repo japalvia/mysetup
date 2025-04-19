@@ -214,3 +214,9 @@ Configuration is written to .mu_repo to CWD initially
 
 Remove all repos:
 mu unregister --all
+
+
+Fetch a single tag
+------------------
+git clone --depth=1 https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+git fetch origin tag v5.12.13 --no-tags

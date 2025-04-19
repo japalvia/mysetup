@@ -1,0 +1,7 @@
+[manager]
+sort_by = "mtime"
+sort_reverse = true
+linemode = "mtime"
+
+# [flavor]
+# dark = "gruvbox-dark"
