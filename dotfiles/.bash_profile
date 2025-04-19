@@ -10,6 +10,8 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 # rust cargo installed sw for user
 export PATH=$HOME/.cargo/bin:$PATH
+# Qt6 tools
+export PATH=/usr/lib/qt6/bin:$PATH
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
