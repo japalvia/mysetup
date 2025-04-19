@@ -24,6 +24,5 @@ return {
 
   { require("lspconfig").rust_analyzer.setup({}) },
 
-  -- manage whitespaces
-  -- { "ntpeters/vim-better-whitespace" },
+  { "aklt/plantuml-syntax" },
 }
