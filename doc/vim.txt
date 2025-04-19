@@ -48,6 +48,11 @@ is lenghtly or needs escaping:
 - press n for next occurrence and press . (repeat)
 - keep pressing n + .
 
+another way to rename/replace:
+- yank text
+- start subsitute command and paste from "0 register:
+- :s%/<C-r 0>/new_text/g
+
 Search for byte values, e.g. null byte:
 /[\x0]
 
