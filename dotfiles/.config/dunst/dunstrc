@@ -7,4 +7,9 @@
     ### Text ###
     font = "Noto Emoji 12, Liberation Mono 12"
 
+    timeout = 10
+
 # vim: ft=cfg
+
+[critical]
+timeout = 15
