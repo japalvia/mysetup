@@ -24,10 +24,10 @@ Same as neovim but useful:
 
 create new file:
 :e %<tab>
-:e %:h<tab> 
+:e %:h<tab>
 
 replace visual selection:
-c 
+c
 type new text
 
 Plugins
@@ -35,6 +35,14 @@ Plugins
 
 noice: manage messages
 - <leader> sn
+
+
+Markdown
+--------
+
+Configured for .md and .uml filetypes. Edit options.lua to add new filetypes for preview
+
+:MarkdownPreviewToggle
 
 LSP
 ---

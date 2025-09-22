@@ -37,6 +37,10 @@ select block in visual mode, then
 select another block in visual mode, then
 :Linediff
 
+vim-surround:
+visual mode:
+S*
+
 Mappings
 --------
 
@@ -49,6 +53,8 @@ ctrl-l
 
 Markdown
 --------
+
+Configured for .md and .uml filetypes.
 
 :MarkdownPreviewToggle
 
@@ -66,3 +72,9 @@ Visual search and delete instances:
 - command: * (goes to next hit)
 - command: dgn
 - repeat: .
+
+Yank current file path:
+let @+ = expand('%:p')
+
+Yank current line number:
+let @+ = line('.')

@@ -9,3 +9,6 @@ CMake options with bitbake-based builds:
 -DPython_EXECUTABLE=/usr/bin/python
 
 where ${W} points to 'oe_workdir' in the extracted recipe's source directory.
+
+Filter out unit tests in search:
+!file[project]:*/UnitTests//*
