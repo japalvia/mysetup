@@ -8,3 +8,5 @@ opt.shiftwidth = 4 -- Size of an indent
 opt.mouse = "" -- disable mouse actions
 
 vim.g.editorconfig = true
+
+vim.g.mkdp_filetypes = { "markdown", "plantuml" }
