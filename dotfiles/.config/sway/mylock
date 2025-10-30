@@ -1,12 +1,19 @@
 #!/bin/bash
 
-# Make a guess when running outside current session
-[[ -z $WAYLAND_DISPLAY ]] && export WAYLAND_DISPLAY=wayland-1
+# Normally, run on background, otherwise we are likely
+# recovering crashed screen lock from tty
+opts=
+
+if [[ -n $WAYLAND_DISPLAY ]]; then
+    opts="--daemonize"
+else
+    export WAYLAND_DISPLAY=wayland-1
+fi
 
 # Use --debug for additional logging
 # chayang for dimming - not in use, had problems
 swaylock \
     --indicator-caps-lock \
     --indicator-idle-visible \
-    --daemonize \
-    --color 000000
+    --color 000000 \
+    $opts
