@@ -42,7 +42,8 @@ set shortmess=filnxtToOF
 " https://www.lazyvim.org/plugins
 
 " gcc and gc<action> mappings.
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+set commentary
 " s action, such as cs"' (replace " with '), ds" (unquote)
 Plug 'tpope/vim-surround'
 " similar to flash.nvim
