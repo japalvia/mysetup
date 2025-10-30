@@ -34,6 +34,11 @@ alias gru='git remote update'
 # Debian systems
 command -v fdfind &>/dev/null && alias fd='fdfind'
 
+alias cz='chezmoi'
+alias cze='chezmoi edit'
+alias cza='chezmoi apply'
+alias czg='chezmoi git commit -- -m "$(chezmoi generate git-commit-message)"'
+
 alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - \
 %(color:red)%(objectname:short)%(color:reset) - \
