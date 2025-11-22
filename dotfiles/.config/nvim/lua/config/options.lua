@@ -10,3 +10,5 @@ opt.mouse = "" -- disable mouse actions
 vim.g.editorconfig = true
 
 vim.g.mkdp_filetypes = { "markdown", "plantuml" }
+
+vim.g.clipboard = "osc52"
