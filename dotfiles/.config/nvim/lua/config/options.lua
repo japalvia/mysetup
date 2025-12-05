@@ -6,6 +6,7 @@ local opt = vim.opt
 
 opt.shiftwidth = 4 -- Size of an indent
 opt.mouse = "" -- disable mouse actions
+opt.completeopt:append("popup") -- CopilotChat.nvim recommendation
 
 vim.g.editorconfig = true
 
