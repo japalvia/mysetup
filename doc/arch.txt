@@ -269,7 +269,11 @@ Kernel
 ------
 
 Updating grub menu entries after installing new kernel version:
+sudo grub-install
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+If EFI partition is full use:
+sudo grub-install --removable && sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 Applications
 ------------

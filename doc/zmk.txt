@@ -17,10 +17,12 @@ Setup repositories:
 
 Create symlink to the shield directory in miryoku_zmk:
 $ cd ~/dev/miryoku_zmk/
+ln -s /home/ubuntu/dev/ZMK-XIAOv4-Std/config/boards/shields/skreecustom/ config/boards/shields/xiao_flex_v4
 $ tree config/boards/
 config/boards/
 └── shields
-    └── xiao_flex_v2 -> /home/ubuntu/dev/zmk-config-xiao-flex-v2dot2/config/boards/shields/xiao_flex_v2
+    ├── xiao_flex_v2 -> /home/ubuntu/dev/zmk-config-xiao-flex-v2dot2/config/boards/shields/xiao_flex_v2
+    └── xiao_flex_v4 -> /home/ubuntu/dev/ZMK-XIAOv4-Std/config/boards/shields/skreecustom
 
 Build inside the container:
 cd ~/dev/zmk/app/
