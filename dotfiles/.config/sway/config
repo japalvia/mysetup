@@ -361,7 +361,7 @@ exec_always "pkill kanshi ; sleep 2 ; kanshi"
 
 exec dunst
 
-exec devmon
+exec udiskie
 
 exec poweralertd
 
