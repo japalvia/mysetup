@@ -8,6 +8,10 @@ opt.shiftwidth = 4 -- Size of an indent
 opt.mouse = "" -- disable mouse actions
 opt.completeopt:append("popup") -- CopilotChat.nvim recommendation
 
+opt.wrap = true
+-- diffopt = "internal,filler,closeoff,linematch:60"
+opt.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"
+
 vim.g.editorconfig = true
 
 vim.g.mkdp_filetypes = { "markdown", "plantuml" }
