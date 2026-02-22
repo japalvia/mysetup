@@ -30,6 +30,33 @@ replace visual selection:
 c
 type new text
 
+go the previous function:
+[f
+
+copy text and paste over selection multiple times:
+yank visual selection
+select target text
+select register 0 to paste: "0p
+
+Scratch buffer
+-------------
+Select from existing:
+<leader> - S
+Create new:
+<leader> - .
+
+
+quickfix list
+-------------
+
+to to prev/next error:
+[q
+]q
+
+send LSP results to quickfix list:
+- inside picker: <C-q>
+
+
 Plugins
 -------
 
@@ -43,6 +70,16 @@ Markdown
 Configured for .md and .uml filetypes. Edit options.lua to add new filetypes for preview
 
 :MarkdownPreviewToggle
+
+When opening puml diagram:
+set makeprg=plantuml\ --svg\ %
+
+Generate image:
+:make
+
+Repeat last command:
+@:
+
 
 LSP
 ---
@@ -66,3 +103,27 @@ LSP errors:
 rust-analyzer error: "Invalid offset LineCol { ... }"
 - triggered at least by deleting all content in file
 - workaround: :LspRestart
+
+Open references to quickfix list:
+gr to search
+C-q to open quickfix list
+
+Type hierarchy (clangd custom extension)
+:ClangdTypeHierarchy
+
+LSP references (e.g. incoming and outgoing calls):
+<leader> cuS
+increase window size: ctrl-left/right
+
+Copilot
+-------
+
+MCPHub integration: gitlab
+- current setup uses private MCP server written in python
+- can it be replaced with the official server?
+- show/add/delete servers: nvim command MCPHub
+- copilot chat:
+    * MCPHub tools are mapped to functions: calling function produces output that can be prompted again
+    * list all opened: @gitlab_custom_get_merge_requests helix/esp
+    * show changes: @gitlab_custom_get_merge_request_changes 1763 helix/esp
+    * you can now give prompts like "review this merge request"
