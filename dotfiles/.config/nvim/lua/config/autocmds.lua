@@ -12,3 +12,12 @@ local set_autoformat = function(pattern, bool_val)
 end
 
 set_autoformat("*/linux/*", false)
+
+-- Save all buffers automatically when running Overseer tasks
+vim.api.nvim_create_autocmd("User", {
+  pattern = "OverseerTaskPreStart",
+  callback = function()
+    vim.cmd("silent! wall")
+  end,
+  desc = "Save all buffers before Overseer task starts",
+})
