@@ -2,3 +2,4 @@
 # --pretty can break output for apps like vim-ripgrep plugin
 --hidden
 --glob=!.git/
+--glob=!**/.local/share/containers/**
