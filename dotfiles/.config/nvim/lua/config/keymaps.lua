@@ -18,9 +18,8 @@ vim.keymap.set("n", "<leader>or", function()
   end
 end, { desc = "Rerun last task" })
 
--- Save all open buffers with Ctrl-Shift-S
-vim.api.nvim_set_keymap("n", "<C-S-s>", ":wa<CR>", { noremap = true, silent = true, desc = "Save all buffers" })
-vim.api.nvim_set_keymap("i", "<C-S-s>", "<Esc>:wa<CR>a", { noremap = true, silent = true, desc = "Save all buffers" })
+-- Override LazyVim's Ctrl-S to save all buffers instead of just current buffer
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>", { desc = "Save all buffers" })
 
 -- Remove LazyVim's Alt-j/k mappings to fix Esc+motion behavior in tmux
 local del = vim.keymap.del
