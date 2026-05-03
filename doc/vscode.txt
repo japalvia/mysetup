@@ -1,0 +1,10 @@
+Vim extension config
+====================
+
+https://github.com/wojukasz/VimCode/tree/main
+
+
+Enterprise github copilot
+=========================
+
+Fix sign in: remove user settings.json from copilot chat but keep valid json

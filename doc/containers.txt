@@ -1,0 +1,12 @@
+Containers
+==========
+
+
+Assume podman, but should apply to OCI in general.
+
+Background/detach container:
+ctrl-p, ctrl-q
+
+Attach:
+podman attach --latest
+warning: running this without having detached will try to attach unrelated container, and it will be stopped on ctrl-c.
