@@ -2,6 +2,15 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- Save all buffers automatically when running Overseer tasks
+vim.api.nvim_create_autocmd("User", {
+  pattern = "OverseerTaskPreStart",
+  callback = function()
+    vim.cmd("silent! wall")
+  end,
+  desc = "Save all buffers before Overseer task starts",
+})
+
 local set_autoformat = function(pattern, bool_val)
   vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = pattern,
@@ -13,14 +22,6 @@ end
 
 set_autoformat("*/linux/*", false)
 
--- Save all buffers automatically when running Overseer tasks
-vim.api.nvim_create_autocmd("User", {
-  pattern = "OverseerTaskPreStart",
-  callback = function()
-    vim.cmd("silent! wall")
-  end,
-  desc = "Save all buffers before Overseer task starts",
-})
 
 -- reload unmodified files when they change on disk
 vim.api.nvim_create_autocmd("BufReadPost", {
