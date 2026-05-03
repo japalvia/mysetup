@@ -1,0 +1,57 @@
+# Sort keybindings (using 'g' prefix to avoid conflicts with 's' for search)
+[[mgr.prepend_keymap]]
+on = ["g", "n"]
+run = "sort --by=alphabetical --reverse=no"
+desc = "Sort by name"
+
+[[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "sort --by=modified"
+desc = "Sort by mtime (newest first)"
+
+[[mgr.prepend_keymap]]
+on = ["g", "s"]
+run = "sort --by=size --reverse=yes"
+desc = "Sort by size (largest first)"
+
+[[mgr.prepend_keymap]]
+on = ["g", "e"]
+run = "sort --by=extension"
+desc = "Sort by extension"
+
+[[mgr.prepend_keymap]]
+on = ["g", "r"]
+run = "sort --reverse=yes"
+desc = "Reverse sort order"
+
+[[mgr.prepend_keymap]]
+on = ["g", "R"]
+run = "sort --reverse=no"
+desc = "Un-reverse sort order"
+
+# Projects keybindings
+[[mgr.prepend_keymap]]
+on = [ "<C-p>", "l" ]
+run = "plugin projects load"
+desc = "Load project"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-p>", "L" ]
+run = "plugin projects load_last"
+desc = "Load last project"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-p>", "s" ]
+run = "plugin projects save"
+desc = "Save current project"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-p>", "d" ]
+run = "plugin projects delete"
+desc = "Delete project"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-p>", "D" ]
+run = "plugin projects delete_all"
+desc = "Delete all projects"
+
