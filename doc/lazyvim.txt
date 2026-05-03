@@ -115,6 +115,18 @@ LSP references (e.g. incoming and outgoing calls):
 <leader> cuS
 increase window size: ctrl-left/right
 
+install extras snack picker, then:
+gai (incoming calls)
+gao (outgoing calls)
+
+search symbols in buffer:
+<leader> ss
+search symbols in workspace:
+<leader> sS
+
+jump to matching bracket:
+%
+
 Copilot
 -------
 
