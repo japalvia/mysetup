@@ -127,6 +127,10 @@ search symbols in workspace:
 jump to matching bracket:
 %
 
+navigate lazyvim dialog window panes:
+alt-w
+now you can select and yank the message
+
 Copilot
 -------
 
