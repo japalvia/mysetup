@@ -3,5 +3,15 @@ sort_by = "mtime"
 sort_reverse = true
 linemode = "mtime"
 
-# [flavor]
-# dark = "gruvbox-dark"
+[[opener.text]]
+run = 'nvim %s'
+block = true
+for = "unix"
+
+[[open.prepend_rules]]
+mime = "text/*"
+use = "text"
+
+[[open.prepend_rules]]
+url = "*.txt"
+use = "text"
