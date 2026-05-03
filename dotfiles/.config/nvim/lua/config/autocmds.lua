@@ -21,3 +21,34 @@ vim.api.nvim_create_autocmd("User", {
   end,
   desc = "Save all buffers before Overseer task starts",
 })
+
+-- reload unmodified files when they change on disk
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = vim.api.nvim_create_augroup("fs_watch_reload", { clear = true }),
+  callback = function(args)
+    local bufnr = args.buf
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    if fname == "" or not vim.uv.fs_stat(fname) then
+      return
+    end
+
+    local handle = vim.uv.new_fs_event()
+    handle:start(fname, {}, function(err)
+      if err then
+        return
+      end
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(bufnr) and not vim.bo[bufnr].modified then
+          vim.cmd("checktime " .. bufnr)
+        end
+      end)
+    end)
+
+    vim.api.nvim_buf_attach(bufnr, false, {
+      on_detach = function()
+        handle:stop()
+        handle:close()
+      end,
+    })
+  end,
+})
