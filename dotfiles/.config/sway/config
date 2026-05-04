@@ -38,6 +38,8 @@ floating_modifier $mod
 # start a terminal
 set $term alacritty
 bindsym $mod+Return exec $term
+# open terminal in same directory as focused terminal
+bindsym $mod+Shift+Return exec ~/.config/sway/open-term-here
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -114,6 +116,12 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Ctrl+1 workspace 11
 bindsym $mod+Ctrl+2 workspace 12
 bindsym $mod+Ctrl+3 workspace 13
+bindsym $mod+Ctrl+4 workspace 14
+bindsym $mod+Ctrl+5 workspace 15
+bindsym $mod+Ctrl+6 workspace 16
+bindsym $mod+Ctrl+7 workspace 17
+bindsym $mod+Ctrl+8 workspace 18
+bindsym $mod+Ctrl+9 workspace 19
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -129,6 +137,21 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Ctrl+Shift+1 move container to workspace 11
 bindsym $mod+Ctrl+Shift+2 move container to workspace 12
 bindsym $mod+Ctrl+Shift+3 move container to workspace 13
+bindsym $mod+Ctrl+Shift+4 move container to workspace 14
+bindsym $mod+Ctrl+Shift+5 move container to workspace 15
+bindsym $mod+Ctrl+Shift+6 move container to workspace 16
+bindsym $mod+Ctrl+Shift+7 move container to workspace 17
+bindsym $mod+Ctrl+Shift+8 move container to workspace 18
+bindsym $mod+Ctrl+Shift+9 move container to workspace 19
+
+# mask keys to switch tty, sway loses displays and cannot go back
+bindsym Ctrl+Mod1+F1  nop
+bindsym Ctrl+Mod1+F2  nop
+bindsym Ctrl+Mod1+F3  nop
+bindsym Ctrl+Mod1+F4  nop
+bindsym Ctrl+Mod1+F5  nop
+bindsym Ctrl+Mod1+F6  nop
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -214,12 +237,12 @@ exec \
     before-sleep $locker
 
 # Volume controls
-bindsym shift+F10 \
-    exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym shift+F9 \
-    exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym shift+F8 \
-    exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym shift+F10 \
+#     exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym shift+F9 \
+#     exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# bindsym shift+F8 \
+#     exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
 bindsym shift+F11 \
