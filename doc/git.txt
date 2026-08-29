@@ -21,6 +21,9 @@ git grep <regexp> branch
 Prune remote branches that were removed by someone else/other clone:
 git remote prune origin
 
+Show history for function/method:
+git -L ":func_name:pat/to/source.cpp"
+
 Forking upstream and following it
 ---------------------------------
 

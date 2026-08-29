@@ -30,6 +30,9 @@ replace visual selection:
 c
 type new text
 
+replace all occurrence of current word under cursor:
+:%s/C-r C-w/replacement/gc
+
 go the previous function:
 [f
 
@@ -37,6 +40,12 @@ copy text and paste over selection multiple times:
 yank visual selection
 select target text
 select register 0 to paste: "0p
+
+Go to next spelling error:
+]s
+
+Add word to spell dictionary:
+zg
 
 Scratch buffer
 -------------
@@ -123,6 +132,12 @@ search symbols in buffer:
 <leader> ss
 search symbols in workspace:
 <leader> sS
+
+Resume grep search:
+<leader> sR
+
+Grep search history:
+C-<up> or C-<down>
 
 jump to matching bracket:
 %
