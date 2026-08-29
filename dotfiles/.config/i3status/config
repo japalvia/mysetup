@@ -9,6 +9,10 @@
 general {
         colors = true
         interval = 5
+        # Required: i3status' default "auto" picks the output format from its
+        # parent process name. The i3status-airpods wrapper sits between i3bar
+        # and i3status, so "auto" would fall back to plain text.
+        output_format = "i3bar"
 }
 
 # order += "ipv6"
