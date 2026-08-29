@@ -1,0 +1,39 @@
+#!/bin/bash
+# Open a new terminal in the same directory as the currently focused terminal
+
+# Get the focused window's PID
+focused_pid=$(swaymsg -t get_tree | jq -r '.. | select(.type?) | select(.focused==true) | .pid')
+
+if [ -z "$focused_pid" ]; then
+    # No focused window, open terminal in home directory
+    exec alacritty
+    exit 0
+fi
+
+# Try to find the shell process (the actual shell, not the terminal emulator)
+# Look for common shells running under the terminal's PID
+shell_pid=$(pgrep -P "$focused_pid" | head -1)
+
+# If we found a child process, try to get its children (the actual working shell)
+if [ -n "$shell_pid" ]; then
+    deepest_child=$(pgrep -P "$shell_pid" | tail -1)
+    if [ -n "$deepest_child" ]; then
+        shell_pid="$deepest_child"
+    fi
+fi
+
+# If no shell found, use the terminal's PID itself
+if [ -z "$shell_pid" ]; then
+    shell_pid="$focused_pid"
+fi
+
+# Get the working directory of the shell
+cwd=$(readlink -e "/proc/$shell_pid/cwd" 2>/dev/null)
+
+# If we couldn't get the working directory or it doesn't exist, use home
+if [ -z "$cwd" ] || [ ! -d "$cwd" ]; then
+    cwd="$HOME"
+fi
+
+# Open new terminal in that directory
+exec alacritty --working-directory "$cwd"
