@@ -8,6 +8,20 @@ run = 'nvim %s'
 block = true
 for = "unix"
 
+[[opener.image]]
+run = 'swayimg %s'
+orphan = true
+for = "unix"
+
+# Plantuml generated SVG files get HTML mime type
+[[plugin.prepend_previewers]]
+url = "*.svg"
+run = "svg"
+
+[[open.prepend_rules]]
+url = "*.svg"
+use = "image"
+
 [[open.prepend_rules]]
 mime = "text/*"
 use = "text"
