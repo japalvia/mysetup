@@ -9,7 +9,12 @@ return {
   },
 
   -- automatic bullets lists
-  { "dkarter/bullets.vim" },
+  {
+    "dkarter/bullets.vim",
+    init = function()
+      vim.g.bullets_outline_levels = { "num" }
+    end,
+  },
 
   -- syntax file for PlantUML
   { "aklt/plantuml-syntax" },
