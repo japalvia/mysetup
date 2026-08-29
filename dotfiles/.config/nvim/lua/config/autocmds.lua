@@ -22,6 +22,69 @@ end
 
 set_autoformat("*/linux/*", false)
 
+-- Lazily start the local PlantUML proxy when PlantUML content is opened.
+-- plantuml.js/blockPlantuml.js render diagrams as <img> tags pointing to a server URL;
+-- there is no "local command" mode in the plugin. plantuml --http-server is broken
+-- (always returns a demo image). plantuml-proxy decodes the request and pipes through
+-- 'plantuml -pipe', keeping everything local.
+-- Port 18080 avoids conflict with the preview server (8080-9079).
+local plantuml_proxy_port = 18080
+local plantuml_proxy_checked = false
+local plantuml_proxy_checking = false
+
+local function buffer_contains_plantuml(bufnr)
+  if vim.bo[bufnr].filetype == "plantuml" then
+    return true
+  end
+
+  for _, line in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)) do
+    if line:match("^%s*@startuml") or line:match("^%s*```%s*plantuml%s*$") then
+      return true
+    end
+  end
+
+  return false
+end
+
+local function ensure_plantuml_proxy()
+  if plantuml_proxy_checked or plantuml_proxy_checking then
+    return
+  end
+
+  plantuml_proxy_checking = true
+  vim.system({ "curl", "-sf", "--max-time", "1", "http://localhost:" .. plantuml_proxy_port }, {}, function(result)
+    vim.schedule(function()
+      if result.code == 0 then
+        plantuml_proxy_checked = true
+      else
+        local job_id = vim.fn.jobstart({
+          "python3",
+          vim.fn.expand("~/.local/bin/plantuml-proxy"),
+          tostring(plantuml_proxy_port),
+        }, { detach = true })
+
+        if job_id > 0 then
+          plantuml_proxy_checked = true
+        else
+          vim.notify("Failed to start local PlantUML proxy server", vim.log.levels.ERROR)
+        end
+      end
+
+      plantuml_proxy_checking = false
+    end)
+  end)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "plantuml" },
+  callback = function(args)
+    if buffer_contains_plantuml(args.buf) then
+      ensure_plantuml_proxy()
+    end
+  end,
+  desc = "Start local PlantUML proxy for PlantUML content",
+})
+
 
 -- reload unmodified files when they change on disk
 vim.api.nvim_create_autocmd("BufReadPost", {

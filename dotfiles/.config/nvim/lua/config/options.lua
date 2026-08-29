@@ -15,6 +15,13 @@ opt.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:
 vim.g.editorconfig = true
 
 vim.g.mkdp_filetypes = { "markdown", "plantuml" }
+-- Configure PlantUML to use local HTTP server (started via autocmd in autocmds.lua)
+vim.g.mkdp_preview_options = {
+  uml = {
+    server = "http://localhost:18080",
+    imageFormat = "svg",
+  },
+}
 
 -- system clipboard
 vim.opt.clipboard:append("unnamedplus")
