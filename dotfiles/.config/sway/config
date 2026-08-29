@@ -386,6 +386,9 @@ exec_always "pkill kanshi ; sleep 2 ; kanshi"
 
 exec dunst
 
+# Clear all dunst notifications
+bindsym $sup+BackSpace exec dunstctl close-all
+
 exec udiskie
 
 exec poweralertd
