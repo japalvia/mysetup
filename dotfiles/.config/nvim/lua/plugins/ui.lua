@@ -44,4 +44,14 @@ return {
   {
     "ojroques/nvim-osc52",
   },
+
+  -- Format plain text and other non-code (LSP) files
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        text = { "trim_whitespace", "trim_newlines" },
+      },
+    },
+  },
 }
