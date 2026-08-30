@@ -53,5 +53,10 @@ return {
         text = { "trim_whitespace", "trim_newlines" },
       },
     },
+    -- vscode style diff
+    {
+      "esmuellert/codediff.nvim",
+      cmd = "CodeDiff",
+    },
   },
 }
