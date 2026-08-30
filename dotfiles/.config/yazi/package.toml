@@ -1,7 +1,12 @@
+# TODO: mysetup contains the plugins, consider removing and using ya pkg?
+# Manifest file, run 'ya pkg install' to apply it on another host.
+
 [[plugin.deps]]
 use = "MasouShizuka/projects"
-rev = "198c2ba"
-hash = "5eeb4f0919ce6be5d941a9290c131d7d"
+rev = "22a4006"
+hash = "195d1b8c8fc1a944883b5ce3d92d7ca7"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "bennyyip/gruvbox-dark"
+rev = "619fdc5"
+hash = "d4c7003ec6dc4efd5d3a050d5c2f2575"

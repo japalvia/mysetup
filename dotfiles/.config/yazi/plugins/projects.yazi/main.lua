@@ -167,13 +167,29 @@ local _get_current_project = ya.sync(function(state)
     }
 
     for index, tab in ipairs(tabs) do
+        -- store user-set custom name ('tab.pref.name') if non-empty;
+        -- don't use 'tab.name', which falls back to the directory name
+        local name = ""
+        if tab.pref and tab.pref.name and tab.pref.name ~= "" then
+            name = tab.pref.name
+        end
+
         project.tabs[#project.tabs + 1] = {
             idx = index,
             cwd = tostring(tab.current.cwd):gsub("\\", "/"),
+            name = name,
         }
     end
 
     return project
+end)
+
+local _restore_tab = ya.sync(function(state, tab)
+    ya.emit("tab_create", { tab.cwd })
+    -- if available, rename freshly-created (focused) tab with custom name
+    if tab.name then
+        ya.emit("tab_rename", { tab.name })
+    end
 end)
 
 local _save_projects = ya.sync(function(state, projects)
@@ -236,11 +252,13 @@ local load_project = ya.sync(function(state, project, desc)
     for _, tab in pairs(project.tabs) do
         sorted_tabs[tonumber(tab.idx)] = tab
     end
-    for _, tab in pairs(sorted_tabs) do
-        ya.emit("tab_create", { tab.cwd })
+    for index, tab in ipairs(sorted_tabs) do
+        _restore_tab(tab)
+        if index == 1 then
+            ya.emit("tab_close", { 0 })
+        end
     end
 
-    ya.emit("tab_close", { 0 })
     ya.emit("tab_switch", { project.active_idx - 1 })
 
     if state.last.update_after_load then
@@ -335,10 +353,6 @@ local merge_project = ya.sync(function(state, opt)
     end
 end)
 
-local _merge_tab = ya.sync(function(state, tab)
-    ya.emit("tab_create", { tab.cwd })
-end)
-
 local _merge_event = ya.sync(function(state)
     ps.sub_remote(state.merge.event, function(body)
         if body then
@@ -352,7 +366,7 @@ local _merge_event = ya.sync(function(state)
                 end
 
                 for _, tab in ipairs(sorted_tabs) do
-                    _merge_tab(tab)
+                    _restore_tab(tab)
                 end
 
                 if state.notify.enable then
@@ -361,7 +375,7 @@ local _merge_event = ya.sync(function(state)
                 end
             elseif opt == "current" then
                 local tab = body.tabs[tonumber(body.active_idx)]
-                _merge_tab(tab)
+                _restore_tab(tab)
 
                 if state.notify.enable then
                     local message = "A tab is merged"
