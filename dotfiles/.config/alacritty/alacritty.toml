@@ -31,7 +31,7 @@ import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
 # foreground = "0xdcdccc"
 
 [font]
-size = 12
+size = 14
 
 [font.bold]
 family = "DejaVu Sans Mono"
