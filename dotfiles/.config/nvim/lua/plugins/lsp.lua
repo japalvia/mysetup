@@ -3,7 +3,16 @@ return {
   { require("lspconfig").qmlls.setup({}) },
 
   -- Rust
-  { require("lspconfig").rust_analyzer.setup({}) },
+  {
+    require("lspconfig").rust_analyzer.setup({
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = { allFeatures = true, cargo = { targetDir = true } },
+          checkOnSave = { command = "clippy" },
+        },
+      },
+    }),
+  },
 
   -- clangd
   {
