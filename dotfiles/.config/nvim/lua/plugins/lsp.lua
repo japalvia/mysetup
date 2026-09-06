@@ -7,8 +7,8 @@ return {
     require("lspconfig").rust_analyzer.setup({
       settings = {
         ["rust-analyzer"] = {
-          cargo = { allFeatures = true, cargo = { targetDir = true } },
-          checkOnSave = { command = "clippy" },
+          cargo = { allFeatures = true, targetDir = true },
+          check = { command = "clippy" },
         },
       },
     }),
