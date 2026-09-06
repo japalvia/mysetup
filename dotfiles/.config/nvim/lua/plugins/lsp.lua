@@ -1,24 +1,17 @@
 return {
-  -- QML
-  { require("lspconfig").qmlls.setup({}) },
-
-  -- Rust
-  {
-    require("lspconfig").rust_analyzer.setup({
-      settings = {
-        ["rust-analyzer"] = {
-          cargo = { allFeatures = true, targetDir = true },
-          check = { command = "clippy" },
-        },
-      },
-    }),
-  },
-
-  -- clangd
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        qmlls = {},
+        rust_analyzer = {
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = { allFeatures = true, targetDir = true },
+              check = { command = "clippy" },
+            },
+          },
+        },
         clangd = {
           cmd = {
             "clangd",
