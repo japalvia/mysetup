@@ -47,6 +47,9 @@ Go to next spelling error:
 Add word to spell dictionary:
 zg
 
+Close gitsigns diff view:
+<leader>-bD
+
 Scratch buffer
 -------------
 Select from existing:
