@@ -7,8 +7,8 @@ swayimg.viewer.set_image_background(0xffffffff)
 -- Scale images to fit available window space on open
 swayimg.viewer.set_default_scale("fit")
 
--- Disable top-left text block in viewer mode
-swayimg.viewer.set_text("topleft", {})
+-- Show the current filename in the viewer metadata
+swayimg.viewer.set_text("topleft", {"File:\t{name}"})
 
 -- Bind q to quit in all modes
 swayimg.viewer.on_key("q", function()
