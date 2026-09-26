@@ -4,7 +4,7 @@ return {
     cli = {
       win = {
         split = {
-          width = 0.5, -- up to 50% of available columns
+          width = 0.25, -- up to 50% of available columns
         },
       },
     },
