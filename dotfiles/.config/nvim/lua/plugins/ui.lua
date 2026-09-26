@@ -1,6 +1,7 @@
 return {
-  -- color theme
+  -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
+
   {
     "LazyVim/LazyVim",
     opts = {
