@@ -14,3 +14,6 @@ style = "Bold Italic"
 
 [font.italic]
 style = "Italic"
+
+[terminal.shell]
+program = "/usr/bin/fish"
