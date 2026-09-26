@@ -49,3 +49,6 @@ if vim.env.SSH_TTY ~= nil then
     },
   }
 end
+-- lsp generates heavy log files, enable only when needed:
+-- lua vim.lsp.log.set_level("DEBUG")
+vim.lsp.log.set_level("OFF")
