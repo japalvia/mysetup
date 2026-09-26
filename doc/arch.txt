@@ -402,3 +402,8 @@ Copy existing layout and modify keycodes (how to identify the code?)
 
 Install package: terminus-font
 
+User fonts
+----------
+
+gsettings set org.gnome.desktop.interface font-name 'Source Sans Pro 14'
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
