@@ -61,4 +61,22 @@ return {
     "esmuellert/codediff.nvim",
     cmd = "CodeDiff",
   },
+
+  -- snacks: include hidden files
+  {
+    "folke/snacks.nvim",
+    opts = {
+      picker = {
+        -- grep
+        hidden = true,
+        ignored = false,
+        -- find
+        sources = {
+          files = {
+            hidden = true,
+          },
+        },
+      },
+    },
+  },
 }
