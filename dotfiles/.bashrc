@@ -48,9 +48,9 @@ PS1='[\u@\h:\W]\$ '
 
 # Expect system installed git-prompt, fallback to local bin
 git_prompt=$(find -L /usr/share/git $HOME/bin \
-             -name git-prompt.sh -print -quit 2>/dev/null)
+    -name git-prompt.sh -print -quit 2>/dev/null)
 
-if source "$git_prompt" 2>/dev/null ; then
+if source "$git_prompt" 2>/dev/null; then
     export GIT_PS1_SHOWCOLORHINTS=1
     PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ "'
 else
@@ -58,7 +58,7 @@ else
 fi
 
 # Load agent, keys are added in ~/.ssh/config
-if which keychain >/dev/null 2>&1 ; then
+if which keychain >/dev/null 2>&1; then
     eval $(keychain --eval --quiet)
 fi
 
@@ -77,33 +77,30 @@ qmk_compl=$HOME/dev/qmk/util/qmk_tab_complete.sh
 test -r "$qmk_compl" && source "$qmk_compl"
 
 export HISTTIMEFORMAT="%F %T  "
-log_bash_persistent_history()
-{
-  local rc=$?
-  # Swallow PID into the date string match
-  [[ $(history 1) =~ ^\ *[0-9]+\ +([^\ ]+\ [^\ ]+)\ +(.*)$ ]]
-  local date_part="${BASH_REMATCH[1]}"
-  local command_part="${BASH_REMATCH[2]}"
-  if [ "$command_part" != "$PERSISTENT_HISTORY_LAST" ]
-  then
-    echo $date_part "$$" "|" "$command_part" >> ~/.persistent_history
-    export PERSISTENT_HISTORY_LAST="$command_part"
-  fi
+log_bash_persistent_history() {
+    local rc=$?
+    # Swallow PID into the date string match
+    [[ $(history 1) =~ ^\ *[0-9]+\ +([^\ ]+\ [^\ ]+)\ +(.*)$ ]]
+    local date_part="${BASH_REMATCH[1]}"
+    local command_part="${BASH_REMATCH[2]}"
+    if [ "$command_part" != "$PERSISTENT_HISTORY_LAST" ]; then
+        echo $date_part "$$" "|" "$command_part" >>~/.persistent_history
+        export PERSISTENT_HISTORY_LAST="$command_part"
+    fi
 }
 
-run_on_prompt_command()
-{
+run_on_prompt_command() {
     log_bash_persistent_history
 }
 
-if [ "$PROMPT_COMMAND" = "" ] ; then
+if [ "$PROMPT_COMMAND" = "" ]; then
     PROMPT_COMMAND="run_on_prompt_command"
 else
     PROMPT_COMMAND="run_on_prompt_command; ""$PROMPT_COMMAND"
 fi
 
 # Runtime dependant Wayland env variables
-if [[ $XDG_SESSION_TYPE == wayland ]] ; then
+if [[ $XDG_SESSION_TYPE == wayland ]]; then
     export XDG_CURRENT_DESKTOP=sway
     export GDK_BACKEND=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
@@ -113,4 +110,4 @@ fi
 # causing slowdowns on some applications:
 # https://github.com/docker/for-linux/issues/502
 # https://github.com/containerd/containerd/pull/7566
-[[ -f  /.dockerenv ]] && ulimit -S -n 1024
+[[ -f /.dockerenv ]] && ulimit -S -n 1024
