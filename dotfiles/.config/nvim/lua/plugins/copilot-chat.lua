@@ -27,7 +27,7 @@ return {
     end,
     keys = {
       {
-        "<leader>at",
+        "<leader>ac",
         function()
           if require("copilot.client").is_disabled() then
             require("copilot.command").enable()

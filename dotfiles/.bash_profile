@@ -43,4 +43,5 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgreprc
 # authentication for podman registry
 export REGISTRY_AUTH_FILE=${HOME}/.config/containers/auth.json
 
-[[ -r ~/.bashrc ]] && . ~/.bashrc
+# Only load .bashrc for interactive bash
+[[ $- == *i* ]] && [[ -r ~/.bashrc ]] && . ~/.bashrc
