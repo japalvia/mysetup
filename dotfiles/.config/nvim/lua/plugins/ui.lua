@@ -66,6 +66,21 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      lazygit = {
+        config = {
+          os = {
+            edit = [[ [ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}}) ]],
+            editAtLine = [[ [ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>") ]],
+          },
+        },
+        win = {
+          keys = {
+            -- Keep `q` available to LazyGit; remote editing uses `<F12>` below.
+            q = false,
+            ["<F12>"] = { "hide", mode = { "n", "t" } },
+          },
+        },
+      },
       picker = {
         -- grep
         hidden = true,

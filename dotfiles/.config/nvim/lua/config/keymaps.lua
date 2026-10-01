@@ -36,3 +36,21 @@ vim.keymap.set("v", "<leader>x", function()
   local text = vim.fn.getreg("z")
   vim.cmd("g/\\V" .. vim.fn.escape(text, "/\\") .. "/d")
 end, { desc = "Delete lines matching visual selection" })
+
+-- Reuse the same LazyGit process when returning from a file opened with `e`.
+if vim.fn.executable("lazygit") == 1 then
+  ---@type snacks.win?
+  local lazygit_terminal
+
+  vim.keymap.set("n", "<leader>gg", function()
+    if lazygit_terminal and lazygit_terminal:buf_valid() then
+      lazygit_terminal:toggle()
+      return
+    end
+
+    lazygit_terminal = Snacks.lazygit({
+      cwd = LazyVim.root.git(),
+      count = 1,
+    })
+  end, { desc = "Lazygit (Root Dir)" })
+end
