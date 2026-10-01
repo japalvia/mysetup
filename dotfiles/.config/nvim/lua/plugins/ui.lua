@@ -74,6 +74,9 @@ return {
           },
         },
         win = {
+          wo = {
+            winhighlight = "Normal:Normal,NormalNC:Normal,WinBar:SnacksWinBar,WinBarNC:SnacksWinBarNC,FloatTitle:SnacksTitle,FloatFooter:SnacksFooter,WinSeparator:SnacksWinSeparator",
+          },
           keys = {
             -- Keep `q` available to LazyGit; remote editing uses `<F12>` below.
             q = false,
