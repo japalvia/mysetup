@@ -70,7 +70,7 @@ return {
         config = {
           os = {
             edit = [[ [ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}}) ]],
-            editAtLine = [[ [ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>") ]],
+            editAtLine = [[ [ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}} && nvim --server "$NVIM" --remote-expr 'cursor({{line}}, 1)' >/dev/null) ]],
           },
         },
         win = {
