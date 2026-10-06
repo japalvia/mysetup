@@ -44,6 +44,13 @@ alias lastbranch="git for-each-ref --sort=committerdate refs/heads/ \
 # Disable XON/XOFF flow control
 stty -ixon
 
+# Load bash-completion for non-login interactive shells too (login shells
+# already get this via /etc/profile.d/bash_completion.sh, but a plain `bash`
+# invocation is non-login and skips /etc/profile entirely).
+if [ -z "${BASH_COMPLETION_VERSINFO-}" ] && [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+
 PS1='[\u@\h:\W]\$ '
 
 # Expect system installed git-prompt, fallback to local bin
