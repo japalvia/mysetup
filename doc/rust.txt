@@ -1,0 +1,13 @@
+Bug: https://github.com/rust-lang/rust-analyzer/pull/23296
+
+Workaround is symlink:
+sysroot=$(rustup run nightly-2026-10-01 rustc --print sysroot)
+src="$sysroot/lib/rustlib/rustc-src/rust"
+ln -fs ../../Cargo.lock "$src/compiler/rustc/Cargo.lock"
+
+/home/jarkko/.rustup/toolchains/nightly-2026-09-17-x86_64-unknown-linux-gnu/lib/rustlib/rustc-src/rust/compiler/rustc/Cargo.lock: symbolic link to ../../Cargo.lock
+
+Working with rustc/clippy:
+
+rustup component add --toolchain nightly-2026-09-17-x86_64-unknown-linux-gnu clippy
+rustup component add --toolchain nightly-2026-09-17-x86_64-unknown-linux-gnu rust-analyzer
