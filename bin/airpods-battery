@@ -1,1 +1,262 @@
-/home/jarkko/temp/airpod-max/airpods-battery
+#!/usr/bin/env python3
+"""Read the battery charge level of Apple AirPods on Linux.
+
+Apple does not implement the standard Bluetooth Battery Service on AirPods, so
+BlueZ/UPower report nothing. Instead the headset speaks AAP (Apple Accessory
+Protocol) over a raw L2CAP channel on PSM 0x1001, and pushes battery
+notifications once a handshake has been performed.
+
+Protocol frames (reverse-engineered by the LibrePods project):
+
+    handshake              00 00 04 00 01 00 02 00 00 00 00 00 00 00 00 00
+    handshake ack (prefix) 01 00 04 00 ...
+    request notifications  04 00 04 00 0F 00 FF FF FF FF FF
+    battery notification   04 00 04 00 04 00 <count>
+                           then <count> x ( <component> 01 <level> <status> 01 )
+
+    component: 01 headset (AirPods Max), 02 right, 04 left, 08 case
+    level:     0-100, literal percent
+    status:    00 unknown, 01 charging, 02 discharging, 04 disconnected
+"""
+
+from __future__ import annotations
+
+import argparse
+import errno
+import json
+import re
+import socket
+import subprocess
+import sys
+import time
+
+AAP_SERVICE_UUID = "74ec2172-0bad-4d01-8f77-997b2be0722a"
+AAP_PSM = 0x1001
+
+HANDSHAKE = bytes.fromhex("00000400010002000000000000000000")
+HANDSHAKE_ACK = bytes.fromhex("01000400")
+REQUEST_NOTIFICATIONS = bytes.fromhex("040004000f00ffffffffff")
+BATTERY_STATUS = bytes.fromhex("040004000400")
+
+COMPONENTS = {0x01: "headset", 0x02: "right", 0x04: "left", 0x08: "case"}
+COMPONENT_ORDER = ["headset", "left", "right", "case"]
+STATUSES = {0x00: "unknown", 0x01: "charging", 0x02: "discharging", 0x04: "disconnected"}
+STATUS_CHARGING = 0x01
+STATUS_DISCONNECTED = 0x04
+
+MAC_RE = re.compile(r"^Device\s+((?:[0-9A-F]{2}:){5}[0-9A-F]{2})", re.MULTILINE | re.IGNORECASE)
+
+
+class Error(Exception):
+    """A failure worth reporting to the user without a traceback."""
+
+
+# --------------------------------------------------------------------------- #
+# device discovery
+# --------------------------------------------------------------------------- #
+
+def _bluetoothctl(*args: str) -> str:
+    try:
+        proc = subprocess.run(
+            ["bluetoothctl", *args], capture_output=True, text=True, timeout=10
+        )
+    except FileNotFoundError:
+        raise Error("bluetoothctl not found -- pass the address explicitly with --mac")
+    except subprocess.TimeoutExpired:
+        raise Error("bluetoothctl timed out -- pass the address explicitly with --mac")
+    return proc.stdout
+
+
+def find_device() -> str:
+    """Return the address of a connected device that advertises the AAP service."""
+    candidates = MAC_RE.findall(_bluetoothctl("devices", "Connected"))
+    if not candidates:
+        candidates = MAC_RE.findall(_bluetoothctl("devices"))
+    if not candidates:
+        raise Error("no Bluetooth devices known to BlueZ")
+
+    seen_connected = False
+    for mac in candidates:
+        info = _bluetoothctl("info", mac).lower()
+        if "connected: yes" not in info:
+            continue
+        seen_connected = True
+        if AAP_SERVICE_UUID in info:
+            return mac
+
+    if not seen_connected:
+        raise Error("no Bluetooth device is connected -- connect your AirPods first")
+    raise Error(
+        "no connected device advertises Apple's AAP service "
+        f"({AAP_SERVICE_UUID}) -- is this really an AirPods model?"
+    )
+
+
+# --------------------------------------------------------------------------- #
+# AAP channel
+# --------------------------------------------------------------------------- #
+
+def open_channel(mac: str, timeout: float) -> socket.socket:
+    """Open an L2CAP channel to the AAP PSM. No privileges needed above 0x1000."""
+    soft_errors = (errno.EINVAL, errno.EPROTONOSUPPORT, errno.ESOCKTNOSUPPORT)
+    last: OSError | None = None
+    for kind in (socket.SOCK_SEQPACKET, socket.SOCK_STREAM):
+        sock = socket.socket(socket.AF_BLUETOOTH, kind, socket.BTPROTO_L2CAP)
+        sock.settimeout(timeout)
+        try:
+            sock.connect((mac, AAP_PSM))
+            return sock
+        except OSError as exc:
+            sock.close()
+            last = exc
+            if exc.errno not in soft_errors:
+                break
+    raise Error(
+        f"cannot open the AAP channel to {mac} on PSM 0x{AAP_PSM:04x}: {last}\n"
+        "The headset must already be connected, and no other AAP client "
+        "(e.g. LibrePods) may be holding the channel."
+    )
+
+
+def frames(sock: socket.socket, deadline: float, raw: bool):
+    """Yield L2CAP frames until the deadline passes."""
+    while True:
+        if deadline == float("inf"):
+            sock.settimeout(None)  # block indefinitely (--watch)
+        else:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return
+            sock.settimeout(remaining)
+        try:
+            data = sock.recv(1024)
+        except (socket.timeout, TimeoutError):
+            return
+        if not data:
+            raise Error("the AirPods closed the AAP channel")
+        if raw:
+            print(f"<< {data.hex(' ')}", file=sys.stderr, flush=True)
+        yield data
+
+
+def parse_battery(frame: bytes) -> dict | None:
+    """Parse a battery notification, or return None if this isn't one."""
+    if not frame.startswith(BATTERY_STATUS) or len(frame) < 7:
+        return None
+    count = frame[6]
+    if count > 3 or len(frame) < 7 + 5 * count:
+        return None
+
+    reading: dict[str, dict] = {}
+    for index in range(count):
+        component, spacer, level, status, terminator = frame[7 + 5 * index:12 + 5 * index]
+        if spacer != 0x01 or terminator != 0x01:
+            return None  # not the layout we know -- refuse rather than guess
+        if status == STATUS_DISCONNECTED:
+            continue
+        name = COMPONENTS.get(component, f"component_0x{component:02x}")
+        reading[name] = {
+            "level": level,
+            "status": STATUSES.get(status, f"0x{status:02x}"),
+            "charging": status == STATUS_CHARGING,
+        }
+    return reading
+
+
+def read_battery(mac: str, timeout: float, raw: bool, watch: bool) -> int:
+    """Talk AAP to the headset. Returns a process exit code."""
+    printed = False
+    with open_channel(mac, timeout) as sock:
+        sock.send(HANDSHAKE)
+
+        # The handshake ack usually arrives immediately; don't insist on it,
+        # some firmware just starts pushing notifications instead.
+        for frame in frames(sock, time.monotonic() + min(2.0, timeout), raw):
+            if frame.startswith(HANDSHAKE_ACK):
+                break
+
+        sock.send(REQUEST_NOTIFICATIONS)
+
+        deadline = float("inf") if watch else time.monotonic() + timeout
+        for frame in frames(sock, deadline, raw):
+            reading = parse_battery(frame)
+            if not reading:
+                continue
+            emit(reading)
+            printed = True
+            if not watch:
+                break
+
+    if printed:
+        return 0
+    print(
+        f"no battery notification within {timeout:g}s -- try --watch, or put the "
+        "headset on / start playback to make it report",
+        file=sys.stderr,
+    )
+    return 2
+
+
+# --------------------------------------------------------------------------- #
+# output
+# --------------------------------------------------------------------------- #
+
+AS_JSON = False
+
+
+def emit(reading: dict) -> None:
+    if AS_JSON:
+        print(json.dumps(reading), flush=True)
+        return
+    ordered = sorted(
+        reading.items(),
+        key=lambda kv: (COMPONENT_ORDER.index(kv[0]) if kv[0] in COMPONENT_ORDER else 99, kv[0]),
+    )
+    for name, state in ordered:
+        print(f"{name}: {state['level']}% {state['status']}", flush=True)
+
+
+# --------------------------------------------------------------------------- #
+
+def main(argv: list[str] | None = None) -> int:
+    global AS_JSON
+
+    parser = argparse.ArgumentParser(
+        description="Read AirPods battery level over Apple's AAP protocol.",
+    )
+    parser.add_argument(
+        "--mac", metavar="ADDR",
+        help="Bluetooth address of the headset (default: auto-detect a connected AirPods)",
+    )
+    parser.add_argument(
+        "--timeout", type=float, default=5.0, metavar="SEC",
+        help="how long to wait for a battery notification (default: 5)",
+    )
+    parser.add_argument("--json", action="store_true", help="emit JSON instead of text")
+    parser.add_argument(
+        "--watch", action="store_true",
+        help="keep the channel open and print every update until interrupted",
+    )
+    parser.add_argument(
+        "--raw", action="store_true", help="hex-dump every received frame to stderr",
+    )
+    args = parser.parse_args(argv)
+    AS_JSON = args.json
+
+    if args.timeout <= 0:
+        parser.error("--timeout must be positive")
+
+    try:
+        mac = args.mac or find_device()
+        if args.raw:
+            print(f"# device {mac}, PSM 0x{AAP_PSM:04x}", file=sys.stderr)
+        return read_battery(mac, args.timeout, args.raw, args.watch)
+    except Error as exc:
+        print(f"airpods-battery: {exc}", file=sys.stderr)
+        return 1
+    except KeyboardInterrupt:
+        return 130
+
+
+if __name__ == "__main__":
+    sys.exit(main())
