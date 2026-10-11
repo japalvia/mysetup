@@ -11,6 +11,7 @@ opt.completeopt:append("popup") -- CopilotChat.nvim recommendation
 opt.wrap = true
 -- diffopt = "internal,filler,closeoff,linematch:60"
 opt.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"
+opt.fillchars:append({ diff = " " })
 
 vim.g.editorconfig = true
 
@@ -52,3 +53,7 @@ end
 -- lsp generates heavy log files, enable only when needed:
 -- lua vim.lsp.log.set_level("DEBUG")
 vim.lsp.log.set_level("OFF")
+
+if vim.env.NVIM_MERGETOOL == "1" then
+  require("config.mergetool").setup()
+end
