@@ -7,9 +7,9 @@
 
 export PATH=$HOME/bin:$PATH
 # pip packages for user
-export PATH=$HOME/.local/bin:$PATH
+[[ -r "$HOME/.local/bin" ]] && export PATH=$HOME/.local/bin:$PATH
 # rust cargo installed sw for user
-export PATH=$HOME/.cargo/bin:$PATH
+[[ -r "$HOME/.cargo/bin" ]] && export PATH=$HOME/.cargo/bin:$PATH
 # Qt6 tools
 export PATH=/usr/lib/qt6/bin:$PATH
 
