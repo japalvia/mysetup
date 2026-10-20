@@ -4,7 +4,7 @@ set -gx VISUAL nvim
 set -g fish_greeting
 
 if status is-interactive
-    fish_config theme choose gruvbox-material-medium-dark
+    fish_config theme choose --color-theme=dark gruvbox-material-medium-dark
 
     abbr -a -- ls 'ls --color=auto'
     abbr -a -- ll 'ls -l'
