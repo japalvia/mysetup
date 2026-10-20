@@ -56,12 +56,6 @@ return {
     },
   },
 
-  -- vscode style diff
-  {
-    "esmuellert/codediff.nvim",
-    cmd = "CodeDiff",
-  },
-
   -- snacks: include hidden files
   {
     "folke/snacks.nvim",
