@@ -1,8 +1,24 @@
 return {
   "folke/sidekick.nvim",
+  keys = {
+    -- C-. has problems passing through mosh/tmux, use Alt-. instead
+    { "<c-.>", false, mode = { "n", "t", "i", "x" } },
+    {
+      "<M-.>",
+      function()
+        require("sidekick.cli").focus()
+      end,
+      desc = "Sidekick Focus",
+      mode = { "n", "t", "i", "x" },
+    },
+  },
   opts = {
     cli = {
       win = {
+        keys = {
+          hide_ctrl_dot = false,
+          hide_alt_dot = { "<M-.>", "hide", mode = "nt", desc = "hide the terminal window" },
+        },
         split = {
           width = 0.25, -- up to 50% of available columns
         },
