@@ -38,4 +38,24 @@ if status is-interactive
     if command -q fdfind
         abbr -a -- fd fdfind
     end
+
+    # C-r uses fzf and global history, Up key uses local history
+    function __fzf_global_history
+        set -l command (
+        fish -c 'builtin history' |
+        fzf \
+            --height=60% \
+            --layout=reverse \
+            --border \
+            --scheme=history \
+            --query=(commandline)
+    )
+
+        if test -n "$command"
+            commandline --replace -- $command
+            commandline -f repaint
+        end
+    end
+
+    bind \cr __fzf_global_history
 end
