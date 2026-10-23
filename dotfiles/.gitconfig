@@ -1,0 +1,45 @@
+[user]
+	email = jarkko.palviainen@gmail.com
+	name = Jarkko Palviainen
+
+[core]
+    pager = diff-highlight | less -RTX
+	whitespace = tab-in-indent
+
+[diff]
+	tool = nvimdiff
+
+[difftool]
+    prompt = false
+
+[interactive]
+    diffFilter = diff-highlight
+
+[merge]
+	tool = nvimdiff
+	conflictstyle = zdiff3
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "diffview"]
+	cmd = NVIM_MERGETOOL=1 nvim -n -c \"DiffviewMergeFiles \\\"$MERGED\\\" \\\"$BASE\\\" \\\"$LOCAL\\\" \\\"$REMOTE\\\"\"
+[alias]
+    mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+	cs = commit --signoff
+[format]
+	signOff = true
+[log]
+	excludeDecoration = merge
+[difftool "codediff"]
+	cmd = nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff --exit-on-close file $LOCAL $REMOTE\"
+[merge "mergiraf"]
+	name = mergiraf
+	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+[mergetool "nvim"]
+	cmd = NVIM_MERGETOOL=1 nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[init]
+	defaultBranch = main
+
+# Optional per-site overlay; ignored when missing. Keep last so it can override.
+[include]
+	path = ~/.gitconfig.local
