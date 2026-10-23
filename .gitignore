@@ -10,3 +10,7 @@ dotfiles/.config/fish/fish_variables
 
 # Symlink slot for the optional per-site overlay
 dotfiles/.config/nvim/lua/local
+
+# tmux plugins are installed by tpm at runtime; only tpm itself is a submodule
+dotfiles/.tmux/plugins/*
+!dotfiles/.tmux/plugins/tpm
