@@ -1,0 +1,11 @@
+git:
+  diffRenderers:
+    - name: delta inline
+      colorArg: always
+      command: delta --paging=never --line-numbers
+    - name: delta side-by-side
+      colorArg: always
+      command: delta --paging=never --line-numbers --side-by-side
+    - type: rawGit
+      name: git color-words
+      args: [--color-words]
