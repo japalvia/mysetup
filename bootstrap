@@ -11,3 +11,14 @@ for i in ${subdirs[@]}; do
     echo "bootstrapping $i"
     $i/bootstrap
 done
+
+# Optional per-site overlay repo(s): sibling checkouts named mysetup-*.
+# Hooks such as ~/.gdbinit.local need a file to exist; create empty fallbacks
+# first, an overlay's own bootstrap replaces them with links.
+[ -e "$HOME/.gdbinit.local" ] || touch "$HOME/.gdbinit.local"
+root=$(dirname "$(readlink -f "$0")")
+for overlay in "$root"/../mysetup-*/bootstrap; do
+    [ -x "$overlay" ] || continue
+    echo "bootstrapping overlay $(basename "$(dirname "$overlay")")"
+    "$overlay"
+done
