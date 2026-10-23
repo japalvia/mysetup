@@ -1,7 +1,7 @@
--- Without a display clipboard helper (headless shell, container), let LazyGit
--- use the tmux server, which forwards the buffer to the terminal.
+-- Container shells have no display clipboard helper; inside tmux, let LazyGit use
+-- the tmux server, which forwards the buffer to the terminal.
 local tmux_clipboard = {}
-if vim.env.TMUX and not vim.env.WAYLAND_DISPLAY and not vim.env.DISPLAY then
+if vim.env.TMUX and (vim.uv or vim.loop).fs_stat("/run/.containerenv") then
   tmux_clipboard = {
     copyToClipboardCmd = "printf '%s' {{text}} | tmux load-buffer -w -",
     readFromClipboardCmd = "tmux save-buffer -",
