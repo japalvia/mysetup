@@ -7,3 +7,6 @@ dotfiles/.vim/spell
 
 # fish universal variables: machine-generated state
 dotfiles/.config/fish/fish_variables
+
+# Symlink slot for the optional per-site overlay
+dotfiles/.config/nvim/lua/local

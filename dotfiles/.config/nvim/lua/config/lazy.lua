@@ -14,12 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Optional per-site plugin specs (lua/local/plugins/*.lua); only imported when present
+local local_plugins = vim.fn.stdpath("config") .. "/lua/local/plugins"
+local local_spec = (vim.uv or vim.loop).fs_stat(local_plugins) and { { import = "local.plugins" } } or {}
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins" },
+    unpack(local_spec),
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

@@ -16,6 +16,7 @@ opt.fillchars:append({ diff = " " })
 vim.g.editorconfig = true
 
 vim.g.mkdp_filetypes = { "markdown", "plantuml" }
+
 -- Configure PlantUML to use local HTTP server (started via autocmd in autocmds.lua)
 vim.g.mkdp_preview_options = {
   uml = {
@@ -57,3 +58,6 @@ vim.lsp.log.set_level("OFF")
 if vim.env.NVIM_MERGETOOL == "1" then
   require("config.mergetool").setup()
 end
+
+-- Optional per-site overlay (lua/local/init.lua, symlinked from the private repo)
+pcall(require, "local")
