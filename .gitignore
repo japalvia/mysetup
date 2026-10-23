@@ -14,3 +14,9 @@ dotfiles/.config/nvim/lua/local
 # tmux plugins are installed by tpm at runtime; only tpm itself is a submodule
 dotfiles/.tmux/plugins/*
 !dotfiles/.tmux/plugins/tpm
+
+# per-site overlay directory for sway (the include target); filled by the overlay bootstrap
+dotfiles/.config/sway/local.d/
+
+# nvim spell files
+dotfiles/.config/nvim/spell/
