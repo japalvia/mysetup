@@ -234,7 +234,7 @@ set $locker ~/.config/sway/mylock
 exec \
     swayidle -w \
     timeout 605 $locker \
-    timeout 600 'swaymsg "output * power off"' \
+    timeout 1800 'swaymsg "output * power off"' \
         resume 'swaymsg "output * power on"' \
     before-sleep $locker
 
@@ -421,3 +421,6 @@ mode Mouse {
 bindsym $mod+g mode Mouse
 
 seat seat0 hide_cursor when-typing enable
+
+# Optional per-site overlay; no-op when the directory is empty
+include ~/.config/sway/local.d/*
