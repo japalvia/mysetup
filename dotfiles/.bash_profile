@@ -13,6 +13,10 @@ export PATH=$HOME/bin:$PATH
 # Qt6 tools
 export PATH=/usr/lib/qt6/bin:$PATH
 
+# TODO: see if anything here is actually in use
+# Ruby gem
+# export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
+
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 export BC_ENV_ARGS=$HOME/.config/bcrc
@@ -42,6 +46,9 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgreprc
 
 # authentication for podman registry
 export REGISTRY_AUTH_FILE=${HOME}/.config/containers/auth.json
+
+# Optional per-site overlay
+[[ -r "$HOME/.bash_profile.local" ]] && . "$HOME/.bash_profile.local"
 
 # Only load .bashrc for interactive bash
 [[ $- == *i* ]] && [[ -r ~/.bashrc ]] && . ~/.bashrc

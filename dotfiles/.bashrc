@@ -9,12 +9,14 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias lt='ls -lt'
 alias la='ls -la'
+alias lh='ls -lh'
 alias grep='grep --color=auto'
 alias v='nvim'
 alias nv='nvim'
 alias nvf='nvim $(fzf)'
 alias c='cd'
 
+alias gg='git grep'
 alias ga='git add'
 alias gap='git add -p'
 alias gc='git commit'
@@ -31,7 +33,8 @@ alias gri='git rebase -i'
 alias gria='git rebase -i --autosquash'
 alias gs='git status'
 alias gss='git status --short'
-alias gru='git remote update'
+alias gru='git remote update origin'
+alias si='swayimg'
 # Debian systems
 command -v fdfind &>/dev/null && alias fd='fdfind'
 
@@ -53,15 +56,12 @@ fi
 
 PS1='[\u@\h:\W]\$ '
 
-# Expect system installed git-prompt, fallback to local bin
-git_prompt=$(find -L /usr/share/git $HOME/bin \
-    -name git-prompt.sh -print -quit 2>/dev/null)
+# git-prompt from the system package; plain PS1 when not installed
+git_prompt=$(find -L /usr/share/git -name git-prompt.sh -print -quit 2>/dev/null)
 
-if source "$git_prompt" 2>/dev/null; then
+if [ -n "$git_prompt" ] && source "$git_prompt" 2>/dev/null; then
     export GIT_PS1_SHOWCOLORHINTS=1
     PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ "'
-else
-    echo "failed to source git-prompt.sh"
 fi
 
 # Load agent, keys are added in ~/.ssh/config
@@ -118,3 +118,6 @@ fi
 # https://github.com/docker/for-linux/issues/502
 # https://github.com/containerd/containerd/pull/7566
 [[ -f /.dockerenv ]] && ulimit -S -n 1024
+
+# Optional per-site overlay
+[[ -r "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local"
