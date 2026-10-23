@@ -1,3 +1,13 @@
+-- Without a display clipboard helper (headless shell, container), let LazyGit
+-- use the tmux server, which forwards the buffer to the terminal.
+local tmux_clipboard = {}
+if vim.env.TMUX and not vim.env.WAYLAND_DISPLAY and not vim.env.DISPLAY then
+  tmux_clipboard = {
+    copyToClipboardCmd = "printf '%s' {{text}} | tmux load-buffer -w -",
+    readFromClipboardCmd = "tmux save-buffer -",
+  }
+end
+
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
@@ -62,10 +72,10 @@ return {
     opts = {
       lazygit = {
         config = {
-          os = {
+          os = vim.tbl_extend("force", tmux_clipboard, {
             edit = [[ [ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}}) ]],
             editAtLine = [[ [ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<F12>" && nvim --server "$NVIM" --remote-tab {{filename}} && nvim --server "$NVIM" --remote-expr 'cursor({{line}}, 1)' >/dev/null) ]],
-          },
+          }),
         },
         win = {
           wo = {
