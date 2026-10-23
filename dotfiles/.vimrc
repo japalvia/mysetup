@@ -228,3 +228,6 @@ noremap <F6> vipJ
 " RST-compatible table-mode plugin formatting
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
+
+" Optional per-site overlay
+silent! source ~/.vimrc.local
