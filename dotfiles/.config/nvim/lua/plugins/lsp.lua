@@ -9,6 +9,7 @@ return {
             ["rust-analyzer"] = {
               cargo = { allFeatures = true, targetDir = true },
               check = { command = "clippy" },
+              rustc = { source = "discover" },
             },
           },
         },
