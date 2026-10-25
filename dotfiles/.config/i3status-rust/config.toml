@@ -1,0 +1,40 @@
+icons_format = "{icon}"
+
+[[block]]
+block = "net"
+format = " $icon {$signal_strength $ssid|$device} {$ip|} "
+inactive_format = " $icon down "
+missing_format = " $icon missing "
+
+[[block]]
+block = "sound"
+format = " ♪: {$volume|muted} "
+
+[[block]]
+block = "custom"
+command = "if test -r /tmp/airpods-status.json; then cat /tmp/airpods-status.json; else printf '{\"state\":\"Warning\",\"text\":\"AirPods watcher unavailable\"}'; fi"
+json = true
+interval = 15
+hide_when_empty = true
+watch_files = ["/tmp/airpods-status.json"]
+
+[[block]]
+block = "battery"
+format = " $icon $percentage {$time_remaining|} "
+full_format = " $icon $percentage "
+empty_format = " $icon $percentage "
+not_charging_format = " $icon $percentage "
+missing_format = " No battery "
+warning = 20
+critical = 10
+
+[[block]]
+block = "load"
+# format = " $icon 1min avg: $1m.eng(w:4) "
+# warning = 2
+# critical = 8
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%Y-%m-%d %H:%M:%S') "

@@ -3,6 +3,7 @@ Wayland/Sway setup
 
 Packages:
 sway
+i3status-rust
 xorg-xwayland
 swayidle
 bemenu -> bemenu-wayland

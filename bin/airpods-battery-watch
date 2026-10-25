@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+"""Poll AirPods battery state, publish an i3status-rust block, and notify at low charge."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import os
+import subprocess
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+RC_OK = 0
+RC_ERROR = 1
+RC_NO_READING = 2
+NOTIFY_REARM_MARGIN = 5
+
+
+def pick_component(reading: dict) -> tuple[int, bool] | None:
+    for name in ("headset", "left", "right", "case"):
+        component = reading.get(name)
+        if not isinstance(component, dict):
+            continue
+        level = component.get("level")
+        if isinstance(level, int) and not isinstance(level, bool) and 0 <= level <= 100:
+            return level, bool(component.get("charging"))
+    return None
+
+
+def status_payload(reading: dict | None, low: int, critical: int) -> dict[str, str]:
+    picked = pick_component(reading or {})
+    if not picked:
+        return {"text": ""}
+
+    level, charging = picked
+    text = f"{'⚡' if charging else ''}🎧 {level}%"
+    if charging or level >= low:
+        state = "Idle"
+    elif level < critical:
+        state = "Critical"
+    else:
+        state = "Warning"
+    return {"state": state, "text": text}
+
+
+def fetch(tool: str, timeout: float) -> tuple[int, dict | None, str | None]:
+    try:
+        proc = subprocess.run(
+            [tool, "--json", "--timeout", str(timeout)],
+            capture_output=True,
+            text=True,
+            timeout=timeout + 5,
+            check=False,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        return RC_ERROR, None, str(exc)
+
+    if proc.returncode == RC_NO_READING:
+        return RC_NO_READING, None, proc.stderr.strip() or None
+    if proc.returncode != RC_OK:
+        return RC_ERROR, None, proc.stderr.strip() or f"airpods-battery exited with {proc.returncode}"
+
+    try:
+        reading = json.loads(proc.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return RC_ERROR, None, f"invalid airpods-battery JSON: {exc}"
+    if not isinstance(reading, dict):
+        return RC_ERROR, None, "airpods-battery JSON must be an object"
+    return RC_OK, reading, None
+
+
+def write_payload(path: Path, payload: dict[str, str], previous: str | None) -> str:
+    serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    if serialized == previous:
+        return serialized
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
+            stream.write(serialized + "\n")
+        os.chmod(temporary, 0o600)
+        os.replace(temporary, path)
+    except BaseException:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
+        raise
+    return serialized
+
+
+def maybe_notify(
+    level: int, charging: bool, warned: bool, critical: int
+) -> bool:
+    if charging or level >= critical + NOTIFY_REARM_MARGIN:
+        return False
+    if warned or level >= critical:
+        return warned
+
+    try:
+        proc = subprocess.run(
+            [
+                "notify-send",
+                "-u",
+                "critical",
+                "-a",
+                "airpods",
+                "AirPods battery low",
+                f"{level}%",
+            ],
+            capture_output=True,
+            timeout=5,
+            check=False,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        logging.warning("could not send low-battery notification: %s", exc)
+    else:
+        if proc.returncode:
+            detail = proc.stderr.decode(errors="replace").strip()
+            logging.warning(
+                "notify-send exited with %s%s",
+                proc.returncode,
+                f": {detail}" if detail else "",
+            )
+    return True
+
+
+def default_tool() -> str:
+    return str(Path(__file__).resolve().with_name("airpods-battery"))
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--state-file",
+        type=Path,
+        default=Path.home() / ".cache/mysetup/airpods-status.json",
+    )
+    parser.add_argument("--tool", default=default_tool())
+    parser.add_argument("--interval", type=float, default=60.0)
+    parser.add_argument("--retry-interval", type=float, default=15.0)
+    parser.add_argument("--timeout", type=float, default=4.0)
+    parser.add_argument("--low", type=int, default=20)
+    parser.add_argument("--critical", type=int, default=10)
+    args = parser.parse_args(argv)
+
+    if args.interval <= 0 or args.retry_interval <= 0 or args.timeout <= 0:
+        parser.error("intervals and timeout must be positive")
+    if not 0 <= args.critical <= args.low <= 100:
+        parser.error("thresholds must satisfy 0 <= critical <= low <= 100")
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    previous_payload = write_payload(args.state_file, {"text": ""}, None)
+    warned = False
+    last_reading: dict | None = None
+    last_error: str | None = None
+
+    while True:
+        rc, reading, error = fetch(args.tool, args.timeout)
+        if rc == RC_OK:
+            last_error = None
+            last_reading = reading
+            payload = status_payload(reading, args.low, args.critical)
+            component = pick_component(reading or {})
+            if component:
+                warned = maybe_notify(component[0], component[1], warned, args.critical)
+            delay = args.interval
+        elif rc == RC_NO_READING:
+            payload = status_payload(last_reading, args.low, args.critical)
+            delay = args.retry_interval
+        else:
+            if error and error != last_error:
+                logging.warning("AirPods battery read failed: %s", error)
+            last_error = error
+            last_reading = None
+            payload = status_payload(None, args.low, args.critical)
+            warned = False
+            delay = args.retry_interval
+
+        previous_payload = write_payload(args.state_file, payload, previous_payload)
+        time.sleep(delay)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

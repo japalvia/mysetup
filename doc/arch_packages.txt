@@ -52,6 +52,7 @@ i3-layout-manager-git
 i3-wm
 i3lock
 i3status
+i3status-rust
 iftop
 imagemagick
 intel-gpu-tools
